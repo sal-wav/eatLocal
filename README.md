@@ -23,7 +23,7 @@ footer: github/linkedIn links
 ### Splash/Home
 GET first 3 biz - /api/biz
 GET 3 recent reviews - /api/review
-GET user - /api/user/userId (use review FK userId)
+GET user - /api/user/userId
 
 * Featured feed: preview includes: img, biz name, overall rating, description
 
@@ -31,7 +31,7 @@ Recent Activity: Username "posted a review", img, biz name, rating (**bonus** co
 
 ### Search Results
 GET biz - /api/biz
-GET review - /api/
+GET review - /api/review/biz/bizId
 
 Sidebar: filters: restaurant or corner store button, "open now" checkbox, rating
 
@@ -45,6 +45,7 @@ GET reviews - /api/review/biz/bizId
 GET user - /api/user/userId
 PATCH review - /api/review/reviewId
 POST review - /api/review
+GET features - /api/features/biz/bizId
 
 Cover: img, biz name, overall rating, hours open, description
 
@@ -62,9 +63,18 @@ Food List: food img, name, description
 POST biz - /api/biz
 PATCH biz - /api/biz/bizId
 POST food - /api/food
+PATCH food - /api/food/foodId
+POST features - /api/feat
 
 Biz Form: name, description, image, phone number
-    * food input: name, description, image
+    / features: restaurant or cornerstore, opening time, closing time
+    / food: name, description, image
+
+
+
+
+
+
 
 **bonus**
 (### User Page
