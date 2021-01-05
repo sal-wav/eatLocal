@@ -40,7 +40,7 @@ Sidebar: filters: restaurant or corner store button, "open now" checkbox, rating
 
 (**bonus** Sort dropdown: sort by highest rating, most ratings)
 
-* Featured feed
+* Featured feed: preview includes: img, biz name, overall rating, description
 
 ### Biz Page
 GET biz - /api/biz/bizId
