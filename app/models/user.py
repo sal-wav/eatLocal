@@ -9,6 +9,11 @@ class User(db.Model, UserMixin):
   username = db.Column(db.String(40), nullable = False, unique = True)
   email = db.Column(db.String(255), nullable = False, unique = True)
   hashed_password = db.Column(db.String(255), nullable = False)
+  image_url = db.Column(db.String, nullable = True)
+
+  reviews = db.relationship('Review' back_populates='user')
+
+  bob.reviews.append(review1)
 
 
   @property
