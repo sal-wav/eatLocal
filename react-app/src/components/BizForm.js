@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 // import { useDropzone } from "react-dropzone";
 import { postBiz } from "../services/biz";
+import "./styles/form.css"
 
 const BizForm = () => {
     const [redirect, setRedirect] = useState(null);
@@ -15,13 +16,13 @@ const BizForm = () => {
 //   const [isImageUploading, setIsImageUploading] = useState(false);
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
-        try {
-            const biz = await postBiz(name, description, imageUrl, phoneNum, categoryIds);
-            setRedirect(`/biz/${biz.id}`);
-        } catch (submissionError) {
-            setError(submissionError);
-        }
+        // e.preventDefault();
+        // try {
+        //     const biz = await postBiz(name, description, imageUrl, phoneNum, categoryIds);
+        //     setRedirect(`/biz/${biz.id}`);
+        // } catch (submissionError) {
+        //     setError(submissionError);
+        // }
     };
 
     const handleCategories = async (e) => {
@@ -40,16 +41,16 @@ const BizForm = () => {
     return (
         <form className="form">
             <div>
-                <input type="text" name="name" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} required></input>
+                <input className="input" type="text" name="name" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} required></input>
             </div>
             <div>
-                <input type="text" name="imageUrl" placeholder="Image Url" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)}></input>
+                <input className="input" type="text" name="imageUrl" placeholder="Image Url" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)}></input>
             </div>
             <div>
-                <input type="text" name="phoneNum" placeholder="Phone Number" value={phoneNum} onChange={(e) => setPhoneNum(e.target.value)} required></input>
+                <input className="input" type="text" name="phoneNum" placeholder="Phone Number" value={phoneNum} onChange={(e) => setPhoneNum(e.target.value)} required></input>
             </div>
             <div>
-                <textarea type="text" name="description" placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
+                <textarea className="input" type="text" name="description" placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
             </div>
 
             {categories.map((category) => (

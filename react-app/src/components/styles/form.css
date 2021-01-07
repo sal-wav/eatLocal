@@ -1,0 +1,21 @@
+.form {
+    border: 1px solid #e90101;
+    height: 700px;
+}
+
+.input {
+    height: 20px;
+    width: 512px;
+    padding: 13px 15px 13px 15px;
+    color: #00838F;
+}
+
+.submitBtn {
+    height: 38px;
+    width: 70px;
+    padding: 0 13px 0 13px;
+    background: #f43939;
+    color: #fff;
+    border: 1px solid #f43939;
+    border-radius: 4px;
+}
