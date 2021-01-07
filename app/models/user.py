@@ -11,10 +11,11 @@ class User(db.Model, UserMixin):
   hashed_password = db.Column(db.String(255), nullable = False)
   image_url = db.Column(db.String, nullable = True)
 
-  reviews = db.relationship('Review' back_populates='user')
+  reviews = db.relationship('Review', back_populates='user')
+  # bob.reviews.append(review1)
 
-  bob.reviews.append(review1)
-
+  ownedBusinesses = db.relationship('Business', back_populates='owner')
+  # bob.businesses.append(bobs_bakery)
 
   @property
   def password(self):

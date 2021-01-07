@@ -1,23 +1,20 @@
 from .db import db
-from ..models.business import Business
-from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.orm import relationship
+from .business import biz_features
+# from flask_sqlalchemy import SQLAlchemy
+# from sqlalchemy.orm import relationship
 
 class Feature(db.Model):
     __tablename__ = 'features'
 
     id = db.Column(db.Integer, primary_key = True)
-    description = db.Column(db.String(255))
+    name = db.Column(db.String(100), nullable=False)
+    icon = db.Column(db.String(25))
 
-    takeout = db.Column(db.Boolean)
-    delivery = db.Column(db.Boolean)
-    business_id = db.Column(db.Integer, db.ForeignKey('businesses.id'))
+    businesses = db.relationship('Business', secondary=biz_features)
 
     def to_dict(self):
         return {
-        "id": self.id,
-        "name": self.name,
-        "description": self.description,
-        "image_url": self.timestamp,
-        "business_id": self.business_id
+            "id": self.id,
+            "name": self.name,
+            "icon": self.icon
         }

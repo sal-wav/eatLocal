@@ -1,6 +1,8 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required, current_user
 from app.models import Business
+from app.models import Category
+from ..forms.biz_form import BizForm
 
 biz_routes = Blueprint('biz', __name__)
 
@@ -16,13 +18,16 @@ def post_biz():
     form = BizForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
+
+        categories = map(Category.query.filter_by(id), form.data['categoryIds'])
         biz = Business(
             name=form.data['name'],
             image_url=form.data['image_url'],
             phone_num=form.data['phone_num'],
+            description=form.data['description'],
             user_id=current_user.id,
-            category_id=form.data['category_id']
         )
+        biz.categories = categories
         db.session.add(biz)
         db.session.commit()
         return biz.to_dict()
