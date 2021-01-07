@@ -2,42 +2,35 @@ import React, { useState, useEffect } from "react";
 import { Redirect } from "react-router-dom";
 // import { useDropzone } from "react-dropzone";
 import { postBiz } from "../services/biz";
-import { getCategories } from "../services/category";
+import { getCategories, getFeatures } from "../services/categoryFeature";
 import "./styles/form.css"
 
 const BizForm = () => {
     const [redirect, setRedirect] = useState(null);
     const [categories, setCategories] = useState([]);
+    const [features, setFeatures] = useState([]);
     const [name, setName] = useState(null);
     const [imageUrl, setImageUrl] = useState(null);
     const [phoneNum, setPhoneNum] = useState(null);
     const [description, setDescription] = useState(null);
     const [categoryIds, setCategoryIds] = useState([]);
+    const [featureIds, setFeatureIds] = useState([]);
 //   const [isImageUploading, setIsImageUploading] = useState(false);
 
     useEffect(() => {
-        // (async () => {
-        //     const response = await getCategories();
-        //     console.log(`response.categories: ${response.categories}`)
-        //     setCategories(response.categories)
-        // })();
         (async () => {
-            const response = await fetch("/api/category/", {
-              headers: {
-                'Content-Type': 'application/json'
-              }
-            });
-            const data = await response.json();
-            console.log(`data: ${data}`)
-            console.log(`data: ${JSON.stringify(data)}`)
-            setCategories(data.categories);
+            const response = await getCategories();
+            const res2 = await getFeatures();
+
+            setCategories(response.categories);
+            setFeatures(res2.features);
         })();
     }, [])
 
     const handleSubmit = async (e) => {
         // e.preventDefault();
         // try {
-        //     const biz = await postBiz(name, description, imageUrl, phoneNum, categoryIds);
+        //     const biz = await postBiz(name, description, imageUrl, phoneNum, categoryIds, featureIds);
         //     setRedirect(`/biz/${biz.id}`);
         // } catch (submissionError) {
         //     setError(submissionError);
@@ -56,8 +49,19 @@ const BizForm = () => {
         };
     };
 
-    if (!categories) return null;
-    console.log(categories)
+    const handleFeatures = async (e) => {
+        const id = parseInt(e.target.value);
+        const position = categoryIds.indexOf(id);
+        if (position === -1) {
+            setFeatureIds([...featureIds, id]);
+        } else {
+            const featureCopy = [...featureIds];
+            featureCopy.splice(position, 1);
+            setFeatureIds(featureCopy)
+        };
+    };
+
+    if (!categories || !features) return "loading";
 
     return (
         <form className="form">
@@ -78,6 +82,13 @@ const BizForm = () => {
                 <div key={category.id}>
                     <input type="checkbox" name="categories" value={category.id} onChange={handleCategories}/>
                     <label className="label">{category.name}</label>
+                </div>
+            ))}
+
+            {features.map((feature) => (
+                <div key={feature.id}>
+                    <input type="checkbox" name="features" value={feature.id} onChange={handleFeatures}/>
+                    <label className="label">{feature.name}</label>
                 </div>
             ))}
 

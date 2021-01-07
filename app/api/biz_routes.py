@@ -2,6 +2,7 @@ from flask import Blueprint, jsonify
 from flask_login import login_required, current_user
 from app.models import Business
 from app.models import Category
+from app.models import Feature
 from ..forms.biz_form import BizForm
 
 biz_routes = Blueprint('biz', __name__)
@@ -20,6 +21,7 @@ def post_biz():
     if form.validate_on_submit():
 
         categories = map(Category.query.filter_by(id), form.data['categoryIds'])
+        features = map(Feature.query.filter_by(id), form.data['featureIds'])
         biz = Business(
             name=form.data['name'],
             image_url=form.data['image_url'],
@@ -28,6 +30,7 @@ def post_biz():
             user_id=current_user.id,
         )
         biz.categories = categories
+        biz.features = features
         db.session.add(biz)
         db.session.commit()
         return biz.to_dict()
