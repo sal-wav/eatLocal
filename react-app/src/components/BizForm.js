@@ -1,19 +1,38 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Redirect } from "react-router-dom";
 // import { useDropzone } from "react-dropzone";
 import { postBiz } from "../services/biz";
+import { getCategories } from "../services/category";
 import "./styles/form.css"
 
 const BizForm = () => {
     const [redirect, setRedirect] = useState(null);
+    const [categories, setCategories] = useState([]);
     const [name, setName] = useState(null);
     const [imageUrl, setImageUrl] = useState(null);
     const [phoneNum, setPhoneNum] = useState(null);
     const [description, setDescription] = useState(null);
     const [categoryIds, setCategoryIds] = useState([]);
-
-    const categories =[{name: 'takeout','id': 1}, {name: 'delivery', 'id': 2}]
 //   const [isImageUploading, setIsImageUploading] = useState(false);
+
+    useEffect(() => {
+        // (async () => {
+        //     const response = await getCategories();
+        //     console.log(`response.categories: ${response.categories}`)
+        //     setCategories(response.categories)
+        // })();
+        (async () => {
+            const response = await fetch("/api/category/", {
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            });
+            const data = await response.json();
+            console.log(`data: ${data}`)
+            console.log(`data: ${JSON.stringify(data)}`)
+            setCategories(data.categories);
+        })();
+    }, [])
 
     const handleSubmit = async (e) => {
         // e.preventDefault();
@@ -37,6 +56,8 @@ const BizForm = () => {
         };
     };
 
+    if (!categories) return null;
+    console.log(categories)
 
     return (
         <form className="form">
