@@ -38,21 +38,34 @@ const BizPage = () => {
                     </div>
                 </div>
                 <div className="infoContainer">
-                    <p>{biz.description}</p>
-                    {features.map((feature) => (
-                        <div key={feature.id}>
-                            <p>{feature.name}</p>
-                        </div>
-                    ))}
-                    <h1>What's on the menu</h1>
-                    <div className="menuContainer">
-                        {/* <div> */}
-                        {menu.map((menuItem) => (
-                            <div className="itemContainer" key={menuItem}>
-                                <h3>{menuItem}</h3>
+                    <div className="leftContainer">
+                        <p>{biz.description}</p>
+                        {features.map((feature) => (
+                            <div key={feature.id}>
+                                <p>{feature.name}</p>
                             </div>
                         ))}
-                        {/* </div> */}
+                        <h1>What's on the menu</h1>
+                        <div className="menuContainer">
+                            {/* <div> */}
+                            {menu.map((menuItem) => (
+                                <div className="itemContainer" key={menuItem}>
+                                    <h3>{menuItem}</h3>
+                                </div>
+                            ))}
+                            {/* </div> */}
+                        </div>
+                    </div>
+
+
+                    <div className="sidebarContainer">
+                        <div className="sidebar">
+                            <h3>hi</h3>
+                            <h2>You Might Also Consider</h2>
+                            <div>
+
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

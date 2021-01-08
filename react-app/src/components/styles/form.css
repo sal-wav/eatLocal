@@ -1,6 +1,10 @@
 .pageContainer {
-    background: #f4f4f4;
     font-family: Open Sans,Helvetica Neue,Helvetica,Arial,sans-serif;
+}
+
+#formpageContainer {
+    background: #f4f4f4;
+
 }
 
 .formContainer {
