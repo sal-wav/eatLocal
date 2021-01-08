@@ -65,49 +65,49 @@ const BizForm = () => {
 
     return (
         <div className="pageContainer">
-            <form className="form">
-                <h1>Tell us about your business</h1>
-                <div>
-                    <input className="input" type="text" name="name" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} required></input>
-                </div>
-                <div>
-                    <input className="input" type="text" name="imageUrl" placeholder="Image Url" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)}></input>
-                </div>
-                <div>
-                    <input className="input" type="text" name="phoneNum" placeholder="Phone Number" value={phoneNum} onChange={(e) => setPhoneNum(e.target.value)} required></input>
-                </div>
-                <div>
-                    <textarea className="input" type="text" name="description" placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
-                </div>
-                <div>
-                    <input className="input" type="time" placeholder="Opening Time"></input>
-                </div>
-                <div>
-                    <input className="input" type="time" placeholder="Closing Time"></input>
-                </div>
+            <div className="formContainer">
+                <form className="form">
+                    <h1>Tell us about your business</h1>
+                    <div>
+                        <input className="input" type="text" name="name" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} required></input>
+                    </div>
+                    <div>
+                        <input className="input" type="text" name="imageUrl" placeholder="Image Url" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)}></input>
+                    </div>
+                    <div>
+                        <input className="input" type="text" name="phoneNum" placeholder="Phone Number" value={phoneNum} onChange={(e) => setPhoneNum(e.target.value)} required></input>
+                    </div>
+                    <div>
+                        <textarea className="input" type="text" name="description" placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
+                    </div>
+                    <div className="time">
+                        <input id="timeInput" className="input" type="time" placeholder="Opening Time"></input>
+                        <input id="timeInput" className="input" type="time" placeholder="Closing Time"></input>
+                    </div>
 
-                <h3>Categories</h3>
-                <div className="categoryContainer">
-                {categories.map((category) => (
-                    <div className="checkContainer" key={category.id}>
-                        <input type="checkbox" name="categories" value={category.id} onChange={handleCategories}/>
-                        <label className="label">{category.name}</label>
+                    <h3>Categories</h3>
+                    <div className="optionContainer">
+                    {categories.map((category) => (
+                        <div className="checkContainer" key={category.id}>
+                            <input type="checkbox" name="categories" value={category.id} onChange={handleCategories}/>
+                            <label className="label">{category.name}</label>
+                        </div>
+                    ))}
                     </div>
-                ))}
-                </div>
-                <h3>Features</h3>
-                <div>
-                {features.map((feature) => (
-                    <div key={feature.id}>
-                        <input type="checkbox" name="features" value={feature.id} onChange={handleFeatures}/>
-                        <label className="label">{feature.name}</label>
+                    <h3>Features</h3>
+                    <div className="optionContainer">
+                    {features.map((feature) => (
+                        <div key={feature.id}>
+                            <input type="checkbox" name="features" value={feature.id} onChange={handleFeatures}/>
+                            <label className="label">{feature.name}</label>
+                        </div>
+                    ))}
                     </div>
-                ))}
-                </div>
-                <div className="formSubmit">
-                    <button className="submitBtn" type="submit">Share Your Listing</button>
-                </div>
-            </form>
+                    <div className="formSubmit">
+                        <button className="submitBtn" type="submit">Share Your Listing</button>
+                    </div>
+                </form>
+            </div>
         </div>
     );
 };

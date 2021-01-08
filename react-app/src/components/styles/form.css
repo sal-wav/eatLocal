@@ -3,11 +3,16 @@
     font-family: Open Sans,Helvetica Neue,Helvetica,Arial,sans-serif;
 }
 
-.form {
+.formContainer {
+    max-width: 600px;
     background: white;
     border: 1px solid #eeeeef;
+}
+
+.form {
+    margin: auto;
     height: 700px;
-    max-width: 600px;
+    max-width: 550px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -17,6 +22,16 @@
     width: 512px;
     padding: 13px 15px 13px 15px;
     color: #00838F;
+}
+
+.time {
+    display: flex;
+    justify-content: space-between;
+    width: 545px;
+}
+
+#timeInput {
+    width: 230px;
 }
 
 .submitBtn {
@@ -30,7 +45,7 @@
     border-radius: 4px;
 }
 
-.categoryContainer {
+.optionContainer {
     display: flex;
     flex-wrap: wrap;
 }
