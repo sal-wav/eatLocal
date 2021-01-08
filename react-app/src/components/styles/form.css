@@ -1,6 +1,16 @@
+.pageContainer {
+    background: #f4f4f4;
+    font-family: Open Sans,Helvetica Neue,Helvetica,Arial,sans-serif;
+}
+
 .form {
-    border: 1px solid #e90101;
+    background: white;
+    border: 1px solid #eeeeef;
     height: 700px;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
 .input {
@@ -11,10 +21,31 @@
 
 .submitBtn {
     height: 38px;
-    width: 70px;
+    width: 190px;
+    font-size: 18px;
     padding: 0 13px 0 13px;
     background: #f43939;
     color: #fff;
     border: 1px solid #f43939;
     border-radius: 4px;
+}
+
+.categoryContainer {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.label {
+    position: relative;
+    margin-bottom: 12px;
+    /* cursor: pointer; */
+    font-size: 15px;
+    /* -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none; */
+}
+
+.checkContainer {
+    display: flex;
 }

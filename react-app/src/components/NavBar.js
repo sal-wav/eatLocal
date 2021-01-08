@@ -6,12 +6,12 @@ import "./styles/navbar.css";
 const NavBar = ({ authenticated, setAuthenticated }) => {
   const [searchValue, setSearchValue] = useState(null);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    return (
-      // <Redirect to={`/search/${searchValue}`}/>
-    )
-  }
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   return (
+  //     // <Redirect to={`/search/${searchValue}`}/>
+  //   )
+  // }
 
   // const handleSearchValue = (e) => {
   //   e.preventDefault();
@@ -20,7 +20,7 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
 
   const SearchInput = () => (
     <>
-      <form className="searchForm" onSubmit={handleSubmit}>
+      <form className="searchForm">
         <input className="input" type="search" placeholder="In the mood for ..."></input>
         <button type="submit"></button>
       </form>
