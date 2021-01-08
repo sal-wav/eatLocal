@@ -31,6 +31,15 @@ const BizPage = () => {
                     <p>{feature.name}</p>
                 </div>
             ))}
+            <div className="menu">
+                <div>
+                {menu.map((menuItem) => (
+                    <div key={menuItem}>
+                        <h3>{menuItem}</h3>
+                    </div>
+                ))}
+                </div>
+            </div>
         </div>
     );
 }

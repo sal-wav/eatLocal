@@ -77,6 +77,12 @@ const BizForm = () => {
             <div>
                 <textarea className="input" type="text" name="description" placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
             </div>
+            <div>
+                <input className="input" type="time" placeholder="Opening Time"></input>
+            </div>
+            <div>
+                <input className="input" type="time" placeholder="Closing Time"></input>
+            </div>
 
             <div>
             {categories.map((category) => (

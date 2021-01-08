@@ -1,11 +1,29 @@
-/* .nav {
-    display: flex;
-    flex-direction: row;
-} */
+.nav {
+    min-width: 960px;
+}
 
 .navList {
-    display: flex;
+    min-width: 100%;
+    display: grid;
+    grid-template-columns: 120px 815px 1fr;
     flex-direction: row;
     list-style-type: none;
-    
+}
+
+.left {
+    grid-column-start: 1;
+}
+
+.middle {
+    grid-column-start: 2;
+}
+
+.right {
+    grid-column-start: 3;
+    display: flex;
+}
+
+.navLink {
+    height: 48px;
+
 }
