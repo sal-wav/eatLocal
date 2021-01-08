@@ -42,7 +42,6 @@ def biz(id):
     biz = Business.query.get(id)
     if request.method == 'GET':
         return biz.to_dict()
-    # MAKE BIZ FORM !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     form = BizForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if request.method == 'DELETE':

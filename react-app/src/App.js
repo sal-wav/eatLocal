@@ -8,6 +8,7 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import User from "./components/User";
 import { authenticate } from "./services/auth";
 import BizForm from "./components/BizForm";
+import BizPage from "./components/BizPage";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -48,7 +49,9 @@ function App() {
       <Route path="/bizform">
         <BizForm />
       </Route>
-
+      <Route path="/biz/:bizId" exact={true} authenticated={authenticated}>
+        <BizPage />
+      </Route>
     </BrowserRouter>
   );
 }

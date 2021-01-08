@@ -25,7 +25,7 @@ const BizForm = () => {
             setCategories(response.categories);
             setFeatures(res2.features);
         })();
-    }, [])
+    }, []);
 
     const handleSubmit = async (e) => {
         // e.preventDefault();
@@ -78,20 +78,22 @@ const BizForm = () => {
                 <textarea className="input" type="text" name="description" placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
             </div>
 
+            <div>
             {categories.map((category) => (
                 <div key={category.id}>
                     <input type="checkbox" name="categories" value={category.id} onChange={handleCategories}/>
                     <label className="label">{category.name}</label>
                 </div>
             ))}
-
+            </div>
+            <div>
             {features.map((feature) => (
                 <div key={feature.id}>
                     <input type="checkbox" name="features" value={feature.id} onChange={handleFeatures}/>
                     <label className="label">{feature.name}</label>
                 </div>
             ))}
-
+            </div>
             <div className="formSubmit">
                 <button className="submitBtn" type="submit">Post</button>
             </div>

@@ -23,6 +23,11 @@ const NavBar = ({ setAuthenticated }) => {
           </NavLink>
         </li>
         <li>
+          <NavLink to="/bizform" exact={true} activeClassName="active">
+            Share Your Biz
+          </NavLink>
+        </li>
+        <li>
           <LogoutButton setAuthenticated={setAuthenticated} />
         </li>
       </ul>

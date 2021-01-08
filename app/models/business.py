@@ -31,8 +31,6 @@ class Business(db.Model):
     categories = db.relationship('Category', secondary=associations)
     features = db.relationship('Feature', secondary=biz_features)
 
-    # bobs_bakery.categories.append(bakery)
-    # bobs_bakery.categories.append(takeout)
 
     def to_dict(self):
       return {
