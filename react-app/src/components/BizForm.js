@@ -9,10 +9,12 @@ const BizForm = () => {
     const [redirect, setRedirect] = useState(null);
     const [categories, setCategories] = useState([]);
     const [features, setFeatures] = useState([]);
-    const [name, setName] = useState(null);
-    const [imageUrl, setImageUrl] = useState(null);
-    const [phoneNum, setPhoneNum] = useState(null);
-    const [description, setDescription] = useState(null);
+    const [name, setName] = useState("");
+    const [imageUrl, setImageUrl] = useState("");
+    const [phoneNum, setPhoneNum] = useState("");
+    const [description, setDescription] = useState("");
+    const [open, setOpen] = useState("");
+    const [close, setClose] = useState("");
     const [categoryIds, setCategoryIds] = useState([]);
     const [featureIds, setFeatureIds] = useState([]);
 //   const [isImageUploading, setIsImageUploading] = useState(false);
@@ -63,26 +65,28 @@ const BizForm = () => {
 
     if (!categories || !features) return "loading";
 
+    // console.log(`open: ${open}`)
+
     return (
         <div className="pageContainer">
             <div className="formContainer">
                 <form className="form">
                     <h1>Tell us about your business</h1>
                     <div>
-                        <input className="input" type="text" name="name" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} required></input>
+                        <input className="input" type="text" name="name" placeholder="Business name" value={name} onChange={(e) => setName(e.target.value)} required></input>
                     </div>
                     <div>
-                        <input className="input" type="text" name="imageUrl" placeholder="Image Url" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)}></input>
+                        <input className="input" type="text" name="imageUrl" placeholder="Image url" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)}></input>
                     </div>
                     <div>
-                        <input className="input" type="text" name="phoneNum" placeholder="Phone Number" value={phoneNum} onChange={(e) => setPhoneNum(e.target.value)} required></input>
+                        <input className="input" type="text" name="phoneNum" placeholder="Business phone number" value={phoneNum} onChange={(e) => setPhoneNum(e.target.value)} required></input>
                     </div>
                     <div>
-                        <textarea className="input" type="text" name="description" placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
+                        <textarea id="textArea" className="input" type="text" name="description" placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
                     </div>
                     <div className="time">
-                        <input id="timeInput" className="input" type="time" placeholder="Opening Time"></input>
-                        <input id="timeInput" className="input" type="time" placeholder="Closing Time"></input>
+                        <input id="timeInput" className="input" type="time" placeholder="Opening Time" value={open} onChange={(e) => setOpen(e.target.value)} required></input>
+                        <input id="timeInput" className="input" type="time" placeholder="Closing Time" value={close} onChange={(e) => setClose(e.target.value)} required></input>
                     </div>
 
                     <h3>Categories</h3>

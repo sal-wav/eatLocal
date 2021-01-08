@@ -21,7 +21,17 @@
 .input {
     width: 512px;
     padding: 13px 15px 13px 15px;
-    color: #00838F;
+    border: solid 1px #bbbac0;
+    border-radius: 3px;
+}
+
+.input:hover {
+    border-color: #00838F;
+}
+
+.input:focus {
+    outline: none;
+    border-color: #00838F;
 }
 
 .time {
@@ -63,4 +73,8 @@
 
 .checkContainer {
     display: flex;
+}
+
+#textArea {
+    resize: none;
 }

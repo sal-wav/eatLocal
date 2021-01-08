@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect, NavLink } from "react-router-dom";
 import { login } from "../../services/auth";
 
 const LoginForm = ({ authenticated, setAuthenticated }) => {
@@ -37,26 +37,13 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
         ))}
       </div>
       <div>
-        <label htmlFor="email">Email</label>
-        <input
-          name="email"
-          type="text"
-          placeholder="Email"
-          value={email}
-          onChange={updateEmail}
-        />
+        <input className="input" name="email" type="text" placeholder="email" value={email} onChange={updateEmail} required/>
       </div>
       <div>
-        <label htmlFor="password">Password</label>
-        <input
-          name="password"
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={updatePassword}
-        />
-        <button type="submit">Login</button>
+        <input className="input" name="password" type="password" placeholder="password" value={password} onChange={updatePassword} required/>
       </div>
+      <button className="submitBtn"type="submit">Login</button>
+      <NavLink to="/sign-up">New to eatLocal? Sign up</NavLink>
     </form>
   );
 };
