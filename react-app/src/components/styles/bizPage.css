@@ -1,0 +1,61 @@
+body {
+    margin: 0;
+    /* max-width: 100%;
+    overflow-x: hidden; */
+}
+
+.photoHeader {
+    overflow: hidden;
+    max-width: 1900px;
+    width: 100%;
+    display: flex;
+    position: relative;
+}
+
+.coverImg {
+    max-height: 400px;
+    /* object-fit: cover; */
+    /* overflow: clip; */
+}
+
+.aboutContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    max-width: 1272px;
+    min-width: 1144px;
+    color: white;
+    display: flex;
+    margin: auto;
+}
+
+.about {
+    width: 1272px;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+}
+
+.infoContainer {
+    margin:auto;
+    width: 1144px;
+}
+
+.menuContainer {
+    border: solid 2px green;
+    width: 750px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: space-around;
+}
+
+.itemContainer {
+    border: solid 1px #bbbac0;
+    border-radius: 3px;
+    width: 350px;
+    height: 100px;
+    margin: 20px 0 20px 0;
+}

@@ -21,8 +21,12 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
   const SearchInput = () => (
     <>
       <form className="searchForm">
-        <input className="input" type="search" placeholder="In the mood for ..."></input>
-        <button type="submit"></button>
+        <input className="searchInput" type="search" placeholder="In the mood for ..."></input>
+        <button className="searchBtn" type="submit">
+          <span className="iconContainer">
+            <i className="fas fa-search fa-2x"></i>
+          </span>
+        </button>
       </form>
     </>
   )

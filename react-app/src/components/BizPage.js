@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { bizFeatures } from '../services/categoryFeature';
+import "./styles/bizPage.css";
 
 const BizPage = () => {
     const { bizId } = useParams();
@@ -21,26 +22,41 @@ const BizPage = () => {
     if (!biz || !features) return 'loading';
 
     return (
-        <div>
-            <h2>{biz.name}</h2>
-            <h3>{biz.phone_num}</h3>
-            <img className='coverImg' src={biz.image_url}></img>
-            <p>{biz.description}</p>
-            {features.map((feature) => (
-                <div key={feature.id}>
-                    <p>{feature.name}</p>
-                </div>
-            ))}
-            <div className="menu">
-                <div>
-                {menu.map((menuItem) => (
-                    <div key={menuItem}>
-                        <h3>{menuItem}</h3>
+        // <div className="pageContainer">
+            <div className="pageContainer">
+                <div className="photoHeader">
+                    {/* <div className="photos"> */}
+                    <img className='coverImg' src={biz.image_url}></img>
+                    <img className='coverImg' src={biz.image_url}></img>
+                    <img className='coverImg' src={biz.image_url}></img>
+                    {/* </div> */}
+                    <div className="aboutContainer">
+                        <div className="about">
+                            <h1>{biz.name}</h1>
+                            <h3>{biz.phone_num}</h3>
+                        </div>
                     </div>
-                ))}
+                </div>
+                <div className="infoContainer">
+                    <p>{biz.description}</p>
+                    {features.map((feature) => (
+                        <div key={feature.id}>
+                            <p>{feature.name}</p>
+                        </div>
+                    ))}
+                    <h1>What's on the menu</h1>
+                    <div className="menuContainer">
+                        {/* <div> */}
+                        {menu.map((menuItem) => (
+                            <div className="itemContainer" key={menuItem}>
+                                <h3>{menuItem}</h3>
+                            </div>
+                        ))}
+                        {/* </div> */}
+                    </div>
                 </div>
             </div>
-        </div>
+        // </div>
     );
 }
 
