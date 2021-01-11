@@ -9,6 +9,7 @@ import User from "./components/User";
 import { authenticate } from "./services/auth";
 import BizForm from "./components/BizForm";
 import BizPage from "./components/BizPage";
+import FoodForm from "./components/FoodForm";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -51,6 +52,9 @@ function App() {
       </Route>
       <Route path="/biz/:bizId" exact={true} authenticated={authenticated}>
         <BizPage />
+      </Route>
+      <Route path="/foodform/biz/:bizId">
+        <FoodForm />
       </Route>
     </BrowserRouter>
   );

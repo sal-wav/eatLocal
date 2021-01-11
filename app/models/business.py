@@ -30,6 +30,7 @@ class Business(db.Model):
     owner = db.relationship('User', back_populates='ownedBusinesses')
     categories = db.relationship('Category', secondary=associations)
     features = db.relationship('Feature', secondary=biz_features)
+    food = db.relationship('Food', back_populates='business')
 
 
     def to_dict(self):

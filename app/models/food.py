@@ -12,11 +12,13 @@ class Food(db.Model):
     image_url = db.Column(db.String)
     business_id = db.Column(db.Integer, db.ForeignKey('businesses.id'))
 
+    business = db.relationship('Business', back_populates='food')
+
     def to_dict(self):
         return {
         "id": self.id,
         "name": self.name,
         "description": self.description,
-        "image_url": self.timestamp,
+        "image_url": self.image_url,
         "business_id": self.business_id
         }
