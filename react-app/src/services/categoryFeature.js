@@ -16,7 +16,8 @@ export const getFeatures = async () => {
   return await response.json();
 }
 
-export const bizFeatures = async (bizId) => {
+// GET biz, features, food
+export const bizInfo = async (bizId) => {
   const response = await fetch(`/api/feature/biz/${bizId}`, {
     headers: {
       'Content-Type': 'application/json'

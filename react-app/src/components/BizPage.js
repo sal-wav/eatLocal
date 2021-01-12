@@ -1,27 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, NavLink } from 'react-router-dom';
-import { bizFeatures } from '../services/categoryFeature';
+import { bizInfo } from '../services/categoryFeature';
 import "./styles/bizPage.css";
 
 const BizPage = () => {
     const { bizId } = useParams();
     const [features, setFeatures] = useState([]);
     const [biz, setBiz] = useState(null);
+    const [food, setFood] = useState([]);
 
 
     const menu = ['taco', 'torta', 'flautas', 'burrito', 'chips', 'salsa', 'guac', 'huevos rancheros',]
 
     useEffect(() => {
         (async () => {
-            const response = await bizFeatures(bizId);
+            const response = await bizInfo(bizId);
             setBiz(response.biz);
             console.log(`biz: ${JSON.stringify(response.biz)}`)
             setFeatures(response.features);
+            setFood(response.food);
+
+            // console.log(`food: ${JSON.stringify(response.food)}`)
         })();
     }, [bizId]);
 
     if (!biz || !features) return 'loading';
-    console.log(`food: ${biz.food}`)
+    console.log(`food: ${food}`)
 
     return (
         // <div className="pageContainer">
