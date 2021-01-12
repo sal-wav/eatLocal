@@ -1,9 +1,9 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.models import Food
 from app.models import Business
-
-# TO DO MAKE FOOD FORM BACKEND
+from ..forms.food_form import FoodForm
+from app.models.db import db
 
 food_routes = Blueprint('food', __name__)
 
@@ -13,19 +13,19 @@ def all_food():
     food = Food.query.all()
     return {"food": [food.to_dict() for item in food]}
 
-@food_routes.route('/biz/<int:business_id>', methods=['GET', 'POST'])
-def biz_menu(business_id):
+@food_routes.route('/biz/<int:id>', methods=['GET', 'POST'])
+def biz_menu(id):
     if request.method == 'GET':
-        food = Food.query.filter_by(business_id)
+        food = Food.query.filter_by(id)
         return {"food": [food.to_dict() for item in food]}
-    # form = FoodForm()
-    # form['csrf_token'].data = request.cookies['csrf_token']
+    form = FoodForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         food_item = Food(
             name=form.data['name'],
             description=form.data['description'],
             image_url=form.data['image_url'],
-            business_id
+            business_id=form.data['business_id']
         )
         db.session.add(food_item)
         db.session.commit()

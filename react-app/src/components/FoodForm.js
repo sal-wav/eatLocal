@@ -1,21 +1,26 @@
 import React, { useState, useEffect } from "react";
-import { Redirect, useParams } from "react-router-dom";
+import { Redirect, useParams, NavLink } from "react-router-dom";
+import { postItem } from "../services/biz";
 import "./styles/form.css"
 
 const FoodForm = () => {
-    const [itemName, setItemName] = useState("");
+    const [name, setName] = useState("");
     const [description, setDescription] = useState("");
     const [imageUrl, setImageUrl] = useState("");
     const [redirect, setRedirect] = useState("");
+    // const [id, setId] = useState(null);
     const [error, setError] = useState(null);
 
-    const bizId = useParams();
+    const {bizId} = useParams();
 
     const handleAdd = async (e) => {
         e.preventDefault();
         try {
-            const newItem = await postItem(itemName, description, imageUrl);
-            setRedirect(`foodform/biz/${bizId}`)
+            const newItem = await postItem(name, description, imageUrl, bizId);
+            console.log(`newItem: ${newItem}`)
+            setName("");
+            setDescription("");
+            setImageUrl("");
         } catch (submissionError) {
             setError(submissionError);
         }
@@ -24,8 +29,8 @@ const FoodForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const newItem = await postItem(itemName, description, imageUrl);
-            setRedirect(`/songs/${song.id}`);
+            const newItem = await postItem(name, description, imageUrl, bizId);
+            setRedirect(`/biz/${bizId}`);
         } catch (submissionError) {
             setError(submissionError);
         }
@@ -38,9 +43,9 @@ const FoodForm = () => {
     return (
         <div>
             <div>
-                <form>
+                <form onSubmit={handleSubmit}>
                     <div>
-                        <input className="input" type="text" name="name" placeholder="Item Name" value={itemName} onChange={(e) => setItemName(e.target.value)} required></input>
+                        <input className="input" type="text" name="name" placeholder="Item Name" value={name} onChange={(e) => setName(e.target.value)} required></input>
                     </div>
                     <div>
                         <input className="input" type="text" name="description" placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)}></input>
@@ -48,8 +53,9 @@ const FoodForm = () => {
                     <div>
                         <input className="input" type="text" name="imageUrl" placeholder="Image URL" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)}></input>
                     </div>
-                    <button type="submit" onSubmit={handleAdd}>Add another item</button>
-                    <button type="submit" onSubmit={handleSubmit}>Finished</button>
+                    <NavLink to={`/biz/${bizId}`}>Cancel</NavLink>
+                    <button type="button" onClick={handleAdd}>Add another item</button>
+                    <button type="submit">Finished</button>
                 </form>
             </div>
         </div>

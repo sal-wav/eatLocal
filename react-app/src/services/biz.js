@@ -23,3 +23,19 @@ export const postBiz = async (name, imageUrl, phoneNum, description, categoryIds
   });
   return await response.json();
 }
+
+export const postItem = async (name, description, imageUrl, bizId) => {
+  const response = await fetch(`/api/food/biz/${bizId}`, {
+    method: 'POST',
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      name,
+      description,
+      image_url: imageUrl,
+      business_id: bizId
+    })
+  });
+  return await response.json();
+}

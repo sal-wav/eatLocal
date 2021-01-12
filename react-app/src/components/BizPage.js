@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, NavLink } from 'react-router-dom';
 import { bizFeatures } from '../services/categoryFeature';
 import "./styles/bizPage.css";
 
@@ -7,6 +7,7 @@ const BizPage = () => {
     const { bizId } = useParams();
     const [features, setFeatures] = useState([]);
     const [biz, setBiz] = useState(null);
+
 
     const menu = ['taco', 'torta', 'flautas', 'burrito', 'chips', 'salsa', 'guac', 'huevos rancheros',]
 
@@ -20,6 +21,7 @@ const BizPage = () => {
     }, [bizId]);
 
     if (!biz || !features) return 'loading';
+    console.log(`food: ${biz.food}`)
 
     return (
         // <div className="pageContainer">
@@ -46,6 +48,7 @@ const BizPage = () => {
                             </div>
                         ))}
                         <h1>What's on the menu</h1>
+                        <NavLink to={`/foodform/biz/${bizId}`}>Add menu items</NavLink>
                         <div className="menuContainer">
                             {/* <div> */}
                             {menu.map((menuItem) => (
