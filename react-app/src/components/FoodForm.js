@@ -1,11 +1,39 @@
 import React, { useState, useEffect } from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect, useParams } from "react-router-dom";
 import "./styles/form.css"
 
 const FoodForm = () => {
     const [itemName, setItemName] = useState("");
     const [description, setDescription] = useState("");
-    const [price, setPrice] = useState("");
+    const [imageUrl, setImageUrl] = useState("");
+    const [redirect, setRedirect] = useState("");
+    const [error, setError] = useState(null);
+
+    const bizId = useParams();
+
+    const handleAdd = async (e) => {
+        e.preventDefault();
+        try {
+            const newItem = await postItem(itemName, description, imageUrl);
+            setRedirect(`foodform/biz/${bizId}`)
+        } catch (submissionError) {
+            setError(submissionError);
+        }
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const newItem = await postItem(itemName, description, imageUrl);
+            setRedirect(`/songs/${song.id}`);
+        } catch (submissionError) {
+            setError(submissionError);
+        }
+    };
+
+    if (redirect) {
+        return <Redirect to={redirect} />;
+    }
 
     return (
         <div>
@@ -18,14 +46,14 @@ const FoodForm = () => {
                         <input className="input" type="text" name="description" placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)}></input>
                     </div>
                     <div>
-                        <input className="input" type="number" step="0.01" pattern="^\d+(?:\.\d{1,2})?$" name="price" placeholder="00.00" value={price} onChange={(e) => setPrice(e.target.value)} required></input>
+                        <input className="input" type="text" name="imageUrl" placeholder="Image URL" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)}></input>
                     </div>
-                    <button type="button">Add another item</button>
-                    <button type="button">Finished</button>
+                    <button type="submit" onSubmit={handleAdd}>Add another item</button>
+                    <button type="submit" onSubmit={handleSubmit}>Finished</button>
                 </form>
             </div>
         </div>
-    )
+    );
 
 }
 
