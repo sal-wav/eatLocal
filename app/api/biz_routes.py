@@ -27,7 +27,7 @@ def post_biz():
             image_url=form.data['image_url'],
             phone_num=form.data['phone_num'],
             description=form.data['description'],
-            user_id=current_user.id,
+            user_id=current_user.id
         )
         biz.categories = categories
         biz.features = features

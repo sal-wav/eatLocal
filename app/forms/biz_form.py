@@ -15,6 +15,4 @@ class BizForm(FlaskForm):
     image_url = StringField('image_url')
     phone_num = StringField('phone_num', validators=[DataRequired()])
     description = StringField('description')
-    takeout = BooleanField('takeout')
-    delivery = BooleanField('delivery')
     user_id = IntegerField('user_id', validators=[DataRequired()])
