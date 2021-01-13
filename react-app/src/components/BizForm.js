@@ -79,7 +79,7 @@ const BizForm = () => {
                         <input className="input" type="text" name="imageUrl" placeholder="Image url" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)}></input>
                     </div>
                     <div>
-                        <input className="input" type="text" name="phoneNum" placeholder="Business phone number" value={phoneNum} onChange={(e) => setPhoneNum(e.target.value)} required></input>
+                        <input className="input" type="text" name="phoneNum" maxlength="10" placeholder="Business phone number" value={phoneNum} onChange={(e) => setPhoneNum(e.target.value)} required></input>
                     </div>
                     <div>
                         <textarea id="textArea" className="input" type="text" name="description" placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>

@@ -28,8 +28,6 @@ const BizPage = (props) => {
     }, [bizId]);
 
     if (!biz || !features) return 'loading';
-    console.log(`currentUser: ${currentUser.id}`)
-    console.log(`biz.userId: ${biz.user_id}`)
 
     return (
         // <div className="pageContainer">
