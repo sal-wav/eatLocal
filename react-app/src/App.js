@@ -14,12 +14,14 @@ import FoodForm from "./components/FoodForm";
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
+  const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {
     (async() => {
       const user = await authenticate();
       if (!user.errors) {
         setAuthenticated(true);
+        setCurrentUser(user);
       }
       setLoaded(true);
     })();
@@ -51,7 +53,7 @@ function App() {
         <BizForm />
       </Route>
       <Route path="/biz/:bizId" exact={true} authenticated={authenticated}>
-        <BizPage />
+        <BizPage currentUser={currentUser} />
       </Route>
       <Route path="/foodform/biz/:bizId">
         <FoodForm />

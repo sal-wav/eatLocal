@@ -3,7 +3,8 @@ import { useParams, NavLink } from 'react-router-dom';
 import { bizInfo } from '../services/categoryFeature';
 import "./styles/bizPage.css";
 
-const BizPage = () => {
+const BizPage = (props) => {
+    const { currentUser } = props;
     const { bizId } = useParams();
     const [features, setFeatures] = useState([]);
     const [biz, setBiz] = useState(null);
@@ -11,6 +12,8 @@ const BizPage = () => {
 
 
     const menu = ['taco', 'torta', 'flautas', 'burrito', 'chips', 'salsa', 'guac', 'huevos rancheros',]
+
+
 
     useEffect(() => {
         (async () => {
@@ -25,7 +28,8 @@ const BizPage = () => {
     }, [bizId]);
 
     if (!biz || !features) return 'loading';
-    console.log(`food: ${food}`)
+    console.log(`currentUser: ${currentUser.id}`)
+    console.log(`biz.userId: ${biz.user_id}`)
 
     return (
         // <div className="pageContainer">
@@ -52,11 +56,18 @@ const BizPage = () => {
                             </div>
                         ))}
                         <h1>What's on the menu</h1>
+                        { currentUser.id === biz.user_id ?
                         <NavLink to={`/foodform/biz/${bizId}`}>Add menu items</NavLink>
+                        : null
+                        }
                         <div className="menuContainer">
                             {/* <div> */}
                             {menu.map((menuItem) => (
                                 <div className="itemContainer" key={menuItem}>
+                                    { currentUser.id === biz.user_id ?
+                                    <button type="button">Edit</button>
+                                    : null
+                                    }
                                     <h3>{menuItem}</h3>
                                 </div>
                             ))}
