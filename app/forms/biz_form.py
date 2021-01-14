@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, IntegerField, BooleanField, SubmitField
+from wtforms import StringField, IntegerField, TimeField, SubmitField
 from wtforms.validators import DataRequired, ValidationError
 from app.models import Business
 
@@ -15,4 +15,5 @@ class BizForm(FlaskForm):
     image_url = StringField('image_url')
     phone_num = StringField('phone_num', validators=[DataRequired()])
     description = StringField('description')
-    
+    opening = TimeField('opening')
+    closing = TimeField('closing')

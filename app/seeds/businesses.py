@@ -1,19 +1,20 @@
 from app.models import db, Business, Category, Feature, Food
+from datetime import time
 
 def seed_businesses():
 
-    biz1 = Business(name='Bryce\'s Place', image_url='https://eatlocalapp.s3.amazonaws.com/anna-pelzer-IGfIGP5ONV0-unsplash.jpg', phone_num='5555555555', description='Family owned business, with affordable prices.', user_id=2)
-    biz2 = Business(name='Burgers n Stuff', image_url='https://eatlocalapp.s3.amazonaws.com/anna-pelzer-IGfIGP5ONV0-unsplash.jpg', phone_num='5555555555', description='Family owned business, with affordable prices.', user_id=2)
-    biz3 = Business(name='Salad Work', image_url='https://eatlocalapp.s3.amazonaws.com/anna-pelzer-IGfIGP5ONV0-unsplash.jpg', phone_num='5555555555', description='Family owned business, with affordable prices.', user_id=2)
-    biz4 = Business(name='Bryce\'s Cafe', image_url='https://eatlocalapp.s3.amazonaws.com/anna-pelzer-IGfIGP5ONV0-unsplash.jpg', phone_num='5555555555', description='Family owned business, with affordable prices.', user_id=2)
-    biz5 = Business(name='South Diner', image_url='https://eatlocalapp.s3.amazonaws.com/anna-pelzer-IGfIGP5ONV0-unsplash.jpg', phone_num='5555555555', description='Family owned business, with affordable prices.', user_id=2)
-    biz6 = Business(name='B Corner Store', image_url='https://eatlocalapp.s3.amazonaws.com/anna-pelzer-IGfIGP5ONV0-unsplash.jpg', phone_num='5555555555', description='Family owned business, with affordable prices.', user_id=2)
-    biz7 = Business(name='Halal Truck', image_url='https://eatlocalapp.s3.amazonaws.com/anna-pelzer-IGfIGP5ONV0-unsplash.jpg', phone_num='5555555555', description='Family owned business, with affordable prices.', user_id=2)
-    biz8 = Business(name='Nagoya', image_url='https://eatlocalapp.s3.amazonaws.com/anna-pelzer-IGfIGP5ONV0-unsplash.jpg', phone_num='5555555555', description='Family owned business, with affordable prices.', user_id=2)
-    biz9 = Business(name='Red River', image_url='https://eatlocalapp.s3.amazonaws.com/anna-pelzer-IGfIGP5ONV0-unsplash.jpg', phone_num='5555555555', description='Family owned business, with affordable prices.', user_id=2)
-    biz10 = Business(name='Three Circles', image_url='https://eatlocalapp.s3.amazonaws.com/anna-pelzer-IGfIGP5ONV0-unsplash.jpg', phone_num='5555555555', description='Family owned business, with affordable prices.', user_id=2)
-    biz11 = Business(name='Brother\'s Pizza', image_url='https://eatlocalapp.s3.amazonaws.com/anna-pelzer-IGfIGP5ONV0-unsplash.jpg', phone_num='5555555555', description='Family owned business, with affordable prices.', user_id=2)
-    biz12 = Business(name='Cosmo\'s Deli', image_url='https://eatlocalapp.s3.amazonaws.com/anna-pelzer-IGfIGP5ONV0-unsplash.jpg', phone_num='5555555555', description='Family owned business, with affordable prices.', user_id=2)
+    biz1 = Business(name='Bryce\'s Place', image_url='https://eatlocalapp.s3.amazonaws.com/anna-pelzer-IGfIGP5ONV0-unsplash.jpg', phone_num='5555555555', description='Family owned business, with affordable prices.', opening=time(10, 0), closing=time(21, 0), user_id=2)
+    biz2 = Business(name='Burgers n Stuff', image_url='https://eatlocalapp.s3.amazonaws.com/anna-pelzer-IGfIGP5ONV0-unsplash.jpg', phone_num='5555555555', description='Family owned business, with affordable prices.', opening=time(10, 0), closing=time(21, 0), user_id=2)
+    biz3 = Business(name='Salad Work', image_url='https://eatlocalapp.s3.amazonaws.com/anna-pelzer-IGfIGP5ONV0-unsplash.jpg', phone_num='5555555555', description='Family owned business, with affordable prices.', opening=time(10, 0), closing=time(21, 0), user_id=2)
+    biz4 = Business(name='Bryce\'s Cafe', image_url='https://eatlocalapp.s3.amazonaws.com/anna-pelzer-IGfIGP5ONV0-unsplash.jpg', phone_num='5555555555', description='Family owned business, with affordable prices.', opening=time(10, 0), closing=time(21, 0), user_id=2)
+    biz5 = Business(name='South Diner', image_url='https://eatlocalapp.s3.amazonaws.com/anna-pelzer-IGfIGP5ONV0-unsplash.jpg', phone_num='5555555555', description='Family owned business, with affordable prices.', opening=time(10, 0), closing=time(21, 0), user_id=2)
+    biz6 = Business(name='B Corner Store', image_url='https://eatlocalapp.s3.amazonaws.com/anna-pelzer-IGfIGP5ONV0-unsplash.jpg', phone_num='5555555555', description='Family owned business, with affordable prices.', opening=time(10, 0), closing=time(21, 0), user_id=2)
+    biz7 = Business(name='Halal Truck', image_url='https://eatlocalapp.s3.amazonaws.com/anna-pelzer-IGfIGP5ONV0-unsplash.jpg', phone_num='5555555555', description='Family owned business, with affordable prices.', opening=time(10, 0), closing=time(21, 0), user_id=2)
+    biz8 = Business(name='Nagoya', image_url='https://eatlocalapp.s3.amazonaws.com/anna-pelzer-IGfIGP5ONV0-unsplash.jpg', phone_num='5555555555', description='Family owned business, with affordable prices.', opening=time(10, 0), closing=time(21, 0), user_id=2)
+    biz9 = Business(name='Red River', image_url='https://eatlocalapp.s3.amazonaws.com/anna-pelzer-IGfIGP5ONV0-unsplash.jpg', phone_num='5555555555', description='Family owned business, with affordable prices.', opening=time(10, 0), closing=time(21, 0), user_id=2)
+    biz10 = Business(name='Three Circles', image_url='https://eatlocalapp.s3.amazonaws.com/anna-pelzer-IGfIGP5ONV0-unsplash.jpg', phone_num='5555555555', description='Family owned business, with affordable prices.', opening=time(10, 0), closing=time(21, 0), user_id=2)
+    biz11 = Business(name='Brother\'s Pizza', image_url='https://eatlocalapp.s3.amazonaws.com/anna-pelzer-IGfIGP5ONV0-unsplash.jpg', phone_num='5555555555', description='Family owned business, with affordable prices.', opening=time(10, 0), closing=time(21, 0), user_id=2)
+    biz12 = Business(name='Cosmo\'s Deli', image_url='https://eatlocalapp.s3.amazonaws.com/anna-pelzer-IGfIGP5ONV0-unsplash.jpg', phone_num='5555555555', description='Family owned business, with affordable prices.', opening=time(10, 0), closing=time(21, 0), user_id=2)
 
     cat1 = Category(name='Breakfast')
     cat2 = Category(name='Lunch')
