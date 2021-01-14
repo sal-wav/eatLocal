@@ -8,7 +8,7 @@ const FoodForm = () => {
     const [description, setDescription] = useState("");
     const [imageUrl, setImageUrl] = useState("");
     const [redirect, setRedirect] = useState("");
-    // const [id, setId] = useState(null);
+
     const [error, setError] = useState(null);
 
     const {bizId} = useParams();

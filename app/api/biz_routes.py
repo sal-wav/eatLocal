@@ -1,9 +1,10 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.models import Business
 from app.models import Category
 from app.models import Feature
 from ..forms.biz_form import BizForm
+from app.models.db import db
 
 biz_routes = Blueprint('biz', __name__)
 
@@ -19,9 +20,10 @@ def post_biz():
     form = BizForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-
-        categories = map(Category.query.filter_by(id), form.data['categoryIds'])
-        features = map(Feature.query.filter_by(id), form.data['featureIds'])
+        # categories = [Category.query.get() for id in request.json['categoryIds']]
+        # features = [Feature.query.get() for id in request.json['featureIds']]
+        # categories = list(map(Category.query.filter_by().first(), request.json['categoryIds']))
+        # features = list(map(Feature.query.filter_by().first(), request.json['featureIds']))
         biz = Business(
             name=form.data['name'],
             image_url=form.data['image_url'],
@@ -29,8 +31,11 @@ def post_biz():
             description=form.data['description'],
             user_id=current_user.id
         )
-        biz.categories = categories
-        biz.features = features
+        for id in request.json['featureIds']:
+            feature = Feature.query.get(id)
+            biz.features.append(feature)
+        # biz.categories = categories
+        # biz.features = features
         db.session.add(biz)
         db.session.commit()
         return biz.to_dict()

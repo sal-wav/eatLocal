@@ -7,8 +7,8 @@ export const getBiz = async () => {
   return await response.json
 }
 
-export const postBiz = async (name, imageUrl, phoneNum, description, categoryIds) => {
-  const response = await fetch("/api/biz", {
+export const postBiz = async (name, imageUrl, phoneNum, description, categoryIds, featureIds) => {
+  const response = await fetch("/api/biz/", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -18,7 +18,8 @@ export const postBiz = async (name, imageUrl, phoneNum, description, categoryIds
       image_url: imageUrl,
       phone_num: phoneNum,
       description,
-      categoryIds
+      categoryIds,
+      featureIds
     }),
   });
   return await response.json();

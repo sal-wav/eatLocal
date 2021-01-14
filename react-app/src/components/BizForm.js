@@ -17,6 +17,8 @@ const BizForm = () => {
     const [close, setClose] = useState("");
     const [categoryIds, setCategoryIds] = useState([]);
     const [featureIds, setFeatureIds] = useState([]);
+
+    const [error, setError] = useState(null);
 //   const [isImageUploading, setIsImageUploading] = useState(false);
 
     useEffect(() => {
@@ -30,13 +32,13 @@ const BizForm = () => {
     }, []);
 
     const handleSubmit = async (e) => {
-        // e.preventDefault();
-        // try {
-        //     const biz = await postBiz(name, description, imageUrl, phoneNum, categoryIds, featureIds);
-        //     setRedirect(`/biz/${biz.id}`);
-        // } catch (submissionError) {
-        //     setError(submissionError);
-        // }
+        e.preventDefault();
+        try {
+            const biz = await postBiz(name, imageUrl, phoneNum, description, categoryIds, featureIds);
+            setRedirect(`/biz/${biz.id}`);
+        } catch (submissionError) {
+            setError(submissionError);
+        }
     };
 
     const handleCategories = async (e) => {
@@ -53,7 +55,7 @@ const BizForm = () => {
 
     const handleFeatures = async (e) => {
         const id = parseInt(e.target.value);
-        const position = categoryIds.indexOf(id);
+        const position = featureIds.indexOf(id);
         if (position === -1) {
             setFeatureIds([...featureIds, id]);
         } else {
@@ -70,7 +72,7 @@ const BizForm = () => {
     return (
         <div id="formpageContainer" className="pageContainer">
             <div className="formContainer">
-                <form className="form">
+                <form className="form" onSubmit={handleSubmit}>
                     <h1>Tell us about your business</h1>
                     <div>
                         <input className="input" type="text" name="name" placeholder="Business name" value={name} onChange={(e) => setName(e.target.value)} required></input>
@@ -79,7 +81,7 @@ const BizForm = () => {
                         <input className="input" type="text" name="imageUrl" placeholder="Image url" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)}></input>
                     </div>
                     <div>
-                        <input className="input" type="text" name="phoneNum" maxlength="10" placeholder="Business phone number" value={phoneNum} onChange={(e) => setPhoneNum(e.target.value)} required></input>
+                        <input className="input" type="text" name="phoneNum" maxLength="10" placeholder="Business phone number" value={phoneNum} onChange={(e) => setPhoneNum(e.target.value)} required></input>
                     </div>
                     <div>
                         <textarea id="textArea" className="input" type="text" name="description" placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>

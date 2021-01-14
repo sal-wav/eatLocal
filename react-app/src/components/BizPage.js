@@ -19,7 +19,8 @@ const BizPage = (props) => {
         (async () => {
             const response = await bizInfo(bizId);
             setBiz(response.biz);
-            console.log(`biz: ${JSON.stringify(response.biz)}`)
+            console.log(`bizfeat: ${JSON.stringify(response.features)}`)
+            console.log(`bizcat: ${JSON.stringify(response.categories)}`)
             setFeatures(response.features);
             setFood(response.food);
 

@@ -5,11 +5,12 @@ import SignUpForm from "./components/auth/SignUpForm";
 import NavBar from "./components/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 // import UsersList from "./components/UsersList";
-import User from "./components/User";
+// import User from "./components/User";
 import { authenticate } from "./services/auth";
 import BizForm from "./components/BizForm";
 import BizPage from "./components/BizPage";
 import FoodForm from "./components/FoodForm";
+import LandingPage from "./components/LandingPage";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -43,11 +44,13 @@ function App() {
       <Route path="/sign-up" exact={true}>
         <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
       </Route>
-      <ProtectedRoute path="/users/:userId" exact={true} authenticated={authenticated}>
+      {/* <ProtectedRoute path="/users/:userId" exact={true} authenticated={authenticated}>
         <User />
-      </ProtectedRoute>
+      </ProtectedRoute> */}
       <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
+        { !authenticated ? <LandingPage/> :
         <h1>My Home Page</h1>
+        }
       </ProtectedRoute>
       <Route path="/bizform">
         <BizForm />
