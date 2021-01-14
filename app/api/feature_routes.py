@@ -12,8 +12,8 @@ def features():
     return {"features": [feature.to_dict() for feature in features]}
 
 
-# GET biz, features, food
+# GET biz, features, food, categories
 @feature_routes.route('/biz/<int:bizId>', methods=['GET'])
 def biz_features(bizId):
     biz = Business.query.get(bizId)
-    return  {"biz": biz.to_dict(), "features": [feature.to_dict() for feature in biz.features], "food": [food.to_dict() for food in biz.food]}
+    return  {"biz": biz.to_dict(), "features": [feature.to_dict() for feature in biz.features], "food": [food.to_dict() for food in biz.food], "categories": [category.to_dict() for category in biz.categories]}

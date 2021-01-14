@@ -7,6 +7,7 @@ const BizPage = (props) => {
     const { currentUser } = props;
     const { bizId } = useParams();
     const [features, setFeatures] = useState([]);
+    const [categories, setCategories] = useState([]);
     const [biz, setBiz] = useState(null);
     const [food, setFood] = useState([]);
 
@@ -23,6 +24,7 @@ const BizPage = (props) => {
             console.log(`bizcat: ${JSON.stringify(response.categories)}`)
             setFeatures(response.features);
             setFood(response.food);
+            setCategories(response.categories);
 
             // console.log(`food: ${JSON.stringify(response.food)}`)
         })();
@@ -52,6 +54,11 @@ const BizPage = (props) => {
                         {features.map((feature) => (
                             <div key={feature.id}>
                                 <p>{feature.name}</p>
+                            </div>
+                        ))}
+                        {categories.map((category) => (
+                            <div key={category.id}>
+                                <p>{category.name}</p>
                             </div>
                         ))}
                         <h1>What's on the menu</h1>

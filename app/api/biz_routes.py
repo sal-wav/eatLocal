@@ -20,8 +20,6 @@ def post_biz():
     form = BizForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        # categories = [Category.query.get() for id in request.json['categoryIds']]
-        # features = [Feature.query.get() for id in request.json['featureIds']]
         # categories = list(map(Category.query.filter_by().first(), request.json['categoryIds']))
         # features = list(map(Feature.query.filter_by().first(), request.json['featureIds']))
         biz = Business(
@@ -31,6 +29,9 @@ def post_biz():
             description=form.data['description'],
             user_id=current_user.id
         )
+        for id in request.json['categoryIds']:
+            category = Category.query.get(id)
+            biz.categories.append(category)
         for id in request.json['featureIds']:
             feature = Feature.query.get(id)
             biz.features.append(feature)
