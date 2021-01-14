@@ -80,9 +80,8 @@ const BizForm = () => {
                     <div>
                         <input className="input" type="text" name="imageUrl" placeholder="Image url" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)}></input>
                     </div>
-                    <div>
-                        <input className="input" type="text" name="phoneNum" maxLength="10" placeholder="Business phone number" value={phoneNum} onChange={(e) => setPhoneNum(e.target.value)} required></input>
-                    </div>
+                    <input className="input" type="tel" name="phoneNum" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="000-000-0000" value={phoneNum} onChange={(e) => setPhoneNum(e.target.value)}
+                        required></input>
                     <div>
                         <textarea id="textArea" className="input" type="text" name="description" placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
                     </div>

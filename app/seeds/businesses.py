@@ -1,4 +1,4 @@
-from app.models import db, Business, Category, Feature, User
+from app.models import db, Business, Category, Feature, Food
 
 def seed_businesses():
 
@@ -35,6 +35,29 @@ def seed_businesses():
     feat1 = Feature(name='Takeout')
     feat2 = Feature(name='Delivery')
     feat3 = Feature(name='Outdoor Seating')
+
+    food1 = Food(name='Breakfast Sandwich')
+    food2 = Food(name='Bagel')
+    food3 = Food(name='Muffin')
+    food4 = Food(name='Croissant')
+    food5 = Food(name='Yogurt')
+    food6 = Food(name='"Nice" Cream')
+    food7 = Food(name='Fruit Salad')
+    food8 = Food(name='Garden Salad')
+    food9 = Food(name='Caesar Salad')
+    food10 = Food(name='Pastrami Sandwich')
+    food11 = Food(name='Cheesesteak')
+    food12 = Food(name='Caesar Salad')
+    food13 = Food(name='Build Your Own Sandwich')
+    food14 = Food(name='Pulled Pork')
+
+    biz_list = [biz1, biz2, biz3, biz4, biz5, biz6, biz7, biz8, biz9, biz10, biz11, biz12]
+    food_list = [food1, food2, food3, food4, food5, food6, food7, food8, food9, food10, food11, food12, food13, food14]
+
+    for biz in biz_list:
+        for food_item in food_list:
+            biz.food.append(food_item)
+
 
     biz1.categories.append(cat1)
     biz1.categories.append(cat2)

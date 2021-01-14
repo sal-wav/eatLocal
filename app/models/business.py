@@ -23,8 +23,10 @@ class Business(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String(40), nullable = False, unique = True)
     image_url = db.Column(db.String)
-    phone_num = db.Column(db.String(10), nullable = False)
+    phone_num = db.Column(db.String(12), nullable = False)
     description = db.Column(db.String(255))
+    opening = db.Column(db.DateTime)
+    closing = db.Column(db.DateTime)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
     owner = db.relationship('User', back_populates='ownedBusinesses')

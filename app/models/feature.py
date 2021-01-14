@@ -8,7 +8,6 @@ class Feature(db.Model):
 
     id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String(100), nullable=False)
-    icon = db.Column(db.String(25))
 
     businesses = db.relationship('Business', secondary=biz_features)
 
@@ -16,5 +15,4 @@ class Feature(db.Model):
         return {
             "id": self.id,
             "name": self.name,
-            "icon": self.icon
         }
