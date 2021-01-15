@@ -54,7 +54,7 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
           <input className="input" type="password" name="repeat_password" placeholder="confirm your password" onChange={updateRepeatPassword} value={repeatPassword} required={true}
           ></input>
         </div>
-        <button className="submitBtn"type="submit">Sign Up</button>
+        <button className="btn"type="submit">Sign Up</button>
       </form>
     </div>
   );

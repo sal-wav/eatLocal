@@ -109,7 +109,7 @@ const BizForm = () => {
                     ))}
                     </div>
                     <div className="formSubmit">
-                        <button className="submitBtn" type="submit">Share Your Listing</button>
+                        <button id="submitBtn" className="btn"type="submit">Share Your Listing</button>
                     </div>
                 </form>
             </div>

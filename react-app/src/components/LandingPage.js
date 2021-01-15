@@ -13,10 +13,10 @@ const LandingPage = () => {
             <div className='landingRight'>
               <div className='rightContainer'>
                 <div className='landingLink'>
-                  <NavLink className="navLink" to="/login" exact={true} activeClassName="active">
+                  <NavLink className='navLink' id="landingNavlink" to="/login" exact={true} activeClassName="active">
                     Login
                   </NavLink>
-                  <NavLink className="navLink" to="/sign-up" exact={true} activeClassName="active">
+                  <NavLink className='navLink' id="landingNavlink" to="/sign-up" exact={true} activeClassName="active">
                     Sign Up
                   </NavLink>
                 </div>

@@ -42,7 +42,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
       <div>
         <input className="input" name="password" type="password" placeholder="password" value={password} onChange={updatePassword} required/>
       </div>
-      <button className="submitBtn" type="submit">Login</button>
+      <button className="btn" type="submit">Login</button>
       <NavLink to="/sign-up">New to eatLocal? Sign up</NavLink>
     </form>
   );

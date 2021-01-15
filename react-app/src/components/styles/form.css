@@ -48,15 +48,9 @@
     width: 230px;
 }
 
-.submitBtn {
+#submitBtn {
     height: 38px;
     width: 190px;
-    font-size: 18px;
-    padding: 0 13px 0 13px;
-    background: #f43939;
-    color: #fff;
-    border: 1px solid #f43939;
-    border-radius: 4px;
 }
 
 .optionContainer {

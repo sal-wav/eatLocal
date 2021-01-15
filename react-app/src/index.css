@@ -2,3 +2,39 @@
 body {
     font-family: Open Sans,Helvetica Neue,Helvetica,Arial,sans-serif;
 }
+
+.btn {
+    height: 38px;
+    font-size: 18px;
+    padding: 0 13px 0 13px;
+    background: #f43939;
+    color: #fff;
+    border: 1px solid #f43939;
+    border-radius: 4px;
+}
+
+.navLink {
+    padding: 0.5rem 1rem;
+    text-align: center;
+    text-decoration: none;
+    color: #2b273c;
+    border: 1px solid transparent;
+}
+
+.navbarLink:hover {
+    background-color: #eeeeef;
+    border: 1px solid #eeeeef;
+    border-radius: 5px;
+}
+
+/* #btnLink {
+    width: 185px;
+    height: 55px;
+    background-color: #f43939;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    text-align: center;
+    line-height: 55px;
+    text-decoration: none;
+    color: #fff;
+} */

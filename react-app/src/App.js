@@ -52,13 +52,13 @@ function App() {
         <h1>My Home Page</h1>
         }
       </Route>
-      <ProtectedRoute path="/bizform">
+      <ProtectedRoute path="/bizform" exact={true} authenticated={authenticated}>
         <BizForm />
       </ProtectedRoute>
       <ProtectedRoute path="/biz/:bizId" exact={true} authenticated={authenticated}>
         <BizPage currentUser={currentUser} />
       </ProtectedRoute>
-      <ProtectedRoute path="/foodform/biz/:bizId">
+      <ProtectedRoute path="/foodform/biz/:bizId" exact={true} authenticated={authenticated}>
         <FoodForm />
       </ProtectedRoute>
     </BrowserRouter>

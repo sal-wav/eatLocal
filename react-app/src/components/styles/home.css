@@ -36,7 +36,7 @@
     align-self: flex-end;
 }
 
-.navLink {
+#landingNavlink {
     color: #f43939;
     font-size: 20px;
 }
@@ -70,5 +70,4 @@
     line-height: 55px;
     text-decoration: none;
     color: #fff;
-    /* font-weight: bold; */
 }
