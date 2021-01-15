@@ -47,20 +47,20 @@ function App() {
       {/* <ProtectedRoute path="/users/:userId" exact={true} authenticated={authenticated}>
         <User />
       </ProtectedRoute> */}
-      <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
+      <Route path="/" exact={true} authenticated={authenticated}>
         { !authenticated ? <LandingPage/> :
         <h1>My Home Page</h1>
         }
-      </ProtectedRoute>
-      <Route path="/bizform">
+      </Route>
+      <ProtectedRoute path="/bizform">
         <BizForm />
-      </Route>
-      <Route path="/biz/:bizId" exact={true} authenticated={authenticated}>
+      </ProtectedRoute>
+      <ProtectedRoute path="/biz/:bizId" exact={true} authenticated={authenticated}>
         <BizPage currentUser={currentUser} />
-      </Route>
-      <Route path="/foodform/biz/:bizId">
+      </ProtectedRoute>
+      <ProtectedRoute path="/foodform/biz/:bizId">
         <FoodForm />
-      </Route>
+      </ProtectedRoute>
     </BrowserRouter>
   );
 }
