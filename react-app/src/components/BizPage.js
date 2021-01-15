@@ -26,7 +26,7 @@ const BizPage = (props) => {
             setFood(response.food);
             setCategories(response.categories);
 
-            // console.log(`food: ${JSON.stringify(response.food)}`)
+            console.log(`food: ${JSON.stringify(response.food)}`)
         })();
     }, [bizId]);
 
@@ -68,13 +68,13 @@ const BizPage = (props) => {
                         }
                         <div className="menuContainer">
                             {/* <div> */}
-                            {menu.map((menuItem) => (
-                                <div className="itemContainer" key={menuItem}>
+                            {food.map((foodItem) => (
+                                <div className="itemContainer" key={foodItem.id}>
                                     { currentUser.id === biz.user_id ?
                                     <button type="button">Edit</button>
                                     : null
                                     }
-                                    <h3>{menuItem}</h3>
+                                    <h3>{foodItem.name}</h3>
                                 </div>
                             ))}
                             {/* </div> */}

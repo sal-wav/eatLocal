@@ -25,8 +25,10 @@ class Business(db.Model):
     image_url = db.Column(db.String)
     phone_num = db.Column(db.String(12), nullable = False)
     description = db.Column(db.String(255))
-    opening = db.Column(db.DateTime)
-    closing = db.Column(db.DateTime)
+    opening_hour = db.Column(db.Integer)
+    opening_min = db.Column(db.Integer)
+    closing_hour = db.Column(db.Integer)
+    closing_min = db.Column(db.Integer)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
     owner = db.relationship('User', back_populates='ownedBusinesses')
@@ -42,6 +44,9 @@ class Business(db.Model):
         "image_url": self.image_url,
         "phone_num": self.phone_num,
         "description": self.description,
+        "opening_hour": self.opening_hour,
+        "opening_min": self.opening_min,
+        "closing_hour": self.closing_hour,
+        "closing_min": self.closing_min,
         "user_id": self.user_id,
-        # "owner": self.owner.to_dict()
       }

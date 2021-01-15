@@ -3,18 +3,18 @@ from datetime import time
 
 def seed_businesses():
 
-    biz1 = Business(name='Bryce\'s Place', image_url='https://eatlocalapp.s3.amazonaws.com/anna-pelzer-IGfIGP5ONV0-unsplash.jpg', phone_num='5555555555', description='Family owned business, with affordable prices.', opening=time(10, 0), closing=time(21, 0), user_id=2)
-    biz2 = Business(name='Burgers n Stuff', image_url='https://eatlocalapp.s3.amazonaws.com/anna-pelzer-IGfIGP5ONV0-unsplash.jpg', phone_num='5555555555', description='Family owned business, with affordable prices.', opening=time(10, 0), closing=time(21, 0), user_id=2)
-    biz3 = Business(name='Salad Work', image_url='https://eatlocalapp.s3.amazonaws.com/anna-pelzer-IGfIGP5ONV0-unsplash.jpg', phone_num='5555555555', description='Family owned business, with affordable prices.', opening=time(10, 0), closing=time(21, 0), user_id=2)
-    biz4 = Business(name='Bryce\'s Cafe', image_url='https://eatlocalapp.s3.amazonaws.com/anna-pelzer-IGfIGP5ONV0-unsplash.jpg', phone_num='5555555555', description='Family owned business, with affordable prices.', opening=time(10, 0), closing=time(21, 0), user_id=2)
-    biz5 = Business(name='South Diner', image_url='https://eatlocalapp.s3.amazonaws.com/anna-pelzer-IGfIGP5ONV0-unsplash.jpg', phone_num='5555555555', description='Family owned business, with affordable prices.', opening=time(10, 0), closing=time(21, 0), user_id=2)
-    biz6 = Business(name='B Corner Store', image_url='https://eatlocalapp.s3.amazonaws.com/anna-pelzer-IGfIGP5ONV0-unsplash.jpg', phone_num='5555555555', description='Family owned business, with affordable prices.', opening=time(10, 0), closing=time(21, 0), user_id=2)
-    biz7 = Business(name='Halal Truck', image_url='https://eatlocalapp.s3.amazonaws.com/anna-pelzer-IGfIGP5ONV0-unsplash.jpg', phone_num='5555555555', description='Family owned business, with affordable prices.', opening=time(10, 0), closing=time(21, 0), user_id=2)
-    biz8 = Business(name='Nagoya', image_url='https://eatlocalapp.s3.amazonaws.com/anna-pelzer-IGfIGP5ONV0-unsplash.jpg', phone_num='5555555555', description='Family owned business, with affordable prices.', opening=time(10, 0), closing=time(21, 0), user_id=2)
-    biz9 = Business(name='Red River', image_url='https://eatlocalapp.s3.amazonaws.com/anna-pelzer-IGfIGP5ONV0-unsplash.jpg', phone_num='5555555555', description='Family owned business, with affordable prices.', opening=time(10, 0), closing=time(21, 0), user_id=2)
-    biz10 = Business(name='Three Circles', image_url='https://eatlocalapp.s3.amazonaws.com/anna-pelzer-IGfIGP5ONV0-unsplash.jpg', phone_num='5555555555', description='Family owned business, with affordable prices.', opening=time(10, 0), closing=time(21, 0), user_id=2)
-    biz11 = Business(name='Brother\'s Pizza', image_url='https://eatlocalapp.s3.amazonaws.com/anna-pelzer-IGfIGP5ONV0-unsplash.jpg', phone_num='5555555555', description='Family owned business, with affordable prices.', opening=time(10, 0), closing=time(21, 0), user_id=2)
-    biz12 = Business(name='Cosmo\'s Deli', image_url='https://eatlocalapp.s3.amazonaws.com/anna-pelzer-IGfIGP5ONV0-unsplash.jpg', phone_num='5555555555', description='Family owned business, with affordable prices.', opening=time(10, 0), closing=time(21, 0), user_id=2)
+    biz1 = Business(name='Bryce\'s Place', image_url='https://eatlocalapp.s3.amazonaws.com/anna-pelzer-IGfIGP5ONV0-unsplash.jpg', phone_num='5555555555', description='Family owned business, with affordable prices.', opening_hour=10, opening_min=30, closing_hour=21, closing_min=30, user_id=2)
+    biz2 = Business(name='Burgers n Stuff', image_url='https://eatlocalapp.s3.amazonaws.com/anna-pelzer-IGfIGP5ONV0-unsplash.jpg', phone_num='5555555555', description='Family owned business, with affordable prices.', opening_hour=10, opening_min=30, closing_hour=21, closing_min=30, user_id=2)
+    biz3 = Business(name='Salad Work', image_url='https://eatlocalapp.s3.amazonaws.com/anna-pelzer-IGfIGP5ONV0-unsplash.jpg', phone_num='5555555555', description='Family owned business, with affordable prices.', opening_hour=10, opening_min=30, closing_hour=21, closing_min=30, user_id=2)
+    biz4 = Business(name='Bryce\'s Cafe', image_url='https://eatlocalapp.s3.amazonaws.com/anna-pelzer-IGfIGP5ONV0-unsplash.jpg', phone_num='5555555555', description='Family owned business, with affordable prices.', opening_hour=10, opening_min=30, closing_hour=21, closing_min=30, user_id=2)
+    biz5 = Business(name='South Diner', image_url='https://eatlocalapp.s3.amazonaws.com/anna-pelzer-IGfIGP5ONV0-unsplash.jpg', phone_num='5555555555', description='Family owned business, with affordable prices.', opening_hour=10, opening_min=30, closing_hour=21, closing_min=30, user_id=2)
+    biz6 = Business(name='B Corner Store', image_url='https://eatlocalapp.s3.amazonaws.com/anna-pelzer-IGfIGP5ONV0-unsplash.jpg', phone_num='5555555555', description='Family owned business, with affordable prices.', opening_hour=10, opening_min=30, closing_hour=21, closing_min=30, user_id=2)
+    biz7 = Business(name='Halal Truck', image_url='https://eatlocalapp.s3.amazonaws.com/anna-pelzer-IGfIGP5ONV0-unsplash.jpg', phone_num='5555555555', description='Family owned business, with affordable prices.', opening_hour=10, opening_min=30, closing_hour=21, closing_min=30, user_id=2)
+    biz8 = Business(name='Nagoya', image_url='https://eatlocalapp.s3.amazonaws.com/anna-pelzer-IGfIGP5ONV0-unsplash.jpg', phone_num='5555555555', description='Family owned business, with affordable prices.', opening_hour=10, opening_min=30, closing_hour=21, closing_min=30, user_id=2)
+    biz9 = Business(name='Red River', image_url='https://eatlocalapp.s3.amazonaws.com/anna-pelzer-IGfIGP5ONV0-unsplash.jpg', phone_num='5555555555', description='Family owned business, with affordable prices.', opening_hour=10, opening_min=30, closing_hour=21, closing_min=30, user_id=2)
+    biz10 = Business(name='Three Circles', image_url='https://eatlocalapp.s3.amazonaws.com/anna-pelzer-IGfIGP5ONV0-unsplash.jpg', phone_num='5555555555', description='Family owned business, with affordable prices.', opening_hour=10, opening_min=30, closing_hour=21, closing_min=30, user_id=2)
+    biz11 = Business(name='Brother\'s Pizza', image_url='https://eatlocalapp.s3.amazonaws.com/anna-pelzer-IGfIGP5ONV0-unsplash.jpg', phone_num='5555555555', description='Family owned business, with affordable prices.', opening_hour=10, opening_min=30, closing_hour=21, closing_min=30, user_id=2)
+    biz12 = Business(name='Cosmo\'s Deli', image_url='https://eatlocalapp.s3.amazonaws.com/anna-pelzer-IGfIGP5ONV0-unsplash.jpg', phone_num='5555555555', description='Family owned business, with affordable prices.', opening_hour=10, opening_min=30, closing_hour=21, closing_min=30, user_id=2)
 
     cat1 = Category(name='Breakfast')
     cat2 = Category(name='Lunch')
@@ -51,14 +51,6 @@ def seed_businesses():
     food12 = Food(name='Caesar Salad')
     food13 = Food(name='Build Your Own Sandwich')
     food14 = Food(name='Pulled Pork')
-
-    biz_list = [biz1, biz2, biz3, biz4, biz5, biz6, biz7, biz8, biz9, biz10, biz11, biz12]
-    food_list = [food1, food2, food3, food4, food5, food6, food7, food8, food9, food10, food11, food12, food13, food14]
-
-    for biz in biz_list:
-        for food_item in food_list:
-            biz.food.append(food_item)
-
 
     biz1.categories.append(cat1)
     biz1.categories.append(cat2)

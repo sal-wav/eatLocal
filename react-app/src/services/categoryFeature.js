@@ -16,7 +16,7 @@ export const getFeatures = async () => {
   return await response.json();
 }
 
-// GET biz, features, food
+// GET biz, features, food, categories
 export const bizInfo = async (bizId) => {
   const response = await fetch(`/api/feature/biz/${bizId}`, {
     headers: {
