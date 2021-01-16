@@ -12,6 +12,7 @@ import BizPage from "./components/BizPage";
 import FoodForm from "./components/FoodForm";
 import LandingPage from "./components/LandingPage";
 import HomePage from "./components/HomePage";
+import SearchResults from "./components/SearchResults";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -52,6 +53,9 @@ function App() {
         { !authenticated ? <LandingPage/> :
         <HomePage />
         }
+      </Route>
+      <Route path="/search/:term">
+        <SearchResults/>
       </Route>
       <ProtectedRoute path="/bizform" exact={true} authenticated={authenticated}>
         <BizForm />

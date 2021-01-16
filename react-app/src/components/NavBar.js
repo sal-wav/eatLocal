@@ -1,35 +1,32 @@
 import React, { useState } from 'react';
-import { NavLink, Redirect } from 'react-router-dom';
+import { NavLink, useHistory, Redirect } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import "./styles/navbar.css";
 
 const NavBar = ({ authenticated, setAuthenticated }) => {
-  const [searchValue, setSearchValue] = useState(null);
+  const history = useHistory();
+  const [value, setValue] = useState("");
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   return (
-  //     // <Redirect to={`/search/${searchValue}`}/>
-  //   )
-  // }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    history.push(`/search/${value}`)
+    // return (
+    //   // <Redirect to={`search/${value}`}/>
+    // )
+  }
 
-  // const handleSearchValue = (e) => {
-  //   e.preventDefault();
-  //   setSearchValue(e.target.value)
-  // };
-
-  const SearchInput = () => (
-    <>
-      <form className="searchForm">
-        <input className="searchInput" type="search" placeholder="In the mood for ..."></input>
-        <button className="searchBtn" type="submit">
-          <span className="iconContainer">
-            <i className="fas fa-search fa-2x"></i>
-          </span>
-        </button>
-      </form>
-    </>
-  )
+  // const SearchInput = () => (
+  //   <>
+  //     <form className="searchForm" onSubmit={handleSubmit}>
+  //       <input className="searchInput" type="search" value={value} placeholder="In the mood for ..." onChange={(e) => setValue(e.target.value)}></input>
+  //       <button className="searchBtn" type="submit">
+  //         <span className="iconContainer">
+  //           <i className="fas fa-search fa-2x"></i>
+  //         </span>
+  //       </button>
+  //     </form>
+  //   </>
+  // )
 
   return (
     <nav className="nav">
@@ -40,7 +37,17 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
           </NavLink>
         </li>
         <li className="middle">
-          <SearchInput/>
+          {/* <SearchInput/> */}
+          <>
+            <form className="searchForm" onSubmit={handleSubmit}>
+              <input className="searchInput" type="search" value={value} placeholder="In the mood for ..." onChange={(e) => setValue(e.target.value)}></input>
+              <button className="searchBtn" type="submit">
+                <span className="iconContainer">
+                  <i className="fas fa-search fa-2x"></i>
+                </span>
+              </button>
+            </form>
+          </>
         </li>
         <div className="right">
           {!authenticated ?

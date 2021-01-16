@@ -3,6 +3,7 @@ from flask_login import login_required, current_user
 from app.models import Business
 from app.models import Category
 from app.models import Feature
+from app.models import Food
 from ..forms.biz_form import BizForm
 from app.models.db import db
 
@@ -68,3 +69,15 @@ def biz(id):
             return biz.to_dict()
         return {'errors': form.errors}, 422
     return {'errors': 'Only the owner can delete this biz.'}, 401
+
+@biz_routes.route('/search/<term>', methods=["GET"])
+def biz_by_search(term):
+    biz_by_name = Business.query.filter(Business.name == term)
+    results = [biz.to_dict() for biz in biz_by_name]
+    food = Food.query.filter(Food.name == term)
+    for item in food:
+        id = item.business_id
+        biz = Business.query.filter_by(id)
+        if biz not in results:
+            results.append(biz.to_dict())
+    return {'results': results}
