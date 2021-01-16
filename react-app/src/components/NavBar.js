@@ -56,16 +56,16 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
               </NavLink>
             </li>
           </> :
-          <>
+          <div className="rightLinkContainer">
             <li>
-              <NavLink className="navLink" to="/bizform" exact={true} activeClassName="active">
+              <NavLink className="navLink navbarLink" to="/bizform" exact={true} activeClassName="active">
                 Share Your Biz
               </NavLink>
             </li>
             <li>
               <LogoutButton setAuthenticated={setAuthenticated} />
             </li>
-          </>
+          </div>
           }
         </div>
       </ul>

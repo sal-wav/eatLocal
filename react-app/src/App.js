@@ -11,6 +11,7 @@ import BizForm from "./components/BizForm";
 import BizPage from "./components/BizPage";
 import FoodForm from "./components/FoodForm";
 import LandingPage from "./components/LandingPage";
+import HomePage from "./components/HomePage";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -47,9 +48,9 @@ function App() {
       {/* <ProtectedRoute path="/users/:userId" exact={true} authenticated={authenticated}>
         <User />
       </ProtectedRoute> */}
-      <Route path="/" exact={true} authenticated={authenticated}>
+      <Route path="/" exact={true} authenticated={authenticated} setAuthenticated={setAuthenticated}>
         { !authenticated ? <LandingPage/> :
-        <h1>My Home Page</h1>
+        <HomePage />
         }
       </Route>
       <ProtectedRoute path="/bizform" exact={true} authenticated={authenticated}>

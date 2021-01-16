@@ -11,11 +11,6 @@ const BizPage = (props) => {
     const [biz, setBiz] = useState(null);
     const [food, setFood] = useState([]);
 
-
-    const menu = ['taco', 'torta', 'flautas', 'burrito', 'chips', 'salsa', 'guac', 'huevos rancheros',]
-
-
-
     useEffect(() => {
         (async () => {
             const response = await bizInfo(bizId);
