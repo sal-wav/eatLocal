@@ -72,12 +72,13 @@ def biz(id):
 
 @biz_routes.route('/search/<term>', methods=["GET"])
 def biz_by_search(term):
-    biz_by_name = Business.query.filter(Business.name == term)
+    biz_by_name = Business.query.filter(Business.name.ilike(f'%{term}%')).all()
     results = [biz.to_dict() for biz in biz_by_name]
-    food = Food.query.filter(Food.name == term)
+    food = Food.query.filter(Food.name.ilike(f'%{term}%')).all()
     for item in food:
         id = item.business_id
-        biz = Business.query.filter_by(id)
+        biz = Business.query.get(id)
         if biz not in results:
             results.append(biz.to_dict())
+    print(results)
     return {'results': results}

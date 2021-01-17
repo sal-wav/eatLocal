@@ -6,7 +6,7 @@ import "./styles/bizPage.css";
 const BizPage = (props) => {
     const { currentUser } = props;
     const { bizId } = useParams();
-    const [features, setFeatures] = useState([]);
+    const [features, setFeatures] = useState(null);
     const [categories, setCategories] = useState([]);
     const [biz, setBiz] = useState(null);
     const [food, setFood] = useState([]);
@@ -27,7 +27,7 @@ const BizPage = (props) => {
 
     if (!biz || !features) return 'loading';
 
-    return (
+    return (!biz || !features) ? 'loading' : (
         // <div className="pageContainer">
             <div className="pageContainer">
                 <div className="photoHeader">
