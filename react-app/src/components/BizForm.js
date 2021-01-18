@@ -88,10 +88,26 @@ const BizForm = () => {
                         <textarea id="textArea" className="input" type="text" name="description" placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
                     </div>
                     <div className="time">
-                        <input id="timeInput" className="input" type="number" placeholder="Opening Time" value={openHour} onChange={(e) => setOpenHour(e.target.value)} required></input>
-                        <input id="timeInput" className="input" type="number" placeholder="Closing Time" value={openMin} onChange={(e) => setOpenMin(e.target.value)} required></input>
-                        <input id="timeInput" className="input" type="number" placeholder="Closing Time" value={closeHour} onChange={(e) => setCloseHour(e.target.value)} required></input>
-                        <input id="timeInput" className="input" type="number" placeholder="Closing Time" value={closeMin} onChange={(e) => setCloseMin(e.target.value)} required></input>
+                        <h3 className="timeHead">Open</h3>
+                        <div className="clock container">
+                            <input className="timeInput input" type="number" min="1" max="12" step="1" placeholder="8" value={openHour} onChange={(e) => setOpenHour(e.target.value)} required></input>
+                            <h1 className="timeHead">:</h1>
+                            <input className="timeInput input" type="number" min="0" max="30" step="30" placeholder="00" value={openMin} onChange={(e) => setOpenMin(e.target.value)} required></input>
+                            <select className="timeSelect input">
+                                <option value="AM">AM</option>
+                                <option value="PM">PM</option>
+                            </select>
+                        </div>
+                        <h3 className="timeHead">til</h3>
+                        <div className="clock container">
+                            <input className="timeInput input" type="number" min="1" max="12" step="1" placeholder="8" value={closeHour} onChange={(e) => setCloseHour(e.target.value)} required></input>
+                            <h1 className="timeHead">:</h1>
+                            <input className="timeInput input" type="number" min="0" max="30" step="30" placeholder="00" value={closeMin} onChange={(e) => setCloseMin(e.target.value)} required></input>
+                            <select className="timeSelect input">
+                                <option value="AM">AM</option>
+                                <option value="PM">PM</option>
+                            </select>
+                        </div>
                     </div>
 
                     <h3>Categories</h3>

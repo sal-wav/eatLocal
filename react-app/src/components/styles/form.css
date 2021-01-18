@@ -4,13 +4,15 @@
 
 #formpageContainer {
     background: #f4f4f4;
-
+    padding: 70px;
 }
 
 .formContainer {
     max-width: 600px;
     background: white;
     border: 1px solid #eeeeef;
+    margin: auto;
+    padding: 50px;
 }
 
 .form {
@@ -42,10 +44,25 @@
     display: flex;
     justify-content: space-between;
     width: 545px;
+    align-items: center;
 }
 
-#timeInput {
-    width: 50px;
+.clock {
+    width: 210px;
+    justify-content: space-between;
+}
+
+.timeInput {
+    width: 30px;
+}
+
+.timeSelect {
+    width: 55px;
+    padding: 4px;
+}
+
+.timeHead {
+    margin: 0;
 }
 
 #submitBtn {
@@ -70,6 +87,7 @@
 
 #textArea {
     resize: none;
+    height: 16px;
 }
 
 .authPage {
