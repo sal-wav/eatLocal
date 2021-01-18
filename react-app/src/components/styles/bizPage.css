@@ -15,7 +15,7 @@ body {
     overflow: hidden;
     max-width: 1922px;
     /* width: 100%; */
-    display: flex;
+    /* display: flex; */
     position: relative;
 }
 
@@ -29,14 +29,8 @@ body {
     top: 0;
 }
 
-/* .photoHeader::after {
-} */
-
 .coverImg {
     max-height: 400px;
-
-    /* object-fit: cover; */
-    /* overflow: clip; */
 }
 
 .aboutContainer {
@@ -48,27 +42,33 @@ body {
     max-width: 1272px;
     min-width: 1144px;
     color: white;
-    display: flex;
+    /* display: flex; */
     margin: auto;
 }
 
 .about {
     width: 1272px;
-    display: flex;
+    /* display: flex; */
     justify-content: flex-end;
     flex-direction: column;
 }
 
-.catContainer {
-    display: flex;
+.infoContainer {
+    margin:auto;
+    width: 1144px;
+    /* display: flex; */
 }
 
-.featContainer {
+/* .catContainer {
     display: flex;
-}
+} */
+
+/* .featContainer {
+    display: flex;
+} */
 
 .feat {
-    display: flex;
+    /* display: flex; */
     align-items: center;
 }
 
@@ -76,16 +76,11 @@ body {
     color: rgb(5, 168, 130);
 }
 
-.infoContainer {
-    margin:auto;
-    width: 1144px;
-    display: flex;
-}
 
 .menuContainer {
     border: solid 2px green;
     width: 750px;
-    display: flex;
+    /* display: flex; */
     flex-wrap: wrap;
     justify-content: space-around;
     align-content: space-around;
@@ -116,4 +111,8 @@ body {
     border: solid 1px #eeeeef;
     border-radius: 3px;
     color: #00838f
+}
+
+.container {
+    display: flex;
 }

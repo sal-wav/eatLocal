@@ -24,7 +24,7 @@ const LandingPage = () => {
                     <h1 id='landingHeading'>Find food you'll love</h1>
                     <div className='landingSubhead'>
                       <h3 id='subhead' className='input'>Right in your neighborhood</h3>
-                      <NavLink id='btnLink' to="/login" exact={true} activeClassName="active">Find Food</NavLink>
+                      <NavLink id='findFood' to="/login" exact={true} activeClassName="active">Find Food</NavLink>
                     </div>
                 </div>
               </div>

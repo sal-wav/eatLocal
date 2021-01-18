@@ -31,15 +31,15 @@ const BizPage = (props) => {
         // <div className="pageContainer">
             <div className="pageContainer">
                 <div className="photoHeader">
-                    <div className="photos">
+                    <div className="photos container">
                         <img className='coverImg' src={biz.image_url}></img>
                         <img className='coverImg' src={biz.image_url}></img>
                         <img className='coverImg' src={biz.image_url}></img>
                     </div>
-                    <div className="aboutContainer">
-                        <div className="about">
+                    <div className="aboutContainer container">
+                        <div className="about container">
                             <h1>{biz.name}</h1>
-                            <div className="catContainer">
+                            <div className="catContainer container">
                             {categories.map((category) => (
                                 <div key={category.id}>
                                     <p>{`${category.name}, `}</p>
@@ -50,14 +50,14 @@ const BizPage = (props) => {
                         </div>
                     </div>
                 </div>
-                <div className="infoContainer">
+                <div className="infoContainer container">
                     <div className="leftContainer">
                         {/* <p>{biz.description}</p> */}
                         <h2>COVID-19 Updates</h2>
                         <h3>Updated Services</h3>
-                        <div className="featContainer">
+                        <div className="featContainer container">
                             {features.map((feature) => (
-                                <div className="feat" key={feature.id}>
+                                <div className="feat container" key={feature.id}>
                                     <i class="fas fa-check"></i>
                                     <p>{feature.name}</p>
                                 </div>
@@ -73,7 +73,7 @@ const BizPage = (props) => {
                             : null
                             }
                         </div>
-                        <div className="menuContainer">
+                        <div className="menuContainer container">
                             {/* <div> */}
                             {food.map((foodItem) => (
                                 <div className="itemContainer" key={foodItem.id}>

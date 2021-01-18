@@ -36,14 +36,16 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
           <div>{error}</div>
         ))}
       </div>
+      <h2>Log in to eat local</h2>
+      <h3>New to eat local? <NavLink className="navLink navbarLink" to="/sign-up">Sign up</NavLink></h3>
       <div>
         <input className="input" name="email" type="text" placeholder="email" value={email} onChange={updateEmail} required/>
       </div>
       <div>
         <input className="input" name="password" type="password" placeholder="password" value={password} onChange={updatePassword} required/>
       </div>
-      <button className="btn" type="submit">Login</button>
-      <NavLink to="/sign-up">New to eatLocal? Sign up</NavLink>
+      <button className="btn" type="submit">Log In</button>
+      <h3>New to eat local? <NavLink className="navLink navbarLink" to="/sign-up">Sign up</NavLink></h3>
     </form>
   );
 };
