@@ -39,24 +39,27 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
   }
 
   return (
-    <div className="formContainer">
-      <form className="authform" onSubmit={onSignUp}>
-        <div>
-          <input className="input" type="text" name="username" placeholder="username" onChange={updateUsername} value={username}></input>
-        </div>
-        <div>
-          <input className="input" type="text" name="email" placeholder="email" onChange={updateEmail} value={email}></input>
-        </div>
-        <div>
-          <input className="input" type="password" name="password" placeholder="password" onChange={updatePassword} value={password}></input>
-        </div>
-        <div>
-          <input className="input" type="password" name="repeat_password" placeholder="confirm your password" onChange={updateRepeatPassword} value={repeatPassword} required={true}
-          ></input>
-        </div>
-        <button className="btn"type="submit">Sign Up</button>
-      </form>
+    <div className="authPage container">
+      <div className="authFormContainer container">
+        <form className="authform" onSubmit={onSignUp}>
+          <div>
+            <input className="input" type="text" name="username" placeholder="username" onChange={updateUsername} value={username}></input>
+          </div>
+          <div>
+            <input className="input" type="text" name="email" placeholder="email" onChange={updateEmail} value={email}></input>
+          </div>
+          <div>
+            <input className="input" type="password" name="password" placeholder="password" onChange={updatePassword} value={password}></input>
+          </div>
+          <div>
+            <input className="input" type="password" name="repeat_password" placeholder="confirm your password" onChange={updateRepeatPassword} value={repeatPassword} required={true}
+            ></input>
+          </div>
+          <button id="authBtn" className="btn" type="submit">Sign Up</button>
+        </form>
+      </div>
     </div>
+
   );
 };
 

@@ -34,14 +34,6 @@ body {
     border-radius: 5px;
 }
 
-/* #btnLink {
-    width: 185px;
-    height: 55px;
-    background-color: #f43939;
-    border: 1px solid transparent;
-    border-radius: 4px;
-    text-align: center;
-    line-height: 55px;
-    text-decoration: none;
-    color: #fff;
-} */
+.container {
+    display: flex;
+}
