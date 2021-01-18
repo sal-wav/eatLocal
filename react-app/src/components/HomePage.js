@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import { NavLink } from 'react-router-dom';
 import {getBiz} from "../services/biz";
 
 const HomePage = () => {
@@ -27,7 +28,7 @@ const HomePage = () => {
                             <img className='feedImg' src={biz.image_url}></img>
                         </div>
                         <div className='cardBody'>
-                            <h2>{biz.name}</h2>
+                            <NavLink className='navLink' to={`/biz/${biz.id}`}>{biz.name}</NavLink>
                             {/* <h3>{biz.categories[0], biz.categories[1], biz.categories[2]}</h3> */}
                         </div>
                     </div>

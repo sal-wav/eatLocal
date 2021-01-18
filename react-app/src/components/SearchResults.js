@@ -15,7 +15,13 @@ const SearchResults = () => {
     }, [term])
 
     return (
-        <h1>hi</h1>
+        <div>
+            {results.map((result) => (
+                <div key={result.id}>
+                    <h2>{result.name}</h2>
+                </div>
+            ))}
+        </div>
     )
 }
 

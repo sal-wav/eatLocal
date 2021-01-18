@@ -13,6 +13,13 @@ body {
     border-radius: 4px;
 }
 
+.btn:hover {
+    background: #f40d15;
+    cursor: pointer;
+    border: 1px solid rgba(67,41,163,.08);
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,.3);
+}
+
 .navLink {
     padding: 0.5rem 1rem;
     text-align: center;

@@ -13,8 +13,10 @@ const BizForm = () => {
     const [imageUrl, setImageUrl] = useState("");
     const [phoneNum, setPhoneNum] = useState("");
     const [description, setDescription] = useState("");
-    const [open, setOpen] = useState("");
-    const [close, setClose] = useState("");
+    const [openHour, setOpenHour] = useState("");
+    const [openMin, setOpenMin] = useState("");
+    const [closeHour, setCloseHour] = useState("");
+    const [closeMin, setCloseMin] = useState("");
     const [categoryIds, setCategoryIds] = useState([]);
     const [featureIds, setFeatureIds] = useState([]);
 
@@ -80,14 +82,16 @@ const BizForm = () => {
                     <div>
                         <input className="input" type="text" name="imageUrl" placeholder="Image url" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)}></input>
                     </div>
-                    <input className="input" type="tel" name="phoneNum" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="000-000-0000" value={phoneNum} onChange={(e) => setPhoneNum(e.target.value)}
+                    <input className="input" type="text" name="phoneNum" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="000-000-0000" value={phoneNum} onChange={(e) => setPhoneNum(e.target.value)}
                         required></input>
                     <div>
                         <textarea id="textArea" className="input" type="text" name="description" placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
                     </div>
                     <div className="time">
-                        <input id="timeInput" className="input" type="time" placeholder="Opening Time" value={open} onChange={(e) => setOpen(e.target.value)} required></input>
-                        <input id="timeInput" className="input" type="time" placeholder="Closing Time" value={close} onChange={(e) => setClose(e.target.value)} required></input>
+                        <input id="timeInput" className="input" type="number" placeholder="Opening Time" value={openHour} onChange={(e) => setOpenHour(e.target.value)} required></input>
+                        <input id="timeInput" className="input" type="number" placeholder="Closing Time" value={openMin} onChange={(e) => setOpenMin(e.target.value)} required></input>
+                        <input id="timeInput" className="input" type="number" placeholder="Closing Time" value={closeHour} onChange={(e) => setCloseHour(e.target.value)} required></input>
+                        <input id="timeInput" className="input" type="number" placeholder="Closing Time" value={closeMin} onChange={(e) => setCloseMin(e.target.value)} required></input>
                     </div>
 
                     <h3>Categories</h3>

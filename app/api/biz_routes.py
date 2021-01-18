@@ -75,8 +75,10 @@ def biz_by_search(term):
     biz_by_name = Business.query.filter(Business.name.ilike(f'%{term}%')).all()
     results = [biz.to_dict() for biz in biz_by_name]
     food = Food.query.filter(Food.name.ilike(f'%{term}%')).all()
+    ids = []
     for item in food:
         id = item.business_id
+        # if
         biz = Business.query.get(id)
         if biz not in results:
             results.append(biz.to_dict())
