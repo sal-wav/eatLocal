@@ -25,6 +25,15 @@ const BizPage = (props) => {
         })();
     }, [bizId]);
 
+    let categoryList = () => {
+        categories.map((category) => (
+
+            <div key={category.id}>
+                <p>{`${category.name}, `}</p>
+            </div>
+        ))
+    }
+
     if (!biz || !features) return 'loading';
 
     return (!biz || !features) ? 'loading' : (
@@ -38,32 +47,34 @@ const BizPage = (props) => {
                     </div>
                     <div className="aboutContainer container">
                         <div className="about container">
-                            <h1>{biz.name}</h1>
+                            <h1 id="bizpageHead">{biz.name}</h1>
                             <div className="catContainer container">
                             {categories.map((category) => (
+
                                 <div key={category.id}>
                                     <p>{`${category.name}, `}</p>
                                 </div>
                             ))}
                             </div>
-                            <h3>{biz.phone_num}</h3>
+                            {/* <h3>{biz.phone_num}</h3> */}
                         </div>
                     </div>
                 </div>
                 <div className="infoContainer container">
                     <div className="leftContainer">
-                        {/* <p>{biz.description}</p> */}
-                        <h2>COVID-19 Updates</h2>
-                        <h3>Updated Services</h3>
-                        <div className="featContainer container">
-                            {features.map((feature) => (
-                                <div className="feat container" key={feature.id}>
-                                    <i class="fas fa-check"></i>
-                                    <p>{feature.name}</p>
-                                </div>
-                            ))}
+                        <div className="sectionBorder">
+                            <h2 id="covid">COVID-19 Updates</h2>
+                            <h3 id="services">Updated Services</h3>
+                            <div className="featContainer container">
+                                {features.map((feature) => (
+                                    <div className="feat container" key={feature.id}>
+                                        <i class="fas fa-check"></i>
+                                        <p>{feature.name}</p>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
-                        <div>
+                        <div className="sectionBorder">
                             <h1>What's on the menu</h1>
                             { currentUser.id === biz.user_id ?
                             <div>
@@ -76,12 +87,15 @@ const BizPage = (props) => {
                         <div className="menuContainer container">
                             {/* <div> */}
                             {food.map((foodItem) => (
-                                <div className="itemContainer" key={foodItem.id}>
+                                <div className="itemContainer container" key={foodItem.id}>
                                     { currentUser.id === biz.user_id ?
                                     <button type="button">Edit</button>
                                     : null
                                     }
-                                    <h3>{foodItem.name}</h3>
+                                    <h3 className="foodName">{foodItem.name}</h3>
+                                    <div className="foodIconContainer container">
+                                        <i class="fas fa-utensils fa-4x"></i>
+                                    </div>
                                 </div>
                             ))}
                             {/* </div> */}
@@ -92,20 +106,24 @@ const BizPage = (props) => {
                     <div className="sidebarContainer">
                         <div className="sidebar">
                             <h3>{biz.name}</h3>
-                            { biz.phone_num.length < 12 ?
-                            <h3>{`(${biz.phone_num.slice(0, 3)}) ${biz.phone_num.slice(3, 6)}-${biz.phone_num.slice(6, 10)}`}</h3> :
-                            <h3>{`(${biz.phone_num.slice(0, 3)}) ${biz.phone_num.slice(4)}`}</h3>
-                            }
-                            <div>
-                                <h3>About</h3>
-                                <p>{biz.description}</p>
+                            <div className="sectionBorder">
+                                { biz.phone_num.length < 12 ?
+                                <h3>{`(${biz.phone_num.slice(0, 3)}) ${biz.phone_num.slice(3, 6)}-${biz.phone_num.slice(6, 10)}`}</h3> :
+                                <h3>{`(${biz.phone_num.slice(0, 3)}) ${biz.phone_num.slice(4)}`}</h3>
+                                }
                             </div>
-                            <h3>{`${biz.opening_hour}:${biz.opening_min} - ${biz.closing_hour}:${biz.closing_min}`}</h3>
+                            <div className="sectionBorder">
+                                <h3 className="infoAboutHead">About</h3>
+                                <p className="bizpageSmallText">{biz.description}</p>
+                            </div>
+                            <div className="sectionBorder">
+                                <h3>{`${biz.opening_hour}:${biz.opening_min} - ${biz.closing_hour}:${biz.closing_min}`}</h3>
+                            </div>
                         </div>
-                        <div>
+                        {/* <div>
                             <h2>You Might Also Consider</h2>
 
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>

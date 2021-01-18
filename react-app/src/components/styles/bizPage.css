@@ -3,10 +3,7 @@ body {
 }
 
 .photoHeader {
-    /* overflow: hidden; */
     max-width: 1922px;
-    /* width: 100%; */
-    /* display: flex; */
     position: relative;
     margin: 0 auto;
 }
@@ -14,8 +11,6 @@ body {
 .photos {
     overflow: hidden;
     max-width: 1922px;
-    /* width: 100%; */
-    /* display: flex; */
     position: relative;
 }
 
@@ -42,47 +37,58 @@ body {
     max-width: 1272px;
     min-width: 1144px;
     color: white;
-    /* display: flex; */
     margin: auto;
 }
 
 .about {
-    width: 1272px;
-    /* display: flex; */
     justify-content: flex-end;
     flex-direction: column;
+    padding: 40px 64px;
+}
+
+#bizpageHead {
+    font-size: 50px;
+    line-height: 54px;
+    font-weight: 900;
 }
 
 .infoContainer {
     margin:auto;
     width: 1144px;
-    /* display: flex; */
 }
 
-/* .catContainer {
-    display: flex;
-} */
+#covid {
+    padding: 24px 0;
+    margin-bottom: 0;
+    font-size: 20px;
+    line-height: 26px;
+}
 
-/* .featContainer {
-    display: flex;
-} */
+#services {
+    font-size: 16px;
+    line-height: 22px;
+    margin: 0;
+}
+
+.featContainer {
+    margin-bottom: 24px;
+}
 
 .feat {
-    /* display: flex; */
     align-items: center;
+    width: 110px;
 }
 
 .fa-check {
     color: rgb(5, 168, 130);
+    padding: 10px 10px 10px 0px;
 }
 
 
 .menuContainer {
-    border: solid 2px green;
     width: 750px;
-    /* display: flex; */
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-between;
     align-content: space-around;
 }
 
@@ -92,11 +98,27 @@ body {
     width: 350px;
     height: 100px;
     margin: 20px 0 20px 0;
+    padding-left: 15px;
+    align-items: center;
+    position: relative;
 }
 
 .itemContainer:hover {
     border: solid 1px #b6b6b6;
     box-shadow: 0 0 0 1px rgba(67,41,163,.08), 0 1px 5px 0 rgba(67,41,163,.08);
+}
+
+.foodIconContainer {
+    height: 100px;
+    width: 100px;
+    color: #eeeeef;
+    align-items: center;
+    justify-content: center;
+    border-left: 1px solid #eeeeef;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
 }
 
 .sidebarContainer {
@@ -110,9 +132,21 @@ body {
 .sidebar {
     border: solid 1px #eeeeef;
     border-radius: 3px;
-    color: #00838f
+    color: #00838f;
+    padding: 0 15px;
+    height: 260px;
 }
 
-/* .container {
-    display: flex;
-} */
+.sectionBorder {
+    border-top: solid 1px #eeeeef;
+}
+
+.infoAboutHead {
+    margin-bottom: 5px;
+}
+
+.bizpageSmallText {
+    font-size: 15px;
+    color: #999;
+    margin-top: 0px;
+}

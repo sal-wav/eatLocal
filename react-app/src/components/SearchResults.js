@@ -16,6 +16,7 @@ const SearchResults = () => {
 
     return (
         <div>
+            <h2>{`${term} in Your Neighborhood`}</h2>
             {results.map((result) => (
                 <div key={result.biz.id}>
                     <h2>{result.biz.name}</h2>

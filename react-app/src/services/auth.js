@@ -46,7 +46,7 @@ export const signUp = async (username, email, password) => {
   return await response.json();
 }
 
-export const demo = async (email = "demo@aa.io", password = "password") => {
+export const demo = async (email = "demouser@aa.io", password = "password") => {
   const response = await fetch("/api/auth/login", {
     method: "POST",
     headers: {
