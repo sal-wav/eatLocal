@@ -75,7 +75,7 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
           <button className="btn authBtn" type="submit">Sign Up</button>
           <p className="smallText">Already on eat local? <NavLink className="navLink authNavlink" to="/login">Log in</NavLink></p>
         </form>
-        <div>
+        <div className="authRight">
           <img src="https://s3-media0.fl.yelpcdn.com/assets/2/www/img/7922e77f338d/signup/signup_illustration.png"></img>
         </div>
       </div>
