@@ -17,8 +17,8 @@ const SearchResults = () => {
     return (
         <div>
             {results.map((result) => (
-                <div key={result.id}>
-                    <h2>{result.name}</h2>
+                <div key={result.biz.id}>
+                    <h2>{result.biz.name}</h2>
                 </div>
             ))}
         </div>

@@ -21,8 +21,6 @@ def post_biz():
     form = BizForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        # categories = list(map(Category.query.filter_by().first(), request.json['categoryIds']))
-        # features = list(map(Feature.query.filter_by().first(), request.json['featureIds']))
         biz = Business(
             name=form.data['name'],
             image_url=form.data['image_url'],
@@ -36,8 +34,6 @@ def post_biz():
         for id in request.json['featureIds']:
             feature = Feature.query.get(id)
             biz.features.append(feature)
-        # biz.categories = categories
-        # biz.features = features
         db.session.add(biz)
         db.session.commit()
         return biz.to_dict()
@@ -72,15 +68,17 @@ def biz(id):
 
 @biz_routes.route('/search/<term>', methods=["GET"])
 def biz_by_search(term):
-    biz_by_name = Business.query.filter(Business.name.ilike(f'%{term}%')).all()
-    results = [biz.to_dict() for biz in biz_by_name]
+    filtered_biz = Business.query.filter(Business.name.ilike(f'%{term}%')).all()
+    biz_dict_list = [biz.to_dict() for biz in filtered_biz]
+    print(f'first biz_dict_list: %{biz_dict_list}')
+    results = [{'biz': biz.to_dict(), 'categories': [category.to_dict() for category in biz.categories], 'features': [feature.to_dict() for feature in biz.features]} for biz in filtered_biz]
     food = Food.query.filter(Food.name.ilike(f'%{term}%')).all()
-    ids = []
     for item in food:
         id = item.business_id
-        # if
         biz = Business.query.get(id)
-        if biz not in results:
-            results.append(biz.to_dict())
+        biz_dict = biz.to_dict()
+        if biz_dict not in biz_dict_list:
+            biz_dict_list.append(biz_dict)
+            results.append({'biz': biz_dict, 'categories': [category.to_dict() for category in biz.categories], 'features': [feature.to_dict() for feature in biz.features]})
     print(results)
     return {'results': results}
