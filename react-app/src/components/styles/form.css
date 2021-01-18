@@ -136,3 +136,20 @@
 .authRight {
     padding-left: 70px;
 }
+
+.foodInput {
+    margin-bottom: 15px;
+}
+
+#foodFormBtns {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#addAnother {
+    background-color: #fff;
+    border: 1px solid black;
+    color: black;
+}

@@ -74,20 +74,18 @@ const BizPage = (props) => {
                                 ))}
                             </div>
                         </div>
-                        <div className="sectionBorder">
+                        <div id="menuHead" className="container sectionBorder">
                             <h1>What's on the menu</h1>
                             { currentUser.id === biz.user_id ?
-                            <div>
-                                <NavLink to={`/foodform/biz/${bizId}`}>Add menu items</NavLink>
-                                <i class="far fa-edit"></i>
-                            </div>
+                            <>
+                                <NavLink id="addMenuBtn" className="navLink navbarLink" to={`/foodform/biz/${bizId}`}>Add menu items <i class="far fa-edit"></i></NavLink>
+                            </>
                             : null
                             }
                         </div>
                         <div className="menuContainer container">
-                            {/* <div> */}
                             {food.map((foodItem) => (
-                                <div className="itemContainer container" key={foodItem.id}>
+                                <div className="itemContainer card" key={foodItem.id}>
                                     { currentUser.id === biz.user_id ?
                                     <button type="button">Edit</button>
                                     : null
@@ -98,7 +96,6 @@ const BizPage = (props) => {
                                     </div>
                                 </div>
                             ))}
-                            {/* </div> */}
                         </div>
                     </div>
 

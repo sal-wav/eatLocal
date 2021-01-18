@@ -41,22 +41,28 @@ const FoodForm = () => {
     }
 
     return (
-        <div>
-            <div>
-                <form onSubmit={handleSubmit}>
+        <div className="authPage container">
+            <div className="authFormContainer container">
+                <form className="authForm container" onSubmit={handleSubmit}>
+                    <h1>Add menu item</h1>
                     <div>
-                        <input className="input" type="text" name="name" placeholder="Item Name" value={name} onChange={(e) => setName(e.target.value)} required></input>
+                        <input className="input foodInput" type="text" name="name" placeholder="Item Name" value={name} onChange={(e) => setName(e.target.value)} required></input>
                     </div>
                     <div>
-                        <input className="input" type="text" name="description" placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)}></input>
+                        <input className="input foodInput" type="text" name="description" placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)}></input>
                     </div>
                     <div>
-                        <input className="input" type="text" name="imageUrl" placeholder="Image URL" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)}></input>
+                        <input className="input foodInput" type="text" name="imageUrl" placeholder="Image URL" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)}></input>
                     </div>
-                    <NavLink to={`/biz/${bizId}`}>Cancel</NavLink>
-                    <button type="button" onClick={handleAdd}>Add another item</button>
-                    <button type="submit">Finished</button>
+                    <div id="foodFormBtns">
+                        <NavLink className="navLink navbarLink" to={`/biz/${bizId}`}>Cancel</NavLink>
+                        <button id="addAnother" className="btn" type="button" onClick={handleAdd}>Add another item</button>
+                        <button className="btn" type="submit">Finished</button>
+                    </div>
                 </form>
+                <div className="authRight">
+                    <img src="https://s3-media0.fl.yelpcdn.com/assets/2/www/img/7922e77f338d/signup/signup_illustration.png"></img>
+                </div>
             </div>
         </div>
     );
