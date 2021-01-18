@@ -5,12 +5,12 @@ body {
 
 .btn {
     height: 38px;
-    font-size: 18px;
+    font-size: 16px;
     padding: 0 13px 0 13px;
     background: #f43939;
     color: #fff;
     border: 1px solid #f43939;
-    border-radius: 4px;
+    border-radius: 3px;
 }
 
 .btn:hover {

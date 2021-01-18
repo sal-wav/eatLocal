@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Redirect, NavLink } from "react-router-dom";
-import { login } from "../../services/auth";
+import { login, demo } from "../../services/auth";
 
 const LoginForm = ({ authenticated, setAuthenticated }) => {
   const [errors, setErrors] = useState([]);
@@ -16,6 +16,12 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
       setErrors(user.errors);
     }
   };
+
+  const demoLogin = async (e) => {
+    e.preventDefault();
+    await demo();
+    setAuthenticated(true)
+  }
 
   const updateEmail = (e) => {
     setEmail(e.target.value);
@@ -38,17 +44,23 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
               <div>{error}</div>
             ))}
           </div>
-          <h2>Log in to eat local</h2>
-          <h3>New to eat local? <NavLink className="navLink navbarLink" to="/sign-up">Sign up</NavLink></h3>
+          <h2 className="authHead">Log in to eat local</h2>
+          <p className="authSubhead">New to eat local? <NavLink className="navLink authNavlink" to="/sign-up">Sign up</NavLink></p>
+          <button id="demoBtn" className="btn authBtn" type="button" onClick={demoLogin}>Continue as Demo User</button>
+
+          <p id="authDivider">OR</p>
           <div>
-            <input className="input" name="email" type="text" placeholder="email" value={email} onChange={updateEmail} required/>
+            <input className="input authInput" name="email" type="text" placeholder="email" value={email} onChange={updateEmail} required/>
           </div>
           <div>
-            <input className="input" name="password" type="password" placeholder="password" value={password} onChange={updatePassword} required/>
+            <input className="input authInput" name="password" type="password" placeholder="password" value={password} onChange={updatePassword} required/>
           </div>
-          <button id="authBtn" className="btn" type="submit">Log In</button>
-          <h3>New to eat local? <NavLink className="navLink navbarLink" to="/sign-up">Sign up</NavLink></h3>
+          <button className="btn authBtn" type="submit">Log In</button>
+          <p className="smallText">New to eat local? <NavLink className="navLink authNavlink" to="/sign-up">Sign up</NavLink></p>
         </form>
+        <div>
+          <img src="https://s3-media0.fl.yelpcdn.com/assets/2/www/img/7922e77f338d/signup/signup_illustration.png"></img>
+        </div>
       </div>
     </div>
   );
