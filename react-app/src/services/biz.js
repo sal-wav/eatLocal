@@ -1,5 +1,5 @@
 export const getBiz = async () => {
-  const response = await fetch("/api/biz", {
+  const response = await fetch("/api/biz/", {
     headers: {
       'Content-Type': 'application/json'
     }
@@ -8,7 +8,7 @@ export const getBiz = async () => {
 }
 
 export const postBiz = async (name, imageUrl, phoneNum, description, openingHour, openingMin, closingHour, closingMin, categoryIds, featureIds) => {
-  const response = await fetch("/api/biz", {
+  const response = await fetch("/api/biz/", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
