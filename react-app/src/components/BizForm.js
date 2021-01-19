@@ -35,12 +35,15 @@ const BizForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        try {
+        // try {
             const biz = await postBiz(name, imageUrl, phoneNum, description, openingHour, openingMin, closingHour, closingMin, categoryIds, featureIds);
+            if (biz.errors) {
+                setError(Object.values(biz.errors))
+            }
             setRedirect(`/biz/${biz.id}`);
-        } catch (submissionError) {
-            setError(submissionError);
-        }
+        // } catch (submissionError) {
+        //     setError(submissionError);
+        // }
     };
 
     const handleCategories = async (e) => {
@@ -67,28 +70,6 @@ const BizForm = () => {
         };
     };
 
-    // const handleOpenHr = async (e) => {
-    //     if (e.target.value === "AM") {
-    //         return
-    //     } else {
-    //         let hour = openHour;
-    //         await setOpenHour(hour+12);
-    //         console.log(hour)
-    //         console.log(hour + 12)
-    //     }
-    // }
-
-    // const handleCloseHr = async (e) => {
-    //     if (e.target.value === "AM") {
-    //         return
-    //     } else {
-    //         let hour = closeHour;
-    //         await setCloseHour(parseInt(hour)+12);
-    //         console.log(hour)
-    //         console.log(hour + 12)
-    //     }
-    // }
-
     if (!categories || !features) return "loading";
 
     // console.log(`open: ${open}`)
@@ -98,6 +79,7 @@ const BizForm = () => {
             <div className="formContainer">
                 <form className="form" onSubmit={handleSubmit}>
                     <h1>Tell us about your business</h1>
+                    <p className="error">{error}</p>
                     <div>
                         <input className="input" type="text" name="name" placeholder="Business name" value={name} onChange={(e) => setName(e.target.value)} required></input>
                     </div>
@@ -152,6 +134,7 @@ const BizForm = () => {
                         </div>
                     ))}
                     </div>
+                    <p className="error">{error}</p>
                     <div className="formSubmit">
                         <button id="submitBtn" className="btn"type="submit">Share Your Listing</button>
                     </div>
