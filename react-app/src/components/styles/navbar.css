@@ -4,6 +4,10 @@
     padding: 0.5em 0
 }
 
+/* #loggedoutNav {
+    background-color: #f43939;
+} */
+
 .navList {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;

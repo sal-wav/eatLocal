@@ -15,10 +15,10 @@ const HomePage = () => {
     }, [])
 
     if (!bizFeed) {
-        return null
+        return 'loading'
     }
 
-    return (
+    return bizFeed && (
         <div className="page">
             <div className="featuredBizContainer">
                 <h1 id="homeHead">Find the best food in town</h1>

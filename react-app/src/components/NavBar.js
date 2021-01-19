@@ -15,17 +15,10 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
     // )
   }
 
-  // const SearchInput = () => (
-  //   <>
-  //     <form className="searchForm" onSubmit={handleSubmit}>
-  //       <input className="searchInput" type="search" value={value} placeholder="In the mood for ..." onChange={(e) => setValue(e.target.value)}></input>
-  //       <button className="searchBtn" type="submit">
-  //         <span className="iconContainer">
-  //           <i className="fas fa-search fa-2x"></i>
-  //         </span>
-  //       </button>
-  //     </form>
-  //   </>
+  // if (!authenticated) return (
+  //   <nav id="loggedoutNav" className="nav">
+  //     <NavLink className="navLink navbarLink" to="/" exact={true}>eat Local</NavLink>
+  //   </nav>
   // )
 
   return (

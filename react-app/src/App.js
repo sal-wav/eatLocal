@@ -38,14 +38,15 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar authenticated={authenticated} setAuthenticated={setAuthenticated} />
       <Route path="/login" exact={true}>
+        <NavBar authenticated={authenticated} setAuthenticated={setAuthenticated} />
         <LoginForm
           authenticated={authenticated}
           setAuthenticated={setAuthenticated}
         />
       </Route>
       <Route path="/sign-up" exact={true}>
+        <NavBar authenticated={authenticated} setAuthenticated={setAuthenticated} />
         <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
       </Route>
       {/* <ProtectedRoute path="/users/:userId" exact={true} authenticated={authenticated}>
@@ -53,22 +54,32 @@ function App() {
       </ProtectedRoute> */}
       <Route path="/" exact={true} authenticated={authenticated} setAuthenticated={setAuthenticated}>
         { !authenticated ? <LandingPage/> :
-        <HomePage />
+        <>
+          <NavBar authenticated={authenticated} setAuthenticated={setAuthenticated} />
+          <HomePage />
+        </>
         }
       </Route>
       <Route path="/search/:term">
-        <SearchResults/>
+        <>
+          <NavBar authenticated={authenticated} setAuthenticated={setAuthenticated} />
+          <SearchResults/>
+        </>
       </Route>
       <ProtectedRoute path="/bizform" exact={true} authenticated={authenticated}>
+        <NavBar authenticated={authenticated} setAuthenticated={setAuthenticated} />
         <BizForm />
       </ProtectedRoute>
       <ProtectedRoute path="/biz/:bizId" exact={true} authenticated={authenticated}>
+        <NavBar authenticated={authenticated} setAuthenticated={setAuthenticated} />
         <BizPage currentUser={currentUser} />
       </ProtectedRoute>
       <ProtectedRoute path="/foodform/biz/:bizId" exact={true} authenticated={authenticated}>
+        <NavBar authenticated={authenticated} setAuthenticated={setAuthenticated} />
         <FoodForm />
       </ProtectedRoute>
       <ProtectedRoute path="/foodform/biz/:bizId/food/:foodId" exact={true} authenticated={authenticated}>
+        <NavBar authenticated={authenticated} setAuthenticated={setAuthenticated} />
         <EditFoodForm />
       </ProtectedRoute>
       <Footer/>

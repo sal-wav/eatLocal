@@ -44,7 +44,7 @@ body {
     justify-content: center;
     width: 100%;
     height: 100px;
-    background: #eeeeef;
+    border-top: 1px solid #eeeeef;
     position: relative;
     left: 0;
     right:0;

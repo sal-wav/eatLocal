@@ -17,7 +17,7 @@ const SearchResults = () => {
 
     return (
         <div className="searchPage container">
-            <div className="">
+            <div className="resultsPage">
                 <h2 id="searchHead">{`"${term}" in Your Neighborhood`}</h2>
                 {results.length === 0 ?
                 <div className="results">
