@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 // import { useDropzone } from "react-dropzone";
 import { postBiz } from "../services/biz";
 import { getCategories, getFeatures } from "../services/categoryFeature";
 import "./styles/form.css"
 
 const BizForm = () => {
+    const history = useHistory();
     const [redirect, setRedirect] = useState(null);
     const [categories, setCategories] = useState([]);
     const [features, setFeatures] = useState([]);
@@ -39,7 +40,7 @@ const BizForm = () => {
         if (biz.errors) {
             setError(Object.values(biz.errors))
         }
-        setRedirect(`/biz/${biz.id}`);
+        history.push(`/biz/${biz.id}`)
     };
 
     const handleCategories = async (e) => {
