@@ -70,3 +70,11 @@ export const getFoodById = async (foodId) => {
   });
   return await response.json();
 }
+
+export const deleteFood = async (foodId) => {
+  const response = await fetch(`/api/food/${foodId}`, {
+    method: 'DELETE'
+  });
+  return await response.json();
+}
+

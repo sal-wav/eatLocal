@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, NavLink, useHistory } from 'react-router-dom';
 import { bizInfo } from '../services/categoryFeature';
+import { deleteFood } from '../services/biz';
 import "./styles/bizPage.css";
 
 const BizPage = (props) => {
@@ -11,31 +12,30 @@ const BizPage = (props) => {
     const [categories, setCategories] = useState([]);
     const [biz, setBiz] = useState(null);
     const [food, setFood] = useState([]);
+    const [deleting, setDeleting] = useState(false);
 
     useEffect(() => {
         (async () => {
             const response = await bizInfo(bizId);
             setBiz(response.biz);
-            // console.log(`bizfeat: ${JSON.stringify(response.features)}`)
-            // console.log(`bizcat: ${JSON.stringify(response.categories)}`)
             setFeatures(response.features);
             setFood(response.food);
             let catList = [];
             response.categories.map(category =>
                 catList.push(category.name))
             setCategories(catList);
-
+            setDeleting(false);
             console.log(`food: ${JSON.stringify(response.food)}`)
         })();
-    }, [bizId]);
+    }, [bizId, deleting]);
 
     const handleEditFood = (e) => {
-        // console.log(e.currentTarget.value)
         history.push(`/foodform/biz/${bizId}/food/${e.currentTarget.value}`)
     }
 
-    const handleDeleteFood = (e) => {
-
+    const handleDeleteFood = async (e) => {
+        await deleteFood(e.currentTarget.value);
+        setDeleting(true)
     }
 
     if (!biz || !features) return 'loading';
