@@ -13,7 +13,8 @@ biz_routes = Blueprint('biz', __name__)
 @biz_routes.route('/', methods=['GET'])
 def businesses():
     businesses = Business.query.all()
-    return {"biz": [biz.to_dict() for biz in businesses]}
+    return {"results": [{"biz": biz.to_dict(), "features": [feature.to_dict() for feature in biz.features]} for biz in businesses]}
+    # return {"biz": [biz.to_dict() for biz in businesses]}
 
 @biz_routes.route('/', methods=["POST"])
 @login_required

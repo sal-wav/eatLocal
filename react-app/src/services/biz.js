@@ -44,3 +44,29 @@ export const postItem = async (name, description, imageUrl, bizId) => {
   });
   return await response.json();
 }
+
+export const editItem = async (name, description, imageUrl, bizId, foodId) => {
+  const response = await fetch(`/api/food/${foodId}`, {
+    method: 'POST',
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      name,
+      description,
+      image_url: imageUrl,
+      business_id: bizId
+    })
+  });
+  return await response.json();
+}
+
+export const getFoodById = async (foodId) => {
+  const response = await fetch(`/api/food/${foodId}`, {
+    method: 'GET',
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  return await response.json();
+}

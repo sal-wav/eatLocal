@@ -10,9 +10,11 @@ import { authenticate } from "./services/auth";
 import BizForm from "./components/BizForm";
 import BizPage from "./components/BizPage";
 import FoodForm from "./components/FoodForm";
+import EditFoodForm from "./components/EditFoodForm";
 import LandingPage from "./components/LandingPage";
 import HomePage from "./components/HomePage";
 import SearchResults from "./components/SearchResults";
+import Footer from "./components/Footer";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -66,6 +68,10 @@ function App() {
       <ProtectedRoute path="/foodform/biz/:bizId" exact={true} authenticated={authenticated}>
         <FoodForm />
       </ProtectedRoute>
+      <ProtectedRoute path="/foodform/biz/:bizId/food/:foodId" exact={true} authenticated={authenticated}>
+        <EditFoodForm />
+      </ProtectedRoute>
+      <Footer/>
     </BrowserRouter>
   );
 }

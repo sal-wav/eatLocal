@@ -106,11 +106,25 @@
 }
 
 .cardBody {
-    height: 120px;
+    height: 100px;
+    padding: 20px;
 }
 
 .feedImg {
     width: 300px;
     border: 0px solid transparent;
     border-radius: 5px 5px 0 0;
+}
+
+.homeLink {
+    padding: 0;
+    font-size: 18px;
+}
+
+.homeLink:hover {
+    text-decoration: underline;
+}
+
+#homeHead {
+    padding: 20px;
 }

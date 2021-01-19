@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { NavLink } from 'react-router-dom';
 import {getBiz} from "../services/biz";
+import "./styles/home.css";
 
 const HomePage = () => {
     const [bizFeed, setBizFeed] = useState([]);
@@ -9,7 +10,7 @@ const HomePage = () => {
         (async () => {
             const response = await getBiz();
             // console.log(`three biz: ${JSON.stringify(response.biz)}`)
-            setBizFeed(response.biz.slice(0, 3));
+            setBizFeed(response.results.slice(0, 3));
         })();
     }, [])
 
@@ -18,24 +19,30 @@ const HomePage = () => {
     }
 
     return (
-        <div>
+        <div className="page">
             <div className="featuredBizContainer">
-                <h1>Find the best food in town</h1>
+                <h1 id="homeHead">Find the best food in town</h1>
                 <div className="cardsContainer">
                 {bizFeed.map((biz) => (
-                    <div className='card' key={biz.id}>
+                    <div className='card' key={biz.biz.id}>
                         <div>
-                            <img className='feedImg' src={biz.image_url}></img>
+                            <img className='feedImg' src={biz.biz.image_url}></img>
                         </div>
                         <div className='cardBody'>
-                            <NavLink className='navLink' to={`/biz/${biz.id}`}>{biz.name}</NavLink>
-                            {/* <h3>{biz.categories[0], biz.categories[1], biz.categories[2]}</h3> */}
+                            <NavLink className='navLink homeLink' to={`/biz/${biz.biz.id}`}>{biz.biz.name}</NavLink>
+                            <div className='container'>
+                            {biz.features.map(feature => (
+                                <div className="feat container" key={feature.id}>
+                                    <i className="fas fa-check"></i>
+                                    <p>{feature.name}</p>
+                                </div>
+                            ))}
+                            </div>
                         </div>
                     </div>
                 ))}
                 </div>
             </div>
-
         </div>
     )
 }

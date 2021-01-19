@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, NavLink } from 'react-router-dom';
+import { useParams, NavLink, useHistory } from 'react-router-dom';
 import { bizInfo } from '../services/categoryFeature';
 import "./styles/bizPage.css";
 
 const BizPage = (props) => {
+    const history = useHistory();
     const { currentUser } = props;
     const { bizId } = useParams();
     const [features, setFeatures] = useState(null);
@@ -24,17 +25,17 @@ const BizPage = (props) => {
                 catList.push(category.name))
             setCategories(catList);
 
-            // console.log(`food: ${JSON.stringify(response.food)}`)
+            console.log(`food: ${JSON.stringify(response.food)}`)
         })();
     }, [bizId]);
 
-    let categoryList = () => {
-        categories.map((category) => (
+    const handleEditFood = (e) => {
+        // console.log(e.currentTarget.value)
+        history.push(`/foodform/biz/${bizId}/food/${e.currentTarget.value}`)
+    }
 
-            <div key={category.id}>
-                <p>{`${category.name}, `}</p>
-            </div>
-        ))
+    const handleDeleteFood = (e) => {
+
     }
 
     if (!biz || !features) return 'loading';
@@ -76,7 +77,7 @@ const BizPage = (props) => {
                             <h1>What's on the menu</h1>
                             { currentUser.id === biz.user_id ?
                             <>
-                                <NavLink id="addMenuBtn" className="navLink navbarLink" to={`/foodform/biz/${bizId}`}>Add menu items <i class="far fa-edit"></i></NavLink>
+                                <NavLink id="addMenuBtn" className="navLink navbarLink" to={`/foodform/biz/${bizId}`}>Add menu items <i className="far fa-edit"></i></NavLink>
                             </>
                             : null }
                         </div>
@@ -85,13 +86,16 @@ const BizPage = (props) => {
                                 <div className="itemContainer card" key={foodItem.id}>
                                     <div>
                                         { currentUser.id === biz.user_id ?
-                                        <button className="btn foodBtn" type="button"><i class="far fa-edit"></i></button>
+                                        <div className="container">
+                                            <button className="btn foodBtn" type="button" value={foodItem.id} onClick={handleEditFood}><i className="far fa-edit"></i></button>
+                                            <button className="trash btn foodBtn" type="button" value={foodItem.id} onClick={handleDeleteFood}><i className="fas fa-trash-alt"></i></button>
+                                        </div>
                                         : null
                                         }
                                         <h3 className="foodName">{foodItem.name}</h3>
                                     </div>
                                     <div className="foodIconContainer container">
-                                        <i class="fas fa-utensils fa-4x"></i>
+                                        <i className="fas fa-utensils fa-4x"></i>
                                     </div>
                                 </div>
                             ))}

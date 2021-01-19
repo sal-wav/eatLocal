@@ -19,6 +19,10 @@ const SearchResults = () => {
         <div className="searchPage container">
             <div className="">
                 <h2 id="searchHead">{`"${term}" in Your Neighborhood`}</h2>
+                {results.length === 0 ?
+                <div className="results">
+                <h2>Try another search ... maybe a sandwich ...</h2>
+                </div> : null}
                 <div className="results">
                     {results.map((result) => (
                         <div className="card searchCard container" key={result.biz.id}>
@@ -38,6 +42,7 @@ const SearchResults = () => {
                                     </div>
                                 ))}
                                 </div>
+                                <p class="previewText">{result.biz.description}</p>
                             </div>
                         </div>
                     ))}
