@@ -35,15 +35,11 @@ const BizForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // try {
-            const biz = await postBiz(name, imageUrl, phoneNum, description, openingHour, openingMin, closingHour, closingMin, categoryIds, featureIds);
-            if (biz.errors) {
-                setError(Object.values(biz.errors))
-            }
-            setRedirect(`/biz/${biz.id}`);
-        // } catch (submissionError) {
-        //     setError(submissionError);
-        // }
+        const biz = await postBiz(name, imageUrl, phoneNum, description, openingHour, openingMin, closingHour, closingMin, categoryIds, featureIds);
+        if (biz.errors) {
+            setError(Object.values(biz.errors))
+        }
+        setRedirect(`/biz/${biz.id}`);
     };
 
     const handleCategories = async (e) => {
