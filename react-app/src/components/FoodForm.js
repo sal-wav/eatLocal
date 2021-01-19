@@ -9,12 +9,16 @@ const FoodForm = () => {
     const [imageUrl, setImageUrl] = useState("");
     const [redirect, setRedirect] = useState("");
 
-    const [error, setError] = useState(null);
+    const [errors, setErrors] = useState([]);
 
     const {bizId} = useParams();
 
     const handleAdd = async (e) => {
         e.preventDefault();
+        if (name === "") {
+            alert("Item name is required");
+            return
+        }
         try {
             const newItem = await postItem(name, description, imageUrl, bizId);
             console.log(`newItem: ${newItem}`)
@@ -22,7 +26,7 @@ const FoodForm = () => {
             setDescription("");
             setImageUrl("");
         } catch (submissionError) {
-            setError(submissionError);
+            setErrors(submissionError);
         }
     };
 
@@ -32,7 +36,7 @@ const FoodForm = () => {
             const newItem = await postItem(name, description, imageUrl, bizId);
             setRedirect(`/biz/${bizId}`);
         } catch (submissionError) {
-            setError(submissionError);
+            setErrors(submissionError);
         }
     };
 
@@ -46,18 +50,18 @@ const FoodForm = () => {
                 <form className="authForm container" onSubmit={handleSubmit}>
                     <h1>Add menu item</h1>
                     <div>
-                        <input className="input foodInput" type="text" name="name" placeholder="Item Name" value={name} onChange={(e) => setName(e.target.value)} required></input>
+                        <input className="input foodInput" type="text" name="name" placeholder="Item name" value={name} onChange={(e) => setName(e.target.value)} required></input>
                     </div>
-                    <div>
+                    {/* <div>
                         <input className="input foodInput" type="text" name="description" placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)}></input>
-                    </div>
-                    <div>
+                    </div> */}
+                    {/* <div>
                         <input className="input foodInput" type="text" name="imageUrl" placeholder="Image URL" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)}></input>
-                    </div>
+                    </div> */}
                     <div id="foodFormBtns">
                         <NavLink className="navLink navbarLink" to={`/biz/${bizId}`}>Cancel</NavLink>
-                        <button id="addAnother" className="btn" type="button" onClick={handleAdd}>Add another item</button>
-                        <button className="btn" type="submit">Finished</button>
+                        <button id="addAnother" className="btn" type="submit" value="Add" onClick={handleAdd}>Add another item</button>
+                        <button className="btn" type="submit" value="Finish">Finished</button>
                     </div>
                 </form>
                 <div className="authRight">

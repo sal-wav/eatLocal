@@ -67,7 +67,7 @@ body {
 #services {
     font-size: 16px;
     line-height: 22px;
-    margin: 0;
+    margin: 10px 0;
 }
 
 .featContainer {
@@ -76,7 +76,7 @@ body {
 
 .feat {
     align-items: center;
-    width: 110px;
+    margin-right: 20px;
 }
 
 .fa-check {
@@ -102,6 +102,12 @@ body {
     flex-wrap: wrap;
     justify-content: space-between;
     align-content: space-around;
+}
+
+.foodBtn {
+    padding: 0 0 0 3px;
+    height: 30px;
+    width: 30px;
 }
 
 .itemContainer {

@@ -1,0 +1,63 @@
+.searchPage {
+    width: 100%;
+    justify-content: center;
+}
+
+#searchHead {
+    margin: 40px 0;
+}
+
+.searchCard {
+    width: 700px;
+    margin: 25px 0;
+    padding: 25px;
+}
+
+.searchCard:hover {
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0,0,0,.1);
+    transition: box-shadow .3s;
+    border-color: #eeeeef;
+}
+
+.searchImgContainer {
+    height: 200px;
+    width: 200px;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.searchImg {
+    height: 200px;
+    overflow: hidden;
+}
+
+.searchPreview {
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-left: 40px;
+}
+
+.resultLink {
+    font-size: 25px;
+    font-weight: bold;
+    line-height: 26px;
+}
+
+.resultLink:hover {
+    text-decoration: underline;
+}
+
+.catList {
+    max-width: 500px;
+    overflow: ellipsis;
+}
+
+.listItem {
+    display: inline;
+}
+
+.previewText {
+    text-align: left;
+    padding-left: 0;
+}

@@ -19,7 +19,10 @@ const BizPage = (props) => {
             // console.log(`bizcat: ${JSON.stringify(response.categories)}`)
             setFeatures(response.features);
             setFood(response.food);
-            setCategories(response.categories);
+            let catList = [];
+            response.categories.map(category =>
+                catList.push(category.name))
+            setCategories(catList);
 
             // console.log(`food: ${JSON.stringify(response.food)}`)
         })();
@@ -49,14 +52,9 @@ const BizPage = (props) => {
                         <div className="about container">
                             <h1 id="bizpageHead">{biz.name}</h1>
                             <div className="catContainer container">
-                            {categories.map((category) => (
-
-                                <div key={category.id}>
-                                    <p>{`${category.name}, `}</p>
-                                </div>
-                            ))}
+                                <p>{categories.join(", ")}</p>
                             </div>
-                            {/* <h3>{biz.phone_num}</h3> */}
+                            <h3>{`${biz.opening_hour}:${biz.opening_min} - ${biz.closing_hour}:${biz.closing_min}`}</h3>
                         </div>
                     </div>
                 </div>
@@ -68,7 +66,7 @@ const BizPage = (props) => {
                             <div className="featContainer container">
                                 {features.map((feature) => (
                                     <div className="feat container" key={feature.id}>
-                                        <i class="fas fa-check"></i>
+                                        <i className="fas fa-check"></i>
                                         <p>{feature.name}</p>
                                     </div>
                                 ))}
@@ -80,17 +78,18 @@ const BizPage = (props) => {
                             <>
                                 <NavLink id="addMenuBtn" className="navLink navbarLink" to={`/foodform/biz/${bizId}`}>Add menu items <i class="far fa-edit"></i></NavLink>
                             </>
-                            : null
-                            }
+                            : null }
                         </div>
                         <div className="menuContainer container">
                             {food.map((foodItem) => (
                                 <div className="itemContainer card" key={foodItem.id}>
-                                    { currentUser.id === biz.user_id ?
-                                    <button type="button">Edit</button>
-                                    : null
-                                    }
-                                    <h3 className="foodName">{foodItem.name}</h3>
+                                    <div>
+                                        { currentUser.id === biz.user_id ?
+                                        <button className="btn foodBtn" type="button"><i class="far fa-edit"></i></button>
+                                        : null
+                                        }
+                                        <h3 className="foodName">{foodItem.name}</h3>
+                                    </div>
                                     <div className="foodIconContainer container">
                                         <i class="fas fa-utensils fa-4x"></i>
                                     </div>
