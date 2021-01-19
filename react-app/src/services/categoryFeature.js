@@ -1,5 +1,5 @@
 export const getCategories = async () => {
-  const response = await fetch("/api/category", {
+  const response = await fetch("/api/category/", {
     headers: {
       'Content-Type': 'application/json'
     }
@@ -8,7 +8,7 @@ export const getCategories = async () => {
 }
 
 export const getFeatures = async () => {
-  const response = await fetch("/api/feature", {
+  const response = await fetch("/api/feature/", {
     headers: {
       'Content-Type': 'application/json'
     }
@@ -18,7 +18,7 @@ export const getFeatures = async () => {
 
 // GET biz, features, food, categories
 export const bizInfo = async (bizId) => {
-  const response = await fetch(`/api/feature/biz/${bizId}`, {
+  const response = await fetch(`/api/feature/biz/${bizId}/`, {
     headers: {
       'Content-Type': 'application/json'
     }

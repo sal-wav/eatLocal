@@ -13,7 +13,7 @@ def features():
 
 
 # GET biz, features, food, categories
-@feature_routes.route('/biz/<int:bizId>', methods=['GET'])
+@feature_routes.route('/biz/<int:bizId>/', methods=['GET'])
 def biz_features(bizId):
     biz = Business.query.get(bizId)
     return  {"biz": biz.to_dict(), "features": [feature.to_dict() for feature in biz.features], "food": [food_item.to_dict() for food_item in biz.food], "categories": [category.to_dict() for category in biz.categories]}
