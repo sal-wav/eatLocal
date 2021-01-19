@@ -26,6 +26,10 @@ def post_biz():
             image_url=form.data['image_url'],
             phone_num=form.data['phone_num'],
             description=form.data['description'],
+            opening_hour=form.data['opening_hour'],
+            opening_min=form.data['opening_min'],
+            closing_hour=form.data['closing_hour'],
+            closing_min=form.data['closing_min'],
             user_id=current_user.id
         )
         for id in request.json['categoryIds']:

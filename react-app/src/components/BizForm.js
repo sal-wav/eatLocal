@@ -13,10 +13,10 @@ const BizForm = () => {
     const [imageUrl, setImageUrl] = useState("");
     const [phoneNum, setPhoneNum] = useState("");
     const [description, setDescription] = useState("");
-    const [openHour, setOpenHour] = useState("");
-    const [openMin, setOpenMin] = useState("");
-    const [closeHour, setCloseHour] = useState("");
-    const [closeMin, setCloseMin] = useState("");
+    const [openingHour, setOpeningHour] = useState("");
+    const [openingMin, setOpeningMin] = useState("");
+    const [closingHour, setClosingHour] = useState("");
+    const [closingMin, setClosingMin] = useState("");
     const [categoryIds, setCategoryIds] = useState([]);
     const [featureIds, setFeatureIds] = useState([]);
 
@@ -36,7 +36,7 @@ const BizForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const biz = await postBiz(name, imageUrl, phoneNum, description, categoryIds, featureIds);
+            const biz = await postBiz(name, imageUrl, phoneNum, description, openingHour, openingMin, closingHour, closingMin, categoryIds, featureIds);
             setRedirect(`/biz/${biz.id}`);
         } catch (submissionError) {
             setError(submissionError);
@@ -67,6 +67,28 @@ const BizForm = () => {
         };
     };
 
+    // const handleOpenHr = async (e) => {
+    //     if (e.target.value === "AM") {
+    //         return
+    //     } else {
+    //         let hour = openHour;
+    //         await setOpenHour(hour+12);
+    //         console.log(hour)
+    //         console.log(hour + 12)
+    //     }
+    // }
+
+    // const handleCloseHr = async (e) => {
+    //     if (e.target.value === "AM") {
+    //         return
+    //     } else {
+    //         let hour = closeHour;
+    //         await setCloseHour(parseInt(hour)+12);
+    //         console.log(hour)
+    //         console.log(hour + 12)
+    //     }
+    // }
+
     if (!categories || !features) return "loading";
 
     // console.log(`open: ${open}`)
@@ -82,7 +104,9 @@ const BizForm = () => {
                     <div>
                         <input className="input" type="text" name="imageUrl" placeholder="Image url" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)}></input>
                     </div>
-                    <input className="input" type="text" name="phoneNum" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="000-000-0000" value={phoneNum} onChange={(e) => setPhoneNum(e.target.value)}
+                    {/* <input className="input" type="text" name="phoneNum" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="000-000-0000" value={phoneNum} onChange={(e) => setPhoneNum(e.target.value)}
+                        required></input> */}
+                    <input className="input" type="text" name="phoneNum" pattern="[0-9]{10}" placeholder="Phone 8003210000" value={phoneNum} onChange={(e) => setPhoneNum(e.target.value)}
                         required></input>
                     <div>
                         <textarea id="textArea" className="input" type="text" name="description" placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
@@ -90,23 +114,23 @@ const BizForm = () => {
                     <div className="time">
                         <h3 className="timeHead">Open</h3>
                         <div className="clock container">
-                            <input className="timeInput input" type="number" min="1" max="12" step="1" placeholder="8" value={openHour} onChange={(e) => setOpenHour(e.target.value)} required></input>
+                            <input className="timeInput input" type="number" min="1" max="12" step="1" placeholder="5" value={openingHour} onChange={(e) => setOpeningHour(e.target.value)} required></input>
                             <h1 className="timeHead">:</h1>
-                            <input className="timeInput input" type="number" min="0" max="30" step="30" placeholder="00" value={openMin} onChange={(e) => setOpenMin(e.target.value)} required></input>
-                            <select className="timeSelect input">
+                            <input className="timeInput input" type="number" min="0" max="30" step="30" placeholder="00" value={openingMin} onChange={(e) => setOpeningMin(e.target.value)} required></input>
+                            {/* <select className="timeSelect input" onChange={handleOpenHr}>
                                 <option value="AM">AM</option>
                                 <option value="PM">PM</option>
-                            </select>
+                            </select> */}
                         </div>
                         <h3 className="timeHead">til</h3>
                         <div className="clock container">
-                            <input className="timeInput input" type="number" min="1" max="12" step="1" placeholder="8" value={closeHour} onChange={(e) => setCloseHour(e.target.value)} required></input>
+                            <input className="timeInput input" type="number" min="1" max="12" step="1" placeholder="5" value={closingHour} onChange={(e) => setClosingHour(e.target.value)} required></input>
                             <h1 className="timeHead">:</h1>
-                            <input className="timeInput input" type="number" min="0" max="30" step="30" placeholder="00" value={closeMin} onChange={(e) => setCloseMin(e.target.value)} required></input>
-                            <select className="timeSelect input">
+                            <input className="timeInput input" type="number" min="0" max="30" step="30" placeholder="00" value={closingMin} onChange={(e) => setClosingMin(e.target.value)} required></input>
+                            {/* <select className="timeSelect input" onChange={handleCloseHr}>
                                 <option value="AM">AM</option>
                                 <option value="PM">PM</option>
-                            </select>
+                            </select> */}
                         </div>
                     </div>
 

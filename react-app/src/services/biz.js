@@ -7,16 +7,7 @@ export const getBiz = async () => {
   return await response.json()
 }
 
-// export const getThreeBiz = async () => {
-//   const response = await fetch("api/biz/three", {
-//     headers: {
-//       'Content-Type': 'application/json'
-//     }
-//   });
-//   return await response.json()
-// }
-
-export const postBiz = async (name, imageUrl, phoneNum, description, categoryIds, featureIds) => {
+export const postBiz = async (name, imageUrl, phoneNum, description, openingHour, openingMin, closingHour, closingMin, categoryIds, featureIds) => {
   const response = await fetch("/api/biz/", {
     method: "POST",
     headers: {
@@ -27,6 +18,10 @@ export const postBiz = async (name, imageUrl, phoneNum, description, categoryIds
       image_url: imageUrl,
       phone_num: phoneNum,
       description,
+      opening_hour: openingHour,
+      opening_min: openingMin,
+      closing_hour: closingHour,
+      closing_min: closingMin,
       categoryIds,
       featureIds
     }),
