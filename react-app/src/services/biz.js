@@ -1,5 +1,5 @@
 export const getBiz = async () => {
-  const response = await fetch("/api/biz/", {
+  const response = await fetch("/api/biz", {
     headers: {
       'Content-Type': 'application/json'
     }
@@ -8,7 +8,7 @@ export const getBiz = async () => {
 }
 
 export const postBiz = async (name, imageUrl, phoneNum, description, openingHour, openingMin, closingHour, closingMin, categoryIds, featureIds) => {
-  const response = await fetch("/api/biz/", {
+  const response = await fetch("/api/biz", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -30,7 +30,7 @@ export const postBiz = async (name, imageUrl, phoneNum, description, openingHour
 }
 
 export const postItem = async (name, description, imageUrl, bizId) => {
-  const response = await fetch(`/api/food/biz/${bizId}/`, {
+  const response = await fetch(`/api/food/biz/${bizId}`, {
     method: 'POST',
     headers: {
       "Content-Type": "application/json",
@@ -46,7 +46,7 @@ export const postItem = async (name, description, imageUrl, bizId) => {
 }
 
 export const editItem = async (name, description, imageUrl, bizId, foodId) => {
-  const response = await fetch(`/api/food/${foodId}/`, {
+  const response = await fetch(`/api/food/${foodId}`, {
     method: 'POST',
     headers: {
       "Content-Type": "application/json",
@@ -62,7 +62,7 @@ export const editItem = async (name, description, imageUrl, bizId, foodId) => {
 }
 
 export const getFoodById = async (foodId) => {
-  const response = await fetch(`/api/food/${foodId}/`, {
+  const response = await fetch(`/api/food/${foodId}`, {
     method: 'GET',
     headers: {
       "Content-Type": "application/json",
@@ -72,7 +72,7 @@ export const getFoodById = async (foodId) => {
 }
 
 export const deleteFood = async (foodId) => {
-  const response = await fetch(`/api/food/${foodId}/`, {
+  const response = await fetch(`/api/food/${foodId}`, {
     method: 'DELETE'
   });
   return await response.json();

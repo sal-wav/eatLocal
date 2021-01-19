@@ -44,7 +44,7 @@ def post_biz():
         return biz.to_dict()
     return {'errors': form.errors}, 422
 
-@biz_routes.route('/<int:id>/', methods=["GET", "POST", "DELETE"])
+@biz_routes.route('/<int:id>', methods=["GET", "POST", "DELETE"])
 @login_required
 def biz(id):
     biz = Business.query.get(id)
@@ -71,7 +71,7 @@ def biz(id):
         return {'errors': form.errors}, 422
     return {'errors': 'Only the owner can delete this biz.'}, 401
 
-@biz_routes.route('/search/<term>/', methods=["GET"])
+@biz_routes.route('/search/<term>', methods=["GET"])
 def biz_by_search(term):
     filtered_biz = Business.query.filter(Business.name.ilike(f'%{term}%')).all()
     biz_dict_list = [biz.to_dict() for biz in filtered_biz]

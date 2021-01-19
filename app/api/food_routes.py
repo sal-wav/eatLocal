@@ -13,7 +13,7 @@ def all_food():
     food = Food.query.all()
     return {"food": [food.to_dict() for item in food]}
 
-@food_routes.route('/<int:id>/', methods=['GET', 'POST', 'DELETE'])
+@food_routes.route('/<int:id>', methods=['GET', 'POST', 'DELETE'])
 def food_by_id(id):
     food = Food.query.get(id)
     if request.method == 'GET':
@@ -33,7 +33,7 @@ def food_by_id(id):
         db.session.commit()
         return food.to_dict()
 
-@food_routes.route('/biz/<int:id>/', methods=['GET', 'POST'])
+@food_routes.route('/biz/<int:id>', methods=['GET', 'POST'])
 def biz_menu(id):
     if request.method == 'GET':
         food = Food.query.filter_by(id)

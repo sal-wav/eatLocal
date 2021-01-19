@@ -8,7 +8,7 @@ const SearchResults = () => {
 
     useEffect(() => {
         (async () => {
-            let response = await fetch(`/api/biz/search/${term}/`);
+            let response = await fetch(`/api/biz/search/${term}`);
             response = await response.json();
             setResults(response.results)
             console.log(`results: ${JSON.stringify(response.results)}`)
