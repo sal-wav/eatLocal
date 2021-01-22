@@ -13,9 +13,30 @@ def reviews():
     reviews = Review.query.all()
     return {"reviews": [review.to_dict() for review in reviews]}
 
-@review_routes.route('/biz/<int:id>', methods=['POST', 'DELETE'])
+@review_routes.route('/biz/<int:id>', methods=['POST'])
 def reviews_by_biz(id):
     # form = ReviewForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        review = Review(
+            stars=form.data['stars'],
+            comment=form.data['comment'],
+            # timestamp=form.data['timestamp'],
+            user_id=form.data['user_id'],
+            business_id=form.data['business_id']
+        )
+        db.session.add(review)
+        db.session.commit()
+        return review.to_dict()
+
+@review_routes.route('/<int:id>', methods=['POST', 'DELETE'])
+def review_by_id(id):
+    review = Review.query.get(id)
+    if request.method == 'DELETE':
+        db.session.delete(review)
+        db.session.commit()
+        return {'message': 'Review has been deleted.'}
+    form = ReviewForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         review = Review(
