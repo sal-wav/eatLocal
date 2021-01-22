@@ -12,6 +12,7 @@ from .api.biz_routes import biz_routes
 from .api.category_routes import category_routes
 from .api.feature_routes import feature_routes
 from .api.food_routes import food_routes
+from .api.review_routes import review_routes
 
 from .seeds import seed_commands
 
@@ -39,11 +40,13 @@ app.register_blueprint(biz_routes, url_prefix='/api/biz')
 app.register_blueprint(category_routes, url_prefix='/api/category')
 app.register_blueprint(feature_routes, url_prefix='/api/feature')
 app.register_blueprint(food_routes, url_prefix='/api/food')
+app.register_blueprint(review_routes, url_prefix='/api/review')
 db.init_app(app)
 Migrate(app, db)
 
 # Application Security
 CORS(app)
+
 
 @app.before_request
 def https_redirect():
@@ -52,6 +55,7 @@ def https_redirect():
             url = request.url.replace('http://', 'https://', 1)
             code = 301
             return redirect(url, code=code)
+
 
 @app.after_request
 def inject_csrf_token(response):

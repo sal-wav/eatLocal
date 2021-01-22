@@ -5,7 +5,7 @@ from app.models import Business
 # from ..forms.review_form import ReviewForm
 from app.models.db import db
 
-review_routes = Blueprint('reviews', __name__)
+review_routes = Blueprint('review', __name__)
 
 
 @review_routes.route('/', methods=['GET'])
