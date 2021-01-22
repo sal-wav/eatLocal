@@ -35,9 +35,9 @@ def food_by_id(id):
 
 @food_routes.route('/biz/<int:id>', methods=['GET', 'POST'])
 def biz_menu(id):
-    if request.method == 'GET':
-        food = Food.query.filter_by(id)
-        return {"food": [food.to_dict() for item in food]}
+    # if request.method == 'GET':
+    #     food = Food.query.filter_by(id)
+    #     return {"food": [food.to_dict() for item in food]}
     form = FoodForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
