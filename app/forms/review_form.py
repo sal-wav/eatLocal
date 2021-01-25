@@ -7,5 +7,5 @@ class ReviewForm(FlaskForm):
     stars = IntegerField('stars', validators=[DataRequired()])
     comment = StringField('comment')
     timestamp = DateTimeField('timestamp')
-    user_id = IntegerField('user_id')
+    user_id = IntegerField('user_id', validators=[DataRequired()])
     business_id = IntegerField('business_id', validators=[DataRequired()])

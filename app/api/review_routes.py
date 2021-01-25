@@ -2,7 +2,7 @@ from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.models import Review
 from app.models import Business
-# from ..forms.review_form import ReviewForm
+from ..forms.review_form import ReviewForm
 from app.models.db import db
 
 review_routes = Blueprint('review', __name__)
@@ -22,7 +22,7 @@ def reviews_by_biz(id):
             stars=form.data['stars'],
             comment=form.data['comment'],
             # timestamp=form.data['timestamp'],
-            user_id=form.data['user_id'],
+            user_id=current_user.id,
             business_id=form.data['business_id']
         )
         db.session.add(review)
@@ -43,7 +43,7 @@ def review_by_id(id):
             stars=form.data['stars'],
             comment=form.data['comment'],
             # timestamp=form.data['timestamp'],
-            user_id=form.data['user_id'],
+            user_id=current_user.id,
             business_id=form.data['business_id']
         )
         db.session.add(review)

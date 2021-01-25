@@ -82,7 +82,7 @@ def biz(id):
 def biz_by_search(term):
     filtered_biz = Business.query.filter(Business.name.ilike(f'%{term}%')).all()
     biz_dict_list = [biz.to_dict() for biz in filtered_biz]
-    print(f'first biz_dict_list: %{biz_dict_list}')
+    # print(f'first biz_dict_list: %{biz_dict_list}')
     results = [{'biz': biz.to_dict(), 'categories': [category.to_dict() for category in biz.categories], 'features': [feature.to_dict() for feature in biz.features]} for biz in filtered_biz]
     food = Food.query.filter(Food.name.ilike(f'%{term}%')).all()
     for item in food:

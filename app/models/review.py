@@ -16,7 +16,7 @@ class Review(db.Model):
     business_id = db.Column(db.Integer, db.ForeignKey('businesses.id'))
 
     user = db.relationship('User', back_populates='reviews')
-
+    reviewedBusiness = db.relationship('Business', back_populates='reviews')
 
 
     def to_dict(self):

@@ -35,7 +35,11 @@ class Business(db.Model):
     categories = db.relationship('Category', secondary=associations)
     features = db.relationship('Feature', secondary=biz_features)
     food = db.relationship('Food', back_populates='business')
+    reviews = db.relationship('Review', back_populates='reviewedBusiness')
 
+    def avg_rating():
+      ratings = [review.stars for review in self.reviews]
+      return sum(ratings) / len(ratings)
 
     def to_dict(self):
       return {
@@ -49,4 +53,5 @@ class Business(db.Model):
         "closing_hour": self.closing_hour,
         "closing_min": self.closing_min,
         "user_id": self.user_id,
+        "review_count": len(self.reviews)
       }
