@@ -11,9 +11,9 @@ class Review(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     stars = db.Column(db.Integer, nullable = False)
     comment = db.Column(db.String(255))
-    timestamp = db.Column(db.DateTime, default=datetime.now())
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     business_id = db.Column(db.Integer, db.ForeignKey('businesses.id'))
+    timestamp = db.Column(db.DateTime, default=datetime.now())
 
     user = db.relationship('User', back_populates='reviews')
     reviewedBusiness = db.relationship('Business', back_populates='reviews')
