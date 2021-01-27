@@ -70,7 +70,6 @@ const FoodForm = () => {
             </div>
         </div>
     );
-
 }
 
 export default FoodForm;

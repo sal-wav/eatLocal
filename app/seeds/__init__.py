@@ -4,6 +4,7 @@ from .users import seed_users, undo_users
 # from .features import seed_features, undo_features
 from .businesses import seed_businesses, undo_businesses
 from .food import seed_food, undo_food
+from .reviews import seed_reviews, undo_reviews
 
 
 # Creates a seed group to hold our commands
@@ -18,6 +19,7 @@ def seed():
     # seed_features()
     seed_businesses()
     seed_food()
+    seed_reviews()
     # Add other seed functions here
 
 # Creates the `flask seed undo` command
