@@ -13,25 +13,32 @@ def reviews():
     reviews = Review.query.all()
     return {"reviews": [review.to_dict() for review in reviews]}
 
+# @review_routes.route('/<int:id>', methods=['GET'])
+# def review_by_id(id):
+#     review = Review.query.get(id)
+#     return review.to_dict()
+
 @review_routes.route('/biz/<int:id>', methods=['POST'])
 def reviews_by_biz(id):
-    # form = ReviewForm()
+    form = ReviewForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         review = Review(
             stars=form.data['stars'],
             comment=form.data['comment'],
-            # timestamp=form.data['timestamp'],
             user_id=current_user.id,
-            business_id=form.data['business_id']
+            business_id=id
         )
         db.session.add(review)
         db.session.commit()
         return review.to_dict()
 
-@review_routes.route('/<int:id>', methods=['POST', 'DELETE'])
+
+@review_routes.route('/<int:id>', methods=['GET', 'POST', 'DELETE'])
 def review_by_id(id):
     review = Review.query.get(id)
+    if request.method == 'GET':
+        return review.to_dict()
     if request.method == 'DELETE':
         db.session.delete(review)
         db.session.commit()
@@ -39,13 +46,9 @@ def review_by_id(id):
     form = ReviewForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        review = Review(
-            stars=form.data['stars'],
-            comment=form.data['comment'],
-            # timestamp=form.data['timestamp'],
-            user_id=current_user.id,
-            business_id=form.data['business_id']
-        )
-        db.session.add(review)
+        review.stars=form.data['stars'],
+        review.comment=form.data['comment'],
+        user_id=current_user.id
+
         db.session.commit()
         return review.to_dict()

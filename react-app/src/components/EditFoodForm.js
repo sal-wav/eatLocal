@@ -17,7 +17,7 @@ const EditFoodForm = () => {
     useEffect(() => {
         (async () => {
             const response = await getFoodById(foodId);
-            console.log(`food: ${JSON.stringify(response)}`)
+            // console.log(`food: ${JSON.stringify(response)}`)
             setName(response.food.name);
             setDescription(response.food.description);
             setImageUrl(response.food.image_url);

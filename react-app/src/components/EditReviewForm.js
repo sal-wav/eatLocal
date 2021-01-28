@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Redirect, useParams, NavLink } from "react-router-dom";
 import { bizInfo } from "../services/categoryFeature";
-import { postReview } from "../services/biz";
+import { getReview, editReview } from "../services/biz";
 import "./styles/form.css";
 
-const ReviewForm = () => {
-    const {bizId} = useParams();
+const EditReviewForm = () => {
+    const {reviewId} = useParams();
+    // const {bizId} = useParams();
+    const [bizId, setBizId] = useState(null);
     const [biz, setBiz] = useState(null);
     const [reviews, setReviews] = useState([]);
     const [selectedRating, setSelectedRating] = useState(0);
@@ -18,11 +20,18 @@ const ReviewForm = () => {
 
     useEffect(() => {
         (async () => {
-            const response = await bizInfo(bizId);
-            setBiz(response.biz);
-            setReviews(response.reviews);
+
+            const reviewRes = await getReview(reviewId);
+            setSelectedRating(reviewRes.stars);
+            setHoverRating(reviewRes.stars);
+            setComment(reviewRes.comment);
+            setBizId(reviewRes.business_id);
+
+            // const response = await bizInfo(bizId);
+            // setBiz(response.biz);
+            // setReviews(response.reviews);
         })();
-    }, [bizId]);
+    }, [reviewId]);
 
     useEffect(() => {
         if (hoverRating === 0) {
@@ -38,7 +47,6 @@ const ReviewForm = () => {
         } else if (hoverRating === 5) {
             setRatingClass("fiveStar starBtn")
         };
-        // console.log(`here it is: ${hoverRating}`)
     }, [hoverRating])
 
     const handleSelectedRating = (n) => {
@@ -56,7 +64,7 @@ const ReviewForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (selectedRating === 0) alert("Please select a rating");
-        await postReview(selectedRating, comment, parseInt(bizId));
+        await editReview(selectedRating, comment, bizId, reviewId);
         setRedirect(`/biz/${bizId}`);
     };
 
@@ -64,12 +72,12 @@ const ReviewForm = () => {
         return <Redirect to={redirect} />;
     }
 
-    return biz && (
-        <div>
-            <div>
+    return selectedRating && (
+        <div className="authPage container">
+            <div className="authFormContainer container">
                 <div>
                     <form className="reviewForm" onSubmit={handleSubmit}>
-                        <h1>{biz.name}</h1>
+                        {/* <h1>{biz.name}</h1> */}
                         <div>
                             <div className="rate container" onMouseLeave={handleHoverLeave}>
                                 {nums.map(n => (
@@ -79,7 +87,10 @@ const ReviewForm = () => {
                                 <textarea value={comment} onChange={(e) => setComment(e.target.value)} className="reviewInput" required></textarea>
                             </div>
                         </div>
-                        <button className="btn" type="submit">Post Review</button>
+                        <div id="foodFormBtns">
+                            <NavLink className="navLink navbarLink" to={`/biz/${bizId}`}>Cancel</NavLink>
+                            <button className="btn" type="submit">Post Review</button>
+                        </div>
                     </form>
                 </div>
                 <div>
@@ -90,4 +101,4 @@ const ReviewForm = () => {
     );
 }
 
-export default ReviewForm
+export default EditReviewForm

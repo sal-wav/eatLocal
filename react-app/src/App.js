@@ -16,6 +16,7 @@ import HomePage from "./components/HomePage";
 import SearchResults from "./components/SearchResults";
 import Footer from "./components/Footer";
 import ReviewForm from "./components/ReviewForm";
+import EditReviewForm from "./components/EditReviewForm";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -86,6 +87,10 @@ function App() {
       <ProtectedRoute path="/reviewform/biz/:bizId" exact={true} authenticated={authenticated}>
         <NavBar authenticated={authenticated} setAuthenticated={setAuthenticated} />
         <ReviewForm />
+      </ProtectedRoute>
+      <ProtectedRoute path="/reviewform/biz/:bizId/review/:reviewId" exact={true} authenticated={authenticated}>
+        <NavBar authenticated={authenticated} setAuthenticated={setAuthenticated} />
+        <EditReviewForm />
       </ProtectedRoute>
       <Footer/>
     </BrowserRouter>

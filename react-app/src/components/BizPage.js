@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, NavLink, useHistory } from 'react-router-dom';
 import { bizInfo } from '../services/categoryFeature';
-import { deleteFood } from '../services/biz';
+import { deleteFood, deleteReview } from '../services/biz';
 import "./styles/bizPage.css";
 
 const BizPage = (props) => {
@@ -29,7 +29,7 @@ const BizPage = (props) => {
             setCategories(catList);
             setDeleting(false);
 
-            console.log(`reviews: ${JSON.stringify(response.reviews)}`)
+            // console.log(`reviews: ${JSON.stringify(response.reviews)}`)
         })();
     }, [bizId, deleting]);
 
@@ -39,6 +39,15 @@ const BizPage = (props) => {
 
     const handleDeleteFood = async (e) => {
         await deleteFood(e.currentTarget.value);
+        setDeleting(true)
+    }
+
+    const handleEditReview = (e) => {
+        history.push(`/reviewform/biz/${bizId}/review/${e.currentTarget.value}`)
+    }
+
+    const handleDeleteReview = async (e) => {
+        await deleteReview(e.currentTarget.value);
         setDeleting(true)
     }
 
@@ -114,14 +123,14 @@ const BizPage = (props) => {
                                 <div className="itemContainer card" key={review.id}>
                                     <div>
                                         <div>
-                                            <span><i class="fas fa-user-circle"></i></span>
+                                            <span><i className="fas fa-user-circle"></i></span>
                                         </div>
                                         {/* TO DO!!!!!!!!
                                         ADD VALUE AND ONCLICK TO REVIEW BUTTONS */}
                                         { currentUser.id === review.user_id ?
                                         <div className="container">
-                                            <button className="btn foodBtn" type="button"><i className="far fa-edit"></i></button>
-                                            <button className="trash btn foodBtn" type="button"><i className="fas fa-trash-alt"></i></button>
+                                            <button className="btn foodBtn" type="button" value={review.id} onClick={handleEditReview}><i className="far fa-edit"></i></button>
+                                            <button className="trash btn foodBtn" type="button" value={review.id} onClick={handleDeleteReview}><i className="far fa-fas fa-trash-alt"></i></button>
                                         </div>
                                         : null
                                         }

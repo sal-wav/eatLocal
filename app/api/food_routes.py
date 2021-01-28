@@ -28,7 +28,6 @@ def food_by_id(id):
         food.name=form.data['name'],
         food.description=form.data['description'],
         food.image_url=form.data['image_url'],
-        food.business_id=form.data['business_id']
         # db.session.add(food)
         db.session.commit()
         return food.to_dict()
