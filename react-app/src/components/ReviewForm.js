@@ -24,23 +24,6 @@ const ReviewForm = () => {
         })();
     }, [bizId]);
 
-    useEffect(() => {
-        if (hoverRating === 0) {
-            setRatingClass("starBtn")
-        } else if (hoverRating === 1) {
-            setRatingClass("oneStar starBtn")
-        } else if (hoverRating === 2) {
-            setRatingClass("twoStar starBtn")
-        } else if (hoverRating === 3) {
-            setRatingClass("threeStar starBtn")
-        } else if (hoverRating === 4) {
-            setRatingClass("fourStar starBtn")
-        } else if (hoverRating === 5) {
-            setRatingClass("fiveStar starBtn")
-        };
-        // console.log(`here it is: ${hoverRating}`)
-    }, [hoverRating])
-
     const handleSelectedRating = (n) => {
         setSelectedRating(n);
     };
@@ -71,9 +54,9 @@ const ReviewForm = () => {
                     <form className="reviewForm" onSubmit={handleSubmit}>
                         <h1>{biz.name}</h1>
                         <div>
-                            <div className="rate container" onMouseLeave={handleHoverLeave}>
+                            <div className="container" onMouseLeave={handleHoverLeave}>
                                 {nums.map(n => (
-                                    <div onMouseOver={() => handleRatingHover(n)} onClick={() => handleSelectedRating(n)} className={hoverRating >= n ? ratingClass : "starBtn"}><i className="fas fa-star fa-2x"></i></div>
+                                    <div onMouseOver={() => handleRatingHover(n)} onClick={() => handleSelectedRating(n)} className={hoverRating >= n ? `star${hoverRating} starBtn star` : "starBtn star"}><i className="fas fa-star fa-2x"></i></div>
                                 ))}
                                 <h3>Select your rating</h3>
                                 <textarea value={comment} onChange={(e) => setComment(e.target.value)} className="reviewInput" required></textarea>

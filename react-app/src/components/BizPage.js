@@ -15,6 +15,7 @@ const BizPage = (props) => {
     const [reviews, setReviews] = useState([]);
 
     const [deleting, setDeleting] = useState(false);
+    const nums = [1, 2, 3, 4, 5];
 
     useEffect(() => {
         (async () => {
@@ -117,16 +118,24 @@ const BizPage = (props) => {
                             <h1>Reviews</h1>
 
                         </div>
-
+                        <div>
+                            <span><i className="fas fa-user-circle"></i></span>
+                            <p>{currentUser.username}</p>
+                            <NavLink to={`/reviewform/biz/${bizId}`}>Start your review of {biz.name}</NavLink>
+                        </div>
                         <div className="menuContainer container">
                             {reviews.map((review) => (
                                 <div className="itemContainer card" key={review.id}>
                                     <div>
                                         <div>
                                             <span><i className="fas fa-user-circle"></i></span>
+                                            <p>{review.user.username}</p>
                                         </div>
-                                        {/* TO DO!!!!!!!!
-                                        ADD VALUE AND ONCLICK TO REVIEW BUTTONS */}
+                                        <div className="container">
+                                            {nums.map(n => (
+                                                <div className={n <= review.stars ? `star${review.stars} smallStars star`: "zeroStar smallStars star"}><i className="fas fa-star"></i></div>
+                                            ))}
+                                        </div>
                                         { currentUser.id === review.user_id ?
                                         <div className="container">
                                             <button className="btn foodBtn" type="button" value={review.id} onClick={handleEditReview}><i className="far fa-edit"></i></button>
