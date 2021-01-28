@@ -22,13 +22,14 @@ const BizPage = (props) => {
             setBiz(response.biz);
             setFeatures(response.features);
             setFood(response.food);
+            setReviews(response.reviews);
             let catList = [];
             response.categories.map(category =>
                 catList.push(category.name))
             setCategories(catList);
-            setReviews(response.reviews);
             setDeleting(false);
-            // console.log(`food: ${JSON.stringify(response.food)}`)
+
+            console.log(`reviews: ${JSON.stringify(response.reviews)}`)
         })();
     }, [bizId, deleting]);
 
@@ -103,30 +104,34 @@ const BizPage = (props) => {
                                 </div>
                             ))}
                         </div>
-                        <div id="menuHead" className="container sectionBorder">
+                        <div id="reviewHead" className="container sectionBorder">
                             <h1>Reviews</h1>
 
                         </div>
-                        <div className="reviewsContainer container">
-                            {reviews.map((review) => {
+
+                        <div className="menuContainer container">
+                            {reviews.map((review) => (
                                 <div className="itemContainer card" key={review.id}>
-                                <div>
-                                    {/* TO DO!!!!!!!!
-                                    ADD VALUE AND ONCLICK TO REVIEW BUTTONS */}
-                                    { currentUser.id === review.user_id ?
-                                    <div className="container">
-                                        <button className="btn foodBtn" type="button"><i className="far fa-edit"></i></button>
-                                        <button className="trash btn foodBtn" type="button"><i className="fas fa-trash-alt"></i></button>
+                                    <div>
+                                        <div>
+                                            <span><i class="fas fa-user-circle"></i></span>
+                                        </div>
+                                        {/* TO DO!!!!!!!!
+                                        ADD VALUE AND ONCLICK TO REVIEW BUTTONS */}
+                                        { currentUser.id === review.user_id ?
+                                        <div className="container">
+                                            <button className="btn foodBtn" type="button"><i className="far fa-edit"></i></button>
+                                            <button className="trash btn foodBtn" type="button"><i className="fas fa-trash-alt"></i></button>
+                                        </div>
+                                        : null
+                                        }
+                                        <h3 className="foodName">{review.comment}</h3>
                                     </div>
-                                    : null
-                                    }
 
-                                    <h3 className="">{review.comment}</h3>
                                 </div>
-
-                            </div>
-                            })}
+                            ))}
                         </div>
+
                     </div>
 
 
