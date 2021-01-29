@@ -61,10 +61,13 @@
 .catList {
     max-width: 500px;
     overflow: ellipsis;
+    margin: 7px 0;
 }
 
 .listItem {
     display: inline;
+    color: grey;
+    font-size: 14px;
 }
 
 .previewText {

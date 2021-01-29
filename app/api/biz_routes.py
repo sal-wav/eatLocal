@@ -90,6 +90,6 @@ def biz_by_search(term):
         biz_dict = biz.to_dict()
         if biz_dict not in biz_dict_list:
             biz_dict_list.append(biz_dict)
-            results.append({'biz': biz_dict, 'categories': [category.to_dict() for category in biz.categories], 'features': [feature.to_dict() for feature in biz.features]})
+            results.append({'biz': biz_dict, "avg_rating": biz.avg_rating(), 'categories': [category.to_dict() for category in biz.categories], 'features': [feature.to_dict() for feature in biz.features]})
     print(results)
     return {'results': results}

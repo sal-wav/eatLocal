@@ -70,7 +70,7 @@ const BizPage = (props) => {
                             <h1 id="bizpageHead">{biz.name}</h1>
                             <div className="totalReviews container">
                                 {nums.map(n => (
-                                    <div className={n <= avgRating ? `star${Math.round(avgRating)} medStar star` : "zeroStar medStar star"}><i className="fas fa-star fa-med"></i></div>
+                                    <div key={n} className={n <= avgRating ? `star${Math.round(avgRating)} medStar star` : "zeroStar medStar star"}><i className="fas fa-star fa-med"></i></div>
                                 ))}
                                 <h3>{biz.review_count} reviews</h3>
                             </div>

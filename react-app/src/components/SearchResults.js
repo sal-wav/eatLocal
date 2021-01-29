@@ -5,6 +5,7 @@ import "./styles/searchResults.css";
 const SearchResults = () => {
     const { term } = useParams()
     const [results, setResults] = useState([]);
+    const nums = [1, 2, 3, 4, 5];
 
     useEffect(() => {
         (async () => {
@@ -31,18 +32,26 @@ const SearchResults = () => {
                             </div>
                             <div className="searchPreview container">
                                 <NavLink className="navLink resultLink previewText" to={`/biz/${result.biz.id}`}>{result.biz.name}</NavLink>
+
+                                <div className="totalReviews container">
+                                    {nums.map(n => (
+                                        <div key={n} className={n <= result.avg_rating ? `star${Math.round(result.avg_rating)} medStar star` : "zeroStar medStar star"}><i className="fas fa-star fa-med"></i></div>
+                                    ))}
+                                    <h3>{result.biz.review_count} reviews</h3>
+                                </div>
+
                                 <ul className="catList previewText">{result.categories.map(category => (
-                                    <li className="listItem" key={category.id}>- {category.name} </li>
+                                    <li className="listItem" key={category.id}>• {category.name} </li>
                                 ))}</ul>
                                 <div className="previewText container">
                                 {result.features.map(feature => (
                                     <div className="feat container" key={feature.id}>
-                                        <i class="fas fa-check"></i>
+                                        <i className="fas fa-check"></i>
                                         <p>{feature.name}</p>
                                     </div>
                                 ))}
                                 </div>
-                                <p class="previewText">{result.biz.description}</p>
+                                {/* <p className="previewText">{result.biz.description}</p> */}
                             </div>
                         </div>
                     ))}
