@@ -18,7 +18,11 @@ const HomePage = () => {
         return 'loading'
     }
 
-    return bizFeed && (
+    return (!bizFeed) ? (
+        <div className="page container">
+            <img alt="" id="loadingGif" src="https://eatlocalapp.s3.amazonaws.com/Spin-1s-243px.gif"></img>
+        </div>
+    ) : (
         <div className="page">
             <div className="featuredBizContainer">
                 <h1 id="homeHead">Find the best food in town</h1>

@@ -6,17 +6,22 @@ const SearchResults = () => {
     const { term } = useParams()
     const [results, setResults] = useState([]);
     const nums = [1, 2, 3, 4, 5];
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         (async () => {
             let response = await fetch(`/api/biz/search/${term}`);
             response = await response.json();
-            setResults(response.results)
-            console.log(`results: ${JSON.stringify(response.results)}`)
+            setResults(response.results);
+            setIsLoading(false);
         })()
     }, [term])
 
-    return (
+    return (isLoading) ? (
+        <div className="page container">
+            <img alt="" id="loadingGif" src="https://eatlocalapp.s3.amazonaws.com/Spin-1s-243px.gif"></img>
+        </div>
+    ) : (
         <div className="searchPage container">
             <div className="resultsPage">
                 <h2 id="searchHead">{`"${term}" in Your Neighborhood`}</h2>

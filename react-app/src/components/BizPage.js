@@ -54,9 +54,13 @@ const BizPage = (props) => {
         setDeleting(true)
     }
 
-    if (!biz || !features) return 'loading';
+    // if (!biz || !features) return 'loading';
 
-    return (!biz || !features) ? 'loading' : (
+    return (!biz || !features || !currentUser) ? (
+        <div className="page container">
+            <img alt="" id="loadingGif" src="https://eatlocalapp.s3.amazonaws.com/Spin-1s-243px.gif"></img>
+        </div>
+    ) : (
 
             <div className="pageContainer">
                 <div className="photoHeader">

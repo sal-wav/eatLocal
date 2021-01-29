@@ -57,8 +57,6 @@ const EditFoodForm = () => {
         return <Redirect to={redirect} />;
     }
 
-    console.log(`info: ${name}, ${description}, ${imageUrl}, ${bizId}`)
-
     return (
         <div className="authPage container">
             <div className="authFormContainer container">
