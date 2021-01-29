@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Redirect, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 // import { useDropzone } from "react-dropzone";
 import { postBiz } from "../services/biz";
 import { getCategories, getFeatures } from "../services/categoryFeature";
@@ -7,7 +7,6 @@ import "./styles/form.css"
 
 const BizForm = () => {
     const history = useHistory();
-    const [redirect, setRedirect] = useState(null);
     const [categories, setCategories] = useState([]);
     const [features, setFeatures] = useState([]);
     const [name, setName] = useState("");
@@ -68,8 +67,6 @@ const BizForm = () => {
     };
 
     if (!categories || !features) return "loading";
-
-    // console.log(`open: ${open}`)
 
     return (
         <div id="formpageContainer" className="pageContainer">

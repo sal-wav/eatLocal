@@ -8,7 +8,7 @@ const LandingPage = () => {
         <div className='pageContainer'>
           <div className='landingContainer'>
             <div className='imgContainer'>
-                <img className='landingImg' src='https://eatlocalapp.s3.amazonaws.com/burger.jpg'></img>
+                <img alt='' className='landingImg' src='https://eatlocalapp.s3.amazonaws.com/burger.jpg'></img>
             </div>
             <div className='landingRight'>
               <div className='rightContainer'>

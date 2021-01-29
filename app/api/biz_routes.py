@@ -6,9 +6,9 @@ from app.models import Feature
 from app.models import Food
 from ..forms.biz_form import BizForm
 from app.models.db import db
-from yelpapi import YelpAPI
-import os
-yelp_api = YelpAPI(os.environ.get("YELP_API_KEY"))
+# from yelpapi import YelpAPI
+# import os
+# yelp_api = YelpAPI(os.environ.get("YELP_API_KEY"))
 
 biz_routes = Blueprint('biz', __name__)
 
@@ -81,8 +81,7 @@ def biz(id):
 def biz_by_search(term):
     filtered_biz = Business.query.filter(Business.name.ilike(f'%{term}%')).all()
     biz_dict_list = [biz.to_dict() for biz in filtered_biz]
-    # print(f'first biz_dict_list: %{biz_dict_list}')
-    results = [{'biz': biz.to_dict(), 'categories': [category.to_dict() for category in biz.categories], 'features': [feature.to_dict() for feature in biz.features]} for biz in filtered_biz]
+    results = [{'biz': biz.to_dict(), 'avg_rating': biz.avg_rating(), 'categories': [category.to_dict() for category in biz.categories], 'features': [feature.to_dict() for feature in biz.features]} for biz in filtered_biz]
     food = Food.query.filter(Food.name.ilike(f'%{term}%')).all()
     for item in food:
         id = item.business_id
@@ -90,6 +89,6 @@ def biz_by_search(term):
         biz_dict = biz.to_dict()
         if biz_dict not in biz_dict_list:
             biz_dict_list.append(biz_dict)
-            results.append({'biz': biz_dict, "avg_rating": biz.avg_rating(), 'categories': [category.to_dict() for category in biz.categories], 'features': [feature.to_dict() for feature in biz.features]})
+            results.append({'biz': biz_dict, 'avg_rating': biz.avg_rating(), 'categories': [category.to_dict() for category in biz.categories], 'features': [feature.to_dict() for feature in biz.features]})
     print(results)
     return {'results': results}

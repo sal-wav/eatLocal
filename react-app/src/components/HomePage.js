@@ -26,7 +26,7 @@ const HomePage = () => {
                 {bizFeed.map((biz) => (
                     <div className='card' key={biz.biz.id}>
                         <div>
-                            <img className='feedImg' src={biz.biz.image_url}></img>
+                            <img alt='' className='feedImg' src={biz.biz.image_url}></img>
                         </div>
                         <div className='cardBody'>
                             <NavLink className='navLink homeLink' to={`/biz/${biz.biz.id}`}>{biz.biz.name}</NavLink>

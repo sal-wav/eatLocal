@@ -32,7 +32,7 @@ const BizPage = (props) => {
             setCategories(catList);
             setDeleting(false);
 
-            console.log(`avg rating: ${JSON.stringify(response.avg_rating)}`)
+            // console.log(`avg rating: ${JSON.stringify(response.avg_rating)}`)
         })();
     }, [bizId, deleting]);
 
@@ -70,7 +70,7 @@ const BizPage = (props) => {
                             <h1 id="bizpageHead">{biz.name}</h1>
                             <div className="totalReviews container">
                                 {nums.map(n => (
-                                    <div key={n} className={n <= avgRating ? `star${Math.round(avgRating)} medStar star` : "zeroStar medStar star"}><i className="fas fa-star fa-med"></i></div>
+                                    <div key={`bigStar${n}`} className={n <= avgRating ? `star${Math.round(avgRating)} medStar star` : "zeroStar medStar star"}><i className="fas fa-star fa-med"></i></div>
                                 ))}
                                 <h3>{biz.review_count} reviews</h3>
                             </div>
@@ -135,7 +135,7 @@ const BizPage = (props) => {
                         </div>
                         <div className="reviewsContainer container">
                             {reviews.map((review) => (
-                                <div className="container">
+                                <div key={review.id} className="container">
                                     <div className="review sectionBorder" key={review.id}>
                                         <div className="reviewHead container">
                                             <div className="container">
@@ -145,7 +145,7 @@ const BizPage = (props) => {
 
                                             <div className="container">
                                                 {nums.map(n => (
-                                                    <div className={n <= review.stars ? `star${review.stars} smallStar star`: "zeroStar smallStar star"}><i className="fas fa-star fa-xs"></i></div>
+                                                    <div key={`star${n}`} className={n <= review.stars ? `star${review.stars} smallStar star`: "zeroStar smallStar star"}><i className="fas fa-star fa-xs"></i></div>
                                                 ))}
                                             </div>
                                         </div>

@@ -28,7 +28,7 @@ const SearchResults = () => {
                     {results.map((result) => (
                         <div className="card searchCard container" key={result.biz.id}>
                             <div className="searchImgContainer">
-                                <img className="searchImg" src={result.biz.image_url}></img>
+                                <img alt="" className="searchImg" src={result.biz.image_url}></img>
                             </div>
                             <div className="searchPreview container">
                                 <NavLink className="navLink resultLink previewText" to={`/biz/${result.biz.id}`}>{result.biz.name}</NavLink>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NavLink, useHistory, Redirect } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import "./styles/navbar.css";
 
@@ -10,16 +10,7 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     history.push(`/search/${value}`)
-    // return (
-    //   // <Redirect to={`search/${value}`}/>
-    // )
   }
-
-  // if (!authenticated) return (
-  //   <nav id="loggedoutNav" className="nav">
-  //     <NavLink className="navLink navbarLink" to="/" exact={true}>eat Local</NavLink>
-  //   </nav>
-  // )
 
   return (
     <nav className="nav">
@@ -30,7 +21,6 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
           </NavLink>
         </li>
         <li className="middle">
-          {/* <SearchInput/> */}
           <>
             <form className="searchForm" onSubmit={handleSubmit}>
               <input className="searchInput" type="search" value={value} placeholder="In the mood for ..." onChange={(e) => setValue(e.target.value)}></input>
