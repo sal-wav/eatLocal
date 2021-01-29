@@ -37,7 +37,7 @@ class Business(db.Model):
     food = db.relationship('Food', back_populates='business')
     reviews = db.relationship('Review', back_populates='reviewedBusiness')
 
-    def avg_rating():
+    def avg_rating(self):
       ratings = [review.stars for review in self.reviews]
       return sum(ratings) / len(ratings)
 

@@ -12,13 +12,12 @@ yelp_api = YelpAPI(os.environ.get("YELP_API_KEY"))
 
 biz_routes = Blueprint('biz', __name__)
 
-def yelp_test():
-    response = yelp_api.search_query(term='convenience stores', longitude=-122.42058, latitude=37.80587, sort_by='rating', limit=15)
-    print(response)
+# def yelp_test():
+#     response = yelp_api.search_query(term='convenience stores', longitude=-122.42058, latitude=37.80587, sort_by='rating', limit=15)
+#     print(response)
 
 @biz_routes.route('/', methods=['GET'])
 def businesses():
-    # yelp_test()
     businesses = Business.query.all()
     return {"results": [{"biz": biz.to_dict(), "features": [feature.to_dict() for feature in biz.features]} for biz in businesses]}
     # return {"biz": [biz.to_dict() for biz in businesses]}

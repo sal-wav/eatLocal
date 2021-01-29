@@ -8,6 +8,7 @@ const BizPage = (props) => {
     const history = useHistory();
     const { currentUser } = props;
     const { bizId } = useParams();
+    const [avgRating, setAvgRating] = useState(null);
     const [features, setFeatures] = useState(null);
     const [categories, setCategories] = useState([]);
     const [biz, setBiz] = useState(null);
@@ -24,13 +25,14 @@ const BizPage = (props) => {
             setFeatures(response.features);
             setFood(response.food);
             setReviews(response.reviews);
+            setAvgRating(response.avg_rating);
             let catList = [];
             response.categories.map(category =>
                 catList.push(category.name))
             setCategories(catList);
             setDeleting(false);
 
-            // console.log(`reviews: ${JSON.stringify(response.reviews)}`)
+            console.log(`avg rating: ${JSON.stringify(response.avg_rating)}`)
         })();
     }, [bizId, deleting]);
 
@@ -55,7 +57,7 @@ const BizPage = (props) => {
     if (!biz || !features) return 'loading';
 
     return (!biz || !features) ? 'loading' : (
-        // <div className="pageContainer">
+
             <div className="pageContainer">
                 <div className="photoHeader">
                     <div className="photos container">
@@ -66,8 +68,14 @@ const BizPage = (props) => {
                     <div className="aboutContainer container">
                         <div className="about container">
                             <h1 id="bizpageHead">{biz.name}</h1>
-                            <div className="catContainer container">
-                                <p>{categories.join(", ")}</p>
+                            <div className="totalReviews container">
+                                {nums.map(n => (
+                                    <div className={n <= avgRating ? `star${Math.round(avgRating)} medStar star` : "zeroStar medStar star"}><i className="fas fa-star fa-med"></i></div>
+                                ))}
+                                <h3>{biz.review_count} reviews</h3>
+                            </div>
+                            <div className="container">
+                                <p className="categories">{categories.join(", ")}</p>
                             </div>
                             <h3>{`${biz.opening_hour}:${biz.opening_min} - ${biz.closing_hour}:${biz.closing_min}`}</h3>
                         </div>
@@ -118,34 +126,38 @@ const BizPage = (props) => {
                             <h1>Reviews</h1>
 
                         </div>
-                        <div>
-                            <span><i className="fas fa-user-circle"></i></span>
-                            <p>{currentUser.username}</p>
-                            <NavLink to={`/reviewform/biz/${bizId}`}>Start your review of {biz.name}</NavLink>
+                        <div className="startReviewContainer">
+                            <div id='currentUserContainer'><i className="fas fa-user-circle fa-4x"></i></div>
+                            <h3 className="reviewUser">{currentUser.username}</h3>
+                            <div>
+                                <NavLink className="navLink reviewLink" to={`/reviewform/biz/${bizId}`}>Start your review of {biz.name}</NavLink>
+                            </div>
                         </div>
-                        <div className="menuContainer container">
+                        <div className="reviewsContainer container">
                             {reviews.map((review) => (
-                                <div className="itemContainer card" key={review.id}>
-                                    <div>
-                                        <div>
-                                            <span><i className="fas fa-user-circle"></i></span>
-                                            <p>{review.user.username}</p>
-                                        </div>
-                                        <div className="container">
-                                            {nums.map(n => (
-                                                <div className={n <= review.stars ? `star${review.stars} smallStars star`: "zeroStar smallStars star"}><i className="fas fa-star"></i></div>
-                                            ))}
-                                        </div>
-                                        { currentUser.id === review.user_id ?
-                                        <div className="container">
-                                            <button className="btn foodBtn" type="button" value={review.id} onClick={handleEditReview}><i className="far fa-edit"></i></button>
-                                            <button className="trash btn foodBtn" type="button" value={review.id} onClick={handleDeleteReview}><i className="far fa-fas fa-trash-alt"></i></button>
-                                        </div>
-                                        : null
-                                        }
-                                        <h3 className="foodName">{review.comment}</h3>
-                                    </div>
+                                <div className="container">
+                                    <div className="review sectionBorder" key={review.id}>
+                                        <div className="reviewHead container">
+                                            <div className="container">
+                                                <span><i className="fas fa-user-circle fa-4x"></i></span>
+                                                <h3 className="reviewUser">{review.user.username}</h3>
+                                            </div>
 
+                                            <div className="container">
+                                                {nums.map(n => (
+                                                    <div className={n <= review.stars ? `star${review.stars} smallStar star`: "zeroStar smallStar star"}><i className="fas fa-star fa-xs"></i></div>
+                                                ))}
+                                            </div>
+                                        </div>
+
+                                        <p className="comment">{review.comment}</p>
+                                    </div>
+                                    { currentUser.id === review.user_id ?
+                                    <div className="editReview container">
+                                        <button className="btn foodBtn" type="button" value={review.id} onClick={handleEditReview}><i className="far fa-edit"></i></button>
+                                        <button className="trash btn foodBtn" type="button" value={review.id} onClick={handleDeleteReview}><i className="far fa-fas fa-trash-alt"></i></button>
+                                    </div>
+                                    : null}
                                 </div>
                             ))}
                         </div>
@@ -177,7 +189,7 @@ const BizPage = (props) => {
                     </div>
                 </div>
             </div>
-        // </div>
+
     );
 }
 
