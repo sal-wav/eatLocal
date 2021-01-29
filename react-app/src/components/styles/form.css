@@ -179,12 +179,6 @@
     margin-right: 5px;
 }
 
-.starBtn {
-    height: 50px;
-    width: 50px;
-    border-radius: 16px;
-}
-
 .medStar {
     height: 32px;
     width: 32px;
@@ -226,4 +220,40 @@
 
 .star5 {
     background-color: #f43939;
+}
+
+#reviewForm {
+    width: 600px;
+    margin: 20px auto;
+}
+
+.reviewFormBorder {
+    border: 1px solid #bbbac0;
+    border-radius: 3px;
+    padding: 25px;
+    width: 575px;
+    height: 345px;
+    margin-bottom: 20px;
+}
+
+.formRating {
+    align-items: center;
+}
+
+#reviewTextArea {
+    width: 570px;
+    height: 280px;
+    resize: none;
+    overflow: auto;
+    border: none;
+    font-size: 16px;
+    font-weight: lighter;
+}
+
+#reviewTextArea:focus {
+    outline: none;
+}
+
+.grey {
+    color:#bbbac0;
 }

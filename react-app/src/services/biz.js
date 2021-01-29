@@ -102,7 +102,7 @@ export const postReview = async (selectedRating, comment, bizId) => {
   return await response.json();
 }
 
-export const editReview = async (selectedRating, comment, bizId, reviewId) => {
+export const editReview = async (selectedRating, comment, reviewId) => {
   const response = await fetch(`/api/review/${reviewId}`, {
     method: 'POST',
     headers: {
@@ -110,8 +110,7 @@ export const editReview = async (selectedRating, comment, bizId, reviewId) => {
     },
     body: JSON.stringify({
       stars: selectedRating,
-      comment,
-      business_id: bizId
+      comment
     })
   });
   return await response.json();

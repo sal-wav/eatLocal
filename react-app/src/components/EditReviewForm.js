@@ -6,14 +6,12 @@ import "./styles/form.css";
 
 const EditReviewForm = () => {
     const {reviewId} = useParams();
-    // const {bizId} = useParams();
     const [bizId, setBizId] = useState(null);
     const [biz, setBiz] = useState(null);
     const [reviews, setReviews] = useState([]);
     const [selectedRating, setSelectedRating] = useState(0);
     const [hoverRating, setHoverRating] = useState(0);
     const [comment, setComment] = useState("");
-    const [ratingClass, setRatingClass] = useState("starBtn");
     const [redirect, setRedirect] = useState("")
 
     const nums = [1, 2, 3, 4, 5];
@@ -27,9 +25,9 @@ const EditReviewForm = () => {
             setComment(reviewRes.comment);
             setBizId(reviewRes.business_id);
 
-            // const response = await bizInfo(bizId);
-            // setBiz(response.biz);
-            // setReviews(response.reviews);
+            const bizRes = await bizInfo(reviewRes.business_id);
+            setBiz(bizRes.biz);
+            setReviews(bizRes.reviews);
         })();
     }, [reviewId]);
 
@@ -48,7 +46,7 @@ const EditReviewForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (selectedRating === 0) alert("Please select a rating");
-        await editReview(selectedRating, comment, bizId, reviewId);
+        await editReview(selectedRating, comment, reviewId);
         setRedirect(`/biz/${bizId}`);
     };
 
@@ -56,31 +54,25 @@ const EditReviewForm = () => {
         return <Redirect to={redirect} />;
     }
 
-    return selectedRating && (
-        <div className="authPage container">
-            <div className="authFormContainer container">
-                <div>
-                    <form className="reviewForm" onSubmit={handleSubmit}>
-                        {/* <h1>{biz.name}</h1> */}
-                        <div>
-                            <div className="rate container" onMouseLeave={handleHoverLeave}>
-                                {nums.map(n => (
-                                    <div key={n} onMouseOver={() => handleRatingHover(n)} onClick={() => handleSelectedRating(n)} className={hoverRating >= n ? `star${hoverRating} starBtn star` : "starBtn star"}><i className="fas fa-star fa-2x"></i></div>
-                                ))}
-                                <h3>Select your rating</h3>
-                                <textarea value={comment} onChange={(e) => setComment(e.target.value)} className="reviewInput" required></textarea>
-                            </div>
-                        </div>
-                        <div id="foodFormBtns">
-                            <NavLink className="navLink navbarLink" to={`/biz/${bizId}`}>Cancel</NavLink>
-                            <button className="btn" type="submit">Post Review</button>
-                        </div>
-                    </form>
+    return biz && selectedRating && (
+        <div className="pageContainer">
+            <form id="reviewForm" onSubmit={handleSubmit}>
+                <h1>{biz.name}</h1>
+                <div className="reviewFormBorder">
+                    <div className="formRating container" onMouseLeave={handleHoverLeave}>
+                        {nums.map(n => (
+                            <div key={n} onMouseOver={() => handleRatingHover(n)} onClick={() => handleSelectedRating(n)} className={hoverRating >= n ? `star${hoverRating} medStar star` : "zeroStar medStar star"}><i className="fas fa-star fa-med"></i></div>
+                        ))}
+                        <p className="grey">Select your rating</p>
+                    </div>
+                    <textarea id="reviewTextArea" value={comment} onChange={(e) => setComment(e.target.value)} required></textarea>
                 </div>
-                <div>
-                    {/* reviews sidebar */}
+                <div id="foodFormBtns">
+                    <NavLink className="navLink navbarLink" to={`/biz/${bizId}`}>Cancel</NavLink>
+                    <button className="btn" type="submit">Post Review</button>
                 </div>
-            </div>
+            </form>
+            {/* reviews sidebar */}
         </div>
     );
 }
