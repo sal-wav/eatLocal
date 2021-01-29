@@ -32,7 +32,7 @@ function App() {
       }
       setLoaded(true);
     })();
-  }, []);
+  }, [authenticated]);
 
   if (!loaded) {
     return null;
@@ -58,7 +58,7 @@ function App() {
         { !authenticated ? <LandingPage/> :
         <>
           <NavBar authenticated={authenticated} setAuthenticated={setAuthenticated} />
-          <HomePage />
+          <HomePage currentUser={currentUser} authenticated={authenticated} setAuthenticated={setAuthenticated}/>
         </>
         }
       </Route>

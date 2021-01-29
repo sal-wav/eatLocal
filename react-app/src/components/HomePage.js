@@ -3,7 +3,8 @@ import { NavLink } from 'react-router-dom';
 import {getBiz} from "../services/biz";
 import "./styles/home.css";
 
-const HomePage = () => {
+const HomePage = (props) => {
+    const {currentUser, authenticated, setAuthenticated} = props;
     const [bizFeed, setBizFeed] = useState([]);
 
     useEffect(() => {
@@ -18,7 +19,7 @@ const HomePage = () => {
         return 'loading'
     }
 
-    return (!bizFeed) ? (
+    return (!bizFeed || !currentUser || !authenticated) ? (
         <div className="page container">
             <img alt="" id="loadingGif" src="https://eatlocalapp.s3.amazonaws.com/Spin-1s-243px.gif"></img>
         </div>
