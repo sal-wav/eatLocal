@@ -6,87 +6,30 @@
 
 User Authentication
 
+* Users can securely create an account using our login and logout feature. melodie uses hash passwords so that no plain text passwords are ever stored in the database. melodie also uses various middleware functions when processing request and responses so that we know a user is who they say they are. Certain routes also require user authenication for pages to be accessed
+
 Log In, Sign Up
 
 Businesses
 
+* Add business with categories and features
+
 Food Items
+
+* Add, edit, delete food items to your business' menu
 
 Reviews
 
-### All pages
-navbar: home, log in, sign up, "share your biz" button, (**bonus** write a review)
-    * search bar: "find" input, search button
+* Add, edit, delete reviews on businesses
 
-footer: github/linkedIn links
+Search Results
 
-### Splash/Home
-GET first 3 biz - /api/biz
-GET 3 recent reviews - /api/review
-GET user - /api/user/userId
-
-* Featured feed: preview includes: img, biz name, overall rating, description
-
-Recent Activity: Username "posted a review", img, biz name, rating (**bonus** comment)
-
-### Search Results
-GET biz - /api/biz
-GET review - /api/review/biz/bizId
-
-Sidebar: filters: restaurant or corner store button, "open now" checkbox, rating
-
-(**bonus** Sort dropdown: sort by highest rating, most ratings)
-
-* Featured feed: preview includes: img, biz name, overall rating, description
-
-### Biz Page
-GET biz - /api/biz/bizId
-GET reviews - /api/review/biz/bizId
-GET user - /api/user/userId
-PATCH review - /api/review/reviewId
-POST review - /api/review
-GET features - /api/features/biz/bizId
-
-Cover: img, biz name, overall rating, hours open, description
-
-Owner details: img, username
-
-"Post a review" button
-    * select number of starts, "post" button
-
-Food List: food img, name, description
-
-* Review List: user img, name, rating
-    * Edit button if user created review
-
-### Biz form
-POST biz - /api/biz
-PATCH biz - /api/biz/bizId
-POST food - /api/food
-PATCH food - /api/food/foodId
-POST features - /api/feat
-
-Biz Form: name, description, image, phone number
-    / features: restaurant or cornerstore, opening time, closing time
-    / food: name, description, image
+* Search for food items or business name
 
 
+**In Progress**
+* User Page
 
+* Featured feed - biz preview: img, biz name, overall rating, description
 
-
-
-
-**bonus**
-(### User Page
-GET user - /api/user/userId
-GET owned biz - /api/biz/user/userId
-GET posted reviews - /api/review/user/userId
-
-Cover: img, username, number of reviews posted
-
-* Review List: user img, name, rating
-    * Edit button if user created review
-    * if user page: show biz name
-
-* Featured feed: preview includes: img, biz name, overall rating, description
-    * just shows biz owned by user)
+* Activity feed - review preview: user, rating, review, posted/edited date
