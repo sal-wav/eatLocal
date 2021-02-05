@@ -1,6 +1,7 @@
-# EatLocal
-
+# eatLocal
+[live link](https://eat-local-app.herokuapp.com/)
 ### Overview
+eat Local is a yelp clone, targetted at independent restaurants and markets, so they can receive exposure through community reviews. eat Local uses React, Flask, PostgreSQL, SQLAlchemy, and CSS.
 
 ### Features
 
