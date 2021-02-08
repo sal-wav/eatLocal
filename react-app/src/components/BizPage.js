@@ -83,6 +83,11 @@ const BizPage = (props) => {
                             </div>
                             <h3>{`${biz.opening_hour}:${biz.opening_min} - ${biz.closing_hour}:${biz.closing_min}`}</h3>
                         </div>
+                        { currentUser.id === biz.user_id ?
+                            <div>
+                                <NavLink id="addMenuBtn" className="navLink navbarLink" to={`/foodform/biz/${bizId}`}>Add menu items <i className="far fa-edit"></i></NavLink>
+                            </div>
+                            : null }
                     </div>
                 </div>
                 <div className="infoContainer container">

@@ -58,11 +58,11 @@ def biz(id):
         return biz.to_dict()
     form = BizForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    if request.method == 'DELETE':
-        db.session.delete(biz)
-        db.session.commit()
-        return {'message': 'Biz has been deleted'}
     if biz.user_id == current_user.id:
+        if request.method == 'DELETE':
+            db.session.delete(biz)
+            db.session.commit()
+            return {'message': 'Biz has been deleted'}
         if form.validate_on_submit():
             biz = Business(
                 name=form.data['name'],
