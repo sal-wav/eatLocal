@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 // import { useDropzone } from "react-dropzone";
-import { postBiz } from "../services/biz";
+import { editBiz } from "../services/biz";
 import { bizInfo, getCategories, getFeatures } from "../services/categoryFeature";
 import "./styles/form.css"
 
@@ -58,11 +58,11 @@ const EditBizForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const biz = await postBiz(name, imageUrl, phoneNum, description, openingHour, openingMin, closingHour, closingMin, categoryIds, featureIds);
+        const biz = await editBiz(bizId, name, imageUrl, phoneNum, description, openingHour, openingMin, closingHour, closingMin, categoryIds, featureIds);
         if (biz.errors) {
             setError(Object.values(biz.errors))
         }
-        history.push(`/biz/${biz.id}`)
+        history.push(`/biz/${bizId}`)
     };
 
     const handleCategories = async (e) => {
@@ -87,7 +87,6 @@ const EditBizForm = () => {
             featureCopy.splice(position, 1);
             setFeatureIds(featureCopy)
         };
-        console.log(`features: ${featureIds}`)
     };
 
     if ( !categories || !features) return "loading";

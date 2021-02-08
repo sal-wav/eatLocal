@@ -64,14 +64,24 @@ def biz(id):
             db.session.commit()
             return {'message': 'Biz has been deleted'}
         if form.validate_on_submit():
-            biz = Business(
-                name=form.data['name'],
-                image_url=form.data['image_url'],
-                phone_num=form.data['phone_num'],
-                user_id=current_user.id,
-                category_id=form.data['category_id']
-            )
-            db.session.add(biz)
+            biz.name=form.data['name']
+            biz.image_url=form.data['image_url']
+            biz.phone_num=form.data['phone_num']
+            biz.description=form.data['description']
+            biz.opening_hour=form.data['opening_hour']
+            biz.opening_min=form.data['opening_min']
+            biz.closing_hour=form.data['closing_hour']
+            biz.closing_min=form.data['closing_min']
+            biz.user_id=current_user.id
+            biz.categories = []
+            biz.features = []
+            for id in request.json['categoryIds']:
+                category = Category.query.get(id)
+                biz.categories.append(category)
+            for id in request.json['featureIds']:
+                feature = Feature.query.get(id)
+                biz.features.append(feature)
+
             db.session.commit()
             return biz.to_dict()
         return {'errors': form.errors}, 422
