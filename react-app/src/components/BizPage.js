@@ -31,8 +31,6 @@ const BizPage = (props) => {
                 catList.push(category.name))
             setCategories(catList);
             setDeleting(false);
-
-            // console.log(`avg rating: ${JSON.stringify(response.avg_rating)}`)
         })();
     }, [bizId, deleting]);
 
@@ -83,15 +81,15 @@ const BizPage = (props) => {
                             </div>
                             <h3>{`${biz.opening_hour}:${biz.opening_min} - ${biz.closing_hour}:${biz.closing_min}`}</h3>
                         </div>
-                        { currentUser.id === biz.user_id ?
-                            <div>
-                                <NavLink id="addMenuBtn" className="navLink navbarLink" to={`/foodform/biz/${bizId}`}>Add menu items <i className="far fa-edit"></i></NavLink>
-                            </div>
-                            : null }
                     </div>
                 </div>
                 <div className="infoContainer container">
                     <div className="leftContainer">
+                        { currentUser.id === biz.user_id ?
+                        <div id="editBizContainer" className="sectionBorder">
+                            <NavLink className="bizBtn navLink navbarLink" to={`/bizform/${bizId}`}>Edit Your Biz Listing <i className="far fa-edit"></i></NavLink>
+                        </div>
+                        : null }
                         <div className="sectionBorder">
                             <h2 id="covid">COVID-19 Updates</h2>
                             <h3 id="services">Updated Services</h3>
@@ -108,7 +106,7 @@ const BizPage = (props) => {
                             <h1>What's on the menu</h1>
                             { currentUser.id === biz.user_id ?
                             <>
-                                <NavLink id="addMenuBtn" className="navLink navbarLink" to={`/foodform/biz/${bizId}`}>Add menu items <i className="far fa-edit"></i></NavLink>
+                                <NavLink id="addMenuBtn" className="bizBtn navLink navbarLink" to={`/foodform/biz/${bizId}`}>Add menu items <i className="far fa-edit"></i></NavLink>
                             </>
                             : null }
                         </div>

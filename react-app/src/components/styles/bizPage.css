@@ -98,7 +98,11 @@ body {
     padding-top: 24px;
 }
 
-#addMenuBtn {
+#editBizContainer {
+    padding: 30px 0;
+}
+
+.bizBtn {
     text-align: center;
     align-self: center;
     height: 20px;

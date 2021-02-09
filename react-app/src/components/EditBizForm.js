@@ -1,6 +1,6 @@
 // import BizForm from "./BizForm";
 import React, { useState, useEffect } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory, useParams, NavLink } from "react-router-dom";
 // import { useDropzone } from "react-dropzone";
 import { editBiz } from "../services/biz";
 import { bizInfo, getCategories, getFeatures } from "../services/categoryFeature";
@@ -160,6 +160,7 @@ const EditBizForm = () => {
                     </div>
                     <p className="error">{error}</p>
                     <div className="formSubmit">
+                        <NavLink className="navLink navbarLink" to={`/biz/${bizId}`}>Cancel</NavLink>
                         <button id="submitBtn" className="btn"type="submit">Share Your Listing</button>
                     </div>
                 </form>
